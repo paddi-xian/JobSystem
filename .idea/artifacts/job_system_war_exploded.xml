@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="job-system:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/job_system_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="job-system" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="job-system/web/Web" />
+      <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:3.0.2" />
+      <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.5.13" />
+    </root>
+  </artifact>
+</component>

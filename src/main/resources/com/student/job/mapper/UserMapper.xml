@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.student.job.mapper.UserMapper">
+    <insert id="insertUser">
+        insert into user
+        (u_id,u_name,u_pass,telephone,role)
+        values
+        (#{u_id},#{u_name},#{u_pass},#{telephone},#{role})
+    </insert>
+
+    <select id="selectByIdAndPass" resultType="com.student.job.pojo.User">
+        select * from user where u_id = #{u_id} and u_pass = #{u_pass}
+    </select>
+
+    <select id="getUserById" resultType="com.student.job.pojo.User">
+        select * from user where u_id = #{u_id}
+    </select>
+</mapper>
