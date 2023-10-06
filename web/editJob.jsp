@@ -40,7 +40,7 @@
                             </label>
                             <div class="am-u-sm-9">
                                 <input id="j_description" required="" placeholder="请输入兼职岗位名称" value="" name="j_description" type="text">
-                                <small>输入链接地址。</small>
+                                <small>请输入兼职岗位名称。</small>
                             </div>
                         </div>
                         <div class="am-form-group">
