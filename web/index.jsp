@@ -65,7 +65,7 @@
                 </dd>
               </dl>
             </li>
-            <li class="layui-nav-item">
+            <li class="layui-nav-item layui-nav-itemed" >
               <a href="javascript:;">菜单栏</a>
               <dl class="layui-nav-child">
                 <dd>
