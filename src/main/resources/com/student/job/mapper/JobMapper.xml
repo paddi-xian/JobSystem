@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.student.job.mapper.JobMapper">
+
+    <insert id="insertJob">
+        insert into job
+        (j_id,j_name,j_description,j_salary,j_hours)
+        values
+        (#{j_id},#{j_name},#{j_description},#{j_salary},#{j_hours})
+    </insert>
+
+    <update id="update">
+        update job set
+        j_id=${j_id},j_name=#{j_name},j_description=#{j_description},j_salary=#{j_salary},j_hours=#{j_hours}
+        where j_id = ${j_id}
+    </update>
+</mapper>
