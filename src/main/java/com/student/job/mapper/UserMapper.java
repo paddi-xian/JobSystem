@@ -10,7 +10,7 @@ public interface UserMapper {
      * @param user
      * @return
      */
-    public int insertUser(User user);
+   int insertUser(User user);
 
     /**
      * 查询用户id和密码
@@ -18,7 +18,7 @@ public interface UserMapper {
      * @param u_pass
      * @return
      */
-    public List<User> selectByIdAndPass(String u_id, String u_pass);
+    List<User> selectByIdAndPass(String u_id, String u_pass);
 
-    public User getUserById(String u_id);
+    User getUserById(String u_id);
 }

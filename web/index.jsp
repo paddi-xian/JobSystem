@@ -12,7 +12,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>大气网站后台模板</title>
+  <title>学生兼职管理系统</title>
   <link rel="stylesheet" href="css/layui.css">
   <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
   <script type="text/javascript" src="myplugs/js/plugs.js"></script>
@@ -27,7 +27,7 @@
         <ul class="layui-nav layui-layout-right">
           <li class="layui-nav-item">
             <a href="javascript:;">
-              <img src="images/1.gif" class="layui-nav-img"> 管理员
+              <img src="images/1.gif" class="layui-nav-img"> 用户
             </a>
             <dl class="layui-nav-child">
               <dd>
@@ -112,7 +112,7 @@
       <div class="layui-body" style="z-index: 0;">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
-          <iframe src="product.html" name="right" frameborder="0" width="100%" height="1200"></iframe>
+          <iframe src="welcome.jsp" name="right" frameborder="0" width="100%" height="1200"></iframe>
 
         </div>
       </div>

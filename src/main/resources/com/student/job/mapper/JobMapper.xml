@@ -16,4 +16,16 @@
         j_id=${j_id},j_name=#{j_name},j_description=#{j_description},j_salary=#{j_salary},j_hours=#{j_hours}
         where j_id = ${j_id}
     </update>
+
+    <delete id="delete">
+        delete from user where id = #{j_id}
+    </delete>
+
+    <select id="selectById" resultType="com.student.job.pojo.Job">
+        select * from job where id = #{j_id}
+    </select>
+
+    <select id="selectAll" resultType="com.student.job.pojo.Job">
+        select * from job
+    </select>
 </mapper>
