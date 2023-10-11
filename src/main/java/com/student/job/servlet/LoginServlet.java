@@ -24,29 +24,23 @@ public class LoginServlet extends HttpServlet {
         String u_id = request.getParameter("u_id");
         String u_pass = request.getParameter("u_pass");
 
-        //调用MyBatis的Mapper接口查询用户数据
         SqlSessionFactory sqlSessionFactory = SqlSessionUtil.getSqlSessionFactory();
-        try(SqlSession sqlSession = sqlSessionFactory.openSession()){
-            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            // 获取 mapper
+            UserMapper userMapper = session.getMapper(UserMapper.class);
+            // 调用 mapper 方法查询用户信息
             User user = userMapper.getUserById(u_id);
-            //验证用户密码
-            if(user != null && user.getU_pass().equals(u_pass)){
-                // 登录成功，将用户信息保存到Session中
-                HttpSession httpSession = request.getSession();
-                httpSession.setAttribute("user", user);
-
-                // 根据用户角色进行跳转
-                if ("学生".equals(user.getRole())) {
-                    response.sendRedirect("student.jsp");
-                } else if ("发布者".equals(user.getRole())) {
-                    response.sendRedirect("publisher.jsp");
-                } else if ("管理员".equals(user.getRole())) {
-                    response.sendRedirect("admin.jsp");
-                }
+            // 验证用户信息是否正确
+            if (user != null && user.getU_pass().equals(u_pass)) {
+                // 登录成功，可以存取 user 对象中的数据，或者重定向到其他页面
+                response.sendRedirect(request.getContextPath()+"/index.jsp");
             } else {
-                // 登录失败，返回登录页面
-                response.sendRedirect("login.jsp?error=1");
+                // 登录失败，可以返回错误信息给用户
+                response.sendRedirect(request.getContextPath()+"/error.jsp");
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
     }
 }

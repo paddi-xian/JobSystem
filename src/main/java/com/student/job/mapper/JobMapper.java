@@ -7,9 +7,9 @@ import java.util.List;
 public interface JobMapper {
     int insertJob(Job job);
 
-    int update(Job job);
+    int updateJob(String j_id,String j_name,String j_description,Double j_salary,String j_hours);
 
-    int delete(Job job);
+    int deleteById(String j_id);
 
     List<Job> selectById(String j_id);
 
