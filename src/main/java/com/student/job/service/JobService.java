@@ -5,9 +5,14 @@ import com.student.job.pojo.Job;
 import java.util.List;
 
 public interface JobService {
+
     /**
      * 添加岗位
-     * @param job
+     * @param j_id
+     * @param j_name
+     * @param j_description
+     * @param j_salary
+     * @param j_hours
      */
     void addJob(String j_id,String j_name,String j_description,Double j_salary,String j_hours);
 
@@ -18,9 +23,14 @@ public interface JobService {
      */
     void deleteJob(String j_id);
 
+
     /**
-     * 更新岗位
-     * @param job
+     * 修改岗位
+     * @param j_id
+     * @param j_name
+     * @param j_description
+     * @param j_salary
+     * @param j_hours
      */
     void updateJob(String j_id, String j_name, String j_description, Double j_salary, String j_hours);
 

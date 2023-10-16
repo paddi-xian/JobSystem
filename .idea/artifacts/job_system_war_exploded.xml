@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="job-system:war exploded">
-    <output-path>$PROJECT_DIR$/out</output-path>
+    <output-path>$PROJECT_DIR$/target/job-system-1.0-SNAPSHOT</output-path>
     <properties id="maven-jee-properties">
       <options>
         <exploded>true</exploded>
@@ -9,7 +9,6 @@
       </options>
     </properties>
     <root id="root">
-      <element id="module-output" name="job-system" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="job-system" />
@@ -25,6 +24,7 @@
           <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:4.0.1" />
         </element>
       </element>
+      <element id="module-output" name="job-system" />
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/job-system-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>

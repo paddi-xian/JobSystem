@@ -29,18 +29,12 @@ public class LoginServlet extends HttpServlet {
             // 获取 mapper
             UserMapper userMapper = session.getMapper(UserMapper.class);
             // 调用 mapper 方法查询用户信息
-            User user = userMapper.getUserById(u_id);
-            // 验证用户信息是否正确
-            if (user != null && user.getU_pass().equals(u_pass)) {
-                // 登录成功，可以存取 user 对象中的数据，或者重定向到其他页面
-                response.sendRedirect(request.getContextPath()+"/index.jsp");
-            } else {
-                // 登录失败，可以返回错误信息给用户
-                response.sendRedirect(request.getContextPath()+"/error.jsp");
-            }
+            List<User> users = userMapper.selectByIdAndPass(u_id, u_pass);
+            session.commit();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        response.sendRedirect("index.jsp");
 
     }
 }

@@ -39,7 +39,7 @@
             </dl>
           </li>
           <li class="layui-nav-item">
-            <a href="">退出系统</a>
+            <a href="login.jsp">退出系统</a>
           </li>
         </ul>
       </div>
@@ -66,13 +66,13 @@
               </dl>
             </li>
             <li class="layui-nav-item layui-nav-itemed" >
-              <a href="javascript:;">菜单栏</a>
+              <a href="javascript:;">用户管理</a>
               <dl class="layui-nav-child">
                 <dd>
                   <a href="message.jsp" target="right">留言管理</a>
                 </dd>
                 <dd>
-                  <a href="admin.jsp" target="right">用户管理</a>
+                  <a href="admin.jsp" target="right">管理员</a>
                 </dd>
                 <dd>
               </dl>

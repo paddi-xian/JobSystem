@@ -19,6 +19,7 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         //获取用户提交的注册信息
         String u_id = request.getParameter("u_id");
         String u_name = request.getParameter("u_name");

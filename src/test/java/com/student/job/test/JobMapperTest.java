@@ -13,7 +13,6 @@ public class JobMapperTest {
         JobMapper mapper = sqlSession.getMapper(JobMapper.class);
         Job job = new Job("111","架构师","主要干xxxx",12000.00,"6小时");
         int count = mapper.insertJob(job);
-
         System.out.println("插入"+count);
         sqlSession.commit();
         sqlSession.close();
