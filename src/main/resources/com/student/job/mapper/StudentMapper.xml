@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.student.job.mapper.StudentMapper">
+    <select id="getStuList" resultType="com.student.job.pojo.Student">
+        select * from student
+    </select>
+    <select id="findById"  parameterType="String" resultType="com.student.job.pojo.Student">
+        select * from student where s_id =#{s_id}
+    </select>
+</mapper>
