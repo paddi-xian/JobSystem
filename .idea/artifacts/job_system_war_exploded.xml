@@ -1,6 +1,13 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="job-system:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/job_system_war_exploded</output-path>
+    <output-path>$PROJECT_DIR$/target/job-system-1.0-SNAPSHOT</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>job-system</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -15,7 +22,12 @@
           <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.4.8" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:2.0.7" />
           <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:4.0.1" />
+          <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.2" />
+          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
         </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/job-system-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="job-system/web/Web" />
     </root>

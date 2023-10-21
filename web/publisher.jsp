@@ -5,7 +5,7 @@
   Time: 14:37
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
     <title>发布者页面</title>
@@ -44,7 +44,7 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">主页</a>
+                    <a class="" href="">主页</a>
                     <dl class="layui-nav-child">
                         <dd>
                             <a href="student.jsp" target="right">发布者个人中心</a>
@@ -53,7 +53,7 @@
                             <a href="publisher.jsp" target="right">发布者信息</a>
                         </dd>
                         <dd>
-                            <a href="job.jsp" target="right">兼职岗位信息</a>
+                            <a href="Job?u_id=${user.u_id}" target="right">兼职岗位信息</a>
                         </dd>
                     </dl>
                 </li>
