@@ -12,23 +12,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-
         //获取用户提交的登录信息
         //String u_name = request.getParameter("u_name");
         String telephone = request.getParameter("telephone");
         String u_pass = request.getParameter("u_pass");
-        System.out.println(telephone+"+++++"+u_pass);
+
         SqlSessionFactory sqlSessionFactory = SqlSessionUtil.getSqlSessionFactory();
         try (SqlSession session = sqlSessionFactory.openSession()) {
             // 获取 mapper
@@ -46,6 +42,7 @@ public class LoginServlet extends HttpServlet {
                     response.sendRedirect("index.jsp");
                 } else if ("发布者".equals(role)) {
                     // 如果用户角色是发布者，则重定向到发布者页面
+                    request.getSession().setAttribute("user",user);
                     response.sendRedirect("publisher.jsp");
                 } else if ("学生".equals(role)) {
                     // 如果用户角色是学生，则重定向到学生页面
@@ -63,5 +60,4 @@ public class LoginServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
-
 }

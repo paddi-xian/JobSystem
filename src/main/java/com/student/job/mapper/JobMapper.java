@@ -1,18 +1,14 @@
 package com.student.job.mapper;
 
 import com.student.job.pojo.Job;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+@Mapper
 public interface JobMapper {
-    int insertJob(Job job);
 
-    int updateJob(String j_id,String j_name,String j_description,Double j_salary,String j_hours);
 
-    int deleteById(String j_id);
-
-    List<Job> selectById(String j_id);
-
-    List<Job> selectAll(Job job);
-
+    List<Job> selectJobByUid(@Param("u_id") Integer uId);
 }
