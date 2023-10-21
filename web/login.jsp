@@ -45,14 +45,13 @@
         <form action="login" method="post" name="login">
             <div class="login-form">
                 <h2>欢迎来到学生兼职系统</h2>
-                <input type="text" placeholder="your id" name="u_id" id="u_id">
+                <input type="text" placeholder="your name" name="u_name" id="u_name">
                 <input type="password" placeholder="password" name="u_pass" id="u_pass">
                 <input type="submit" value="Next" class="login-btn">
-                <p class="register-link"><a href="register.jsp">Join US</a></p>
+                <p class="register-link"><a href="register.jsp">请先注册</a></p>
                 <p id="msg"></p>
             </div>
         </form>
     </div>
-
 </body>
 </html>

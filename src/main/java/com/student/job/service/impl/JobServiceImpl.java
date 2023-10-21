@@ -32,7 +32,13 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public List<Job> selectById(String j_id) {
-        return jobMapper.selectById(j_id);
+        return null;
     }
+
+    @Override
+    public List<Job> selectAll(Job job) {
+        return null;
+    }
+
 
 }

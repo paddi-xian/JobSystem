@@ -3,16 +3,16 @@ package com.student.job.pojo;
 import java.util.Date;
 
 public class Application {
-    private String a_id;
-    private String s_id;
-    private String j_id;
+    private int a_id;
+    private int s_id;
+    private int j_id;
     private Date a_time;
     private String a_status;
 
     public Application() {
     }
 
-    public Application(String a_id, String s_id, String j_id, Date a_time, String a_status) {
+    public Application(int a_id, int s_id, int j_id, Date a_time, String a_status) {
         this.a_id = a_id;
         this.s_id = s_id;
         this.j_id = j_id;
@@ -20,27 +20,27 @@ public class Application {
         this.a_status = a_status;
     }
 
-    public String getA_id() {
+    public int getA_id() {
         return a_id;
     }
 
-    public void setA_id(String a_id) {
+    public void setA_id(int a_id) {
         this.a_id = a_id;
     }
 
-    public String getS_id() {
+    public int getS_id() {
         return s_id;
     }
 
-    public void setS_id(String s_id) {
+    public void setS_id(int s_id) {
         this.s_id = s_id;
     }
 
-    public String getJ_id() {
+    public int getJ_id() {
         return j_id;
     }
 
-    public void setJ_id(String j_id) {
+    public void setJ_id(int j_id) {
         this.j_id = j_id;
     }
 
@@ -63,9 +63,9 @@ public class Application {
     @Override
     public String toString() {
         return "Application{" +
-                "a_id='" + a_id + '\'' +
-                ", s_id='" + s_id + '\'' +
-                ", j_id='" + j_id + '\'' +
+                "a_id=" + a_id +
+                ", s_id=" + s_id +
+                ", j_id=" + j_id +
                 ", a_time=" + a_time +
                 ", a_status='" + a_status + '\'' +
                 '}';

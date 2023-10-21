@@ -36,4 +36,6 @@ public interface JobService {
 
     List<Job> selectById(String j_id);
 
+    List<Job> selectAll(Job job);
+
 }

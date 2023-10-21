@@ -2,7 +2,7 @@ package com.student.job.pojo;
 
 
 public class Job {
-    private String j_id;
+    private int j_id;
     private String j_name;
     private String j_description;
     private Double j_salary;
@@ -11,7 +11,7 @@ public class Job {
     public Job() {
     }
 
-    public Job(String j_id, String j_name, String j_description, Double j_salary, String j_hours) {
+    public Job(int j_id, String j_name, String j_description, Double j_salary, String j_hours) {
         this.j_id = j_id;
         this.j_name = j_name;
         this.j_description = j_description;
@@ -19,11 +19,11 @@ public class Job {
         this.j_hours = j_hours;
     }
 
-    public String getJ_id() {
+    public int getJ_id() {
         return j_id;
     }
 
-    public void setJ_id(String j_id) {
+    public void setJ_id(int j_id) {
         this.j_id = j_id;
     }
 
@@ -62,7 +62,7 @@ public class Job {
     @Override
     public String toString() {
         return "Job{" +
-                "j_id='" + j_id + '\'' +
+                "j_id=" + j_id +
                 ", j_name='" + j_name + '\'' +
                 ", j_description='" + j_description + '\'' +
                 ", j_salary=" + j_salary +

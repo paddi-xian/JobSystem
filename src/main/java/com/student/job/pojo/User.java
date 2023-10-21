@@ -1,7 +1,7 @@
 package com.student.job.pojo;
 
 public class User {
-    private String u_id;
+    private int u_id;
     private String u_name;
     private String u_pass;
     private String telephone;
@@ -10,38 +10,19 @@ public class User {
     public User() {
     }
 
-    public User(String u_id, String u_name, String u_pass, String role, String telephone) {
+    public User(int u_id, String u_name, String u_pass, String telephone, String role) {
         this.u_id = u_id;
         this.u_name = u_name;
         this.u_pass = u_pass;
+        this.telephone = telephone;
         this.role = role;
-        this.telephone = telephone;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "u_id='" + u_id + '\'' +
-                ", u_name='" + u_name + '\'' +
-                ", u_pass='" + u_pass + '\'' +
-                ", role='" + role + '\'' +
-                ", telephone='" + telephone + '\'' +
-                '}';
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public String getU_id() {
+    public int getU_id() {
         return u_id;
     }
 
-    public void setU_id(String u_id) {
+    public void setU_id(int u_id) {
         this.u_id = u_id;
     }
 
@@ -61,6 +42,14 @@ public class User {
         this.u_pass = u_pass;
     }
 
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
     public String getRole() {
         return role;
     }
@@ -69,10 +58,14 @@ public class User {
         this.role = role;
     }
 
-    public enum Role{
-        ADMIN,
-        PUBLISHER,
-        STUDENT
+    @Override
+    public String toString() {
+        return "User{" +
+                "u_id=" + u_id +
+                ", u_name='" + u_name + '\'' +
+                ", u_pass='" + u_pass + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", role='" + role + '\'' +
+                '}';
     }
-
 }

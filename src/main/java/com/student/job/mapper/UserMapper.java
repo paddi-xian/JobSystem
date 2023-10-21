@@ -18,7 +18,9 @@ public interface UserMapper {
      * @param u_pass
      * @return
      */
-    List<User> selectByIdAndPass(String u_id, String u_pass);
+    List<User> selectByNameAndPass(String u_name, String u_pass);
 
-    User getUserById(String u_id);
+    User getUserByName(String u_name);
+
+    List<User> selectAllUser();
 }

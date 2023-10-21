@@ -21,7 +21,6 @@ public class RegisterServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         //获取用户提交的注册信息
-        String u_id = request.getParameter("u_id");
         String u_name = request.getParameter("u_name");
         String u_pass = request.getParameter("u_pass");
         String telephone = request.getParameter("telephone");
@@ -29,7 +28,6 @@ public class RegisterServlet extends HttpServlet {
 
         //创建用户对象
         User user = new User();
-        user.setU_id(u_id);
         user.setU_name(u_name);
         user.setU_pass(u_pass);
         user.setTelephone(telephone);
