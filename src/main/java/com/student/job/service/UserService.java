@@ -17,5 +17,5 @@ public interface UserService {
      * @param u_pass
      * @return
      */
-    public List<User> login(String u_name, String u_pass);
+    public User login(String u_name, String u_pass);
 }

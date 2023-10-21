@@ -1,6 +1,7 @@
 package com.student.job.mapper;
 
 import com.student.job.pojo.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,11 +15,11 @@ public interface UserMapper {
 
     /**
      * 查询用户id和密码
-     * @param u_id
+     * @param u_name
      * @param u_pass
      * @return
      */
-    List<User> selectByNameAndPass(String u_name, String u_pass);
+    User selectByNameAndPass(@Param("u_name") String u_name, @Param("u_pass") String u_pass);
 
     User getUserByName(String u_name);
 

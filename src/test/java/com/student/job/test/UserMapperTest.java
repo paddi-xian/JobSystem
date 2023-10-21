@@ -24,7 +24,7 @@ public class UserMapperTest {
     public void testSelectByNameAndPass(){
         SqlSession sqlSession = SqlSessionUtil.openSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        User user = mapper.getUserByName("AAA");
+        User user = mapper.selectByNameAndPass("AAA","123");
         System.out.println(user);
         sqlSession.close();
     }
