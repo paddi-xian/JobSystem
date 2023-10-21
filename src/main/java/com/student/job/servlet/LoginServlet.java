@@ -25,12 +25,12 @@ public class LoginServlet extends HttpServlet {
         String u_pass = request.getParameter("u_pass");
 
         SqlSessionFactory sqlSessionFactory = SqlSessionUtil.getSqlSessionFactory();
-//        List<User> users = new ArrayList<>();
+        List<User> users = new ArrayList<>();
         try (SqlSession session = sqlSessionFactory.openSession()) {
             // 获取 mapper
             UserMapper userMapper = session.getMapper(UserMapper.class);
             // 调用 mapper 方法查询用户信息
-            List<User> users  = userMapper.selectByNameAndPass(u_name, u_pass);
+             users  = userMapper.selectByNameAndPass(u_name, u_pass);
 
             if (users.isEmpty()) {
                 // 如果没有找到用户或用户名或密码错误，则重定向到错误页面
@@ -62,5 +62,7 @@ public class LoginServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        //根据用户类型跳转到相应页面
+        response.sendRedirect("index.jsp");
     }
 }
