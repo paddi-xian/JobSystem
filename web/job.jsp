@@ -60,7 +60,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="jobs" var="job">
+                    <c:forEach items="${jobs}" var="job">
                         <tr>
                             <td><input type="checkbox"></td>
                             <td>${job.j_id}</td>
