@@ -38,14 +38,11 @@
     </style>
 </head>
 <body>
-    <% if (request.getParameter("error") != null) { %>
-    <p style="color: red;">用户名或密码错误，请重新登录。</p>
-    <% } %>
     <div class="login">
         <form action="login" method="post" name="login">
             <div class="login-form">
                 <h2>欢迎来到学生兼职系统</h2>
-                <input type="text" placeholder="your name" name="u_name" id="u_name">
+                <input type="text" placeholder="your telephone" name="telephone" id="telephone">
                 <input type="password" placeholder="password" name="u_pass" id="u_pass">
                 <input type="submit" value="Next" class="login-btn">
                 <p class="register-link"><a href="register.jsp">请先注册</a></p>

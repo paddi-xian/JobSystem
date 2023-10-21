@@ -29,4 +29,7 @@
     <select id="selectAllUser" resultType="com.student.job.pojo.User">
         select * from user
     </select>
+    <select id="selectByTelAndPass" resultType="com.student.job.pojo.User">
+        select * from user where telephone = #{telephone} and u_pass = #{u_pass}
+    </select>
 </mapper>

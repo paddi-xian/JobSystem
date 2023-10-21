@@ -35,4 +35,13 @@ public class UserMapperTest {
         List<User> user = userMapper.selectAllUser();
         System.out.println(user);
     }
+
+    @Test
+    public void testSelectByTelAndPass(){
+        SqlSession sqlSession = SqlSessionUtil.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        User user = mapper.selectByTelAndPass("12345678","123");
+        System.out.println(user);
+        sqlSession.close();
+    }
 }

@@ -43,12 +43,12 @@
 </head>
 <body>
     <div class="login">
-        <form action="register" method="post" name="login" id="loginForm">
+        <form action="/register" method="post" name="login" id="loginForm">
             <div class="login-form">
                 <h2>欢迎来到学生兼职系统</h2>
-                用户名<input type="text" placeholder="your name" name="u_name" id="u_name" required><span id="u_nameError"></span><br>
+                用户名<input type="text" placeholder="your name" name="u_name" id="u_name" required>
                 密码<input type="password" placeholder="password" name="u_pass" id="u_pass" required>
-                确认密码<input type="password" placeholder="password" name="u_pass2"><span id="pwdError"></span><br>
+                确认密码<input type="password" placeholder="password" name="u_pass2">
                 手机号<input type="text" placeholder="telephone" name="telephone" id="telephone" required>
                 <label for="role">请选择用户类型:</label>
                 <select id="role" name="role">
@@ -57,7 +57,7 @@
                     <option value="管理员">管理员</option>
                 </select><br>
                 <input type="submit" value="注册" class="login-btn" id="btn">
-                <p id="msg"></p>
+                <span id="myspan"></span>
             </div>
         </form>
     </div>
