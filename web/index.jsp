@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+
 <html>
 
 <head>
@@ -27,7 +27,7 @@
         <ul class="layui-nav layui-layout-right">
           <li class="layui-nav-item">
             <a href="javascript:;">
-              <img src="images/1.gif" class="layui-nav-img"> 用户
+              <img src="img/user.jpg" class="layui-nav-img"> ${sessionScope.u_name}
             </a>
             <dl class="layui-nav-child">
               <dd>

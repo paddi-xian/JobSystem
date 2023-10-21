@@ -21,6 +21,7 @@ public interface UserMapper {
      */
     User selectByNameAndPass(@Param("u_name") String u_name, @Param("u_pass") String u_pass);
 
+    User selectByTelAndPass(@Param("telephone") String telephone, @Param("u_pass") String u_pass);
     User getUserByName(String u_name);
 
     List<User> selectAllUser();
