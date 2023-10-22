@@ -1,7 +1,7 @@
 package com.student.job.pojo;
 
 public class Student {
-    private String s_id;
+    private int s_id;
     private String s_name;
     private String s_gender;
     private Integer s_age;
@@ -11,7 +11,7 @@ public class Student {
     public Student() {
     }
 
-    public Student(String s_id, String s_name, String s_gender, Integer s_age, String s_phone, String s_email) {
+    public Student(int s_id, String s_name, String s_gender, Integer s_age, String s_phone, String s_email) {
         this.s_id = s_id;
         this.s_name = s_name;
         this.s_gender = s_gender;
@@ -20,11 +20,11 @@ public class Student {
         this.s_email = s_email;
     }
 
-    public String getS_id() {
+    public int getS_id() {
         return s_id;
     }
 
-    public void setS_id(String s_id) {
+    public void setS_id(int s_id) {
         this.s_id = s_id;
     }
 
@@ -71,7 +71,7 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-                "s_id='" + s_id + '\'' +
+                "s_id=" + s_id +
                 ", s_name='" + s_name + '\'' +
                 ", s_gender='" + s_gender + '\'' +
                 ", s_age=" + s_age +

@@ -13,9 +13,9 @@ public interface UserService {
 
     /**
      * 登录用户
-     * @param u_id
+     * @param u_name
      * @param u_pass
      * @return
      */
-    public List<User> login(String u_id, String u_pass);
+    public User login(String u_name, String u_pass);
 }

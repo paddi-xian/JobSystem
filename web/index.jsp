@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+
 <html>
 
 <head>
@@ -27,7 +27,7 @@
         <ul class="layui-nav layui-layout-right">
           <li class="layui-nav-item">
             <a href="javascript:;">
-              <img src="images/1.gif" class="layui-nav-img"> 用户
+              <img src="img/user.jpg" class="layui-nav-img"> ${sessionScope.u_name}
             </a>
             <dl class="layui-nav-child">
               <dd>
@@ -52,16 +52,13 @@
               <a class="" href="javascript:;">主页</a>
               <dl class="layui-nav-child">
                 <dd>
-                  <a href="student.jsp" target="right">学生个人中心</a>
+                  <a href="student.jsp" target="right">用户个人中心</a>
                 </dd>
                 <dd>
-                  <a href="publisher.jsp" target="right">发布者信息</a>
+                  <a href="message.jsp" target="right">发布者信息</a>
                 </dd>
                 <dd>
                   <a href="job.jsp" target="right">兼职岗位信息</a>
-                </dd>
-
-                  <a href="javascript:void(0)"  onclick="updatePwd('修改密码',1)">修改密码</a>
                 </dd>
               </dl>
             </li>
@@ -72,34 +69,34 @@
                   <a href="message.jsp" target="right">留言管理</a>
                 </dd>
                 <dd>
-                  <a href="admin.jsp" target="right">管理员</a>
+                  <a href="1.jsp" target="right">暂未开放</a>
                 </dd>
                 <dd>
               </dl>
             </li>
             <li class="layui-nav-item">
-              <a href="javascript:;">菜单栏</a>
+              <a href="javascript:;">暂未开放</a>
               <dl class="layui-nav-child">
 
               </dl>
             </li>
 
             <li class="layui-nav-item">
-              <a href="javascript:;">菜单栏</a>
+              <a href="javascript:;">暂未开放</a>
               <dl class="layui-nav-child">
 
               </dl>
             </li>
 
             <li class="layui-nav-item">
-              <a href="javascript:;">菜单栏</a>
+              <a href="javascript:;">暂未开放</a>
               <dl class="layui-nav-child">
 
               </dl>
             </li>
 
             <li class="layui-nav-item">
-              <a href="javascript:;">菜单栏</a>
+              <a href="javascript:;">暂未开放</a>
               <dl class="layui-nav-child">
 
               </dl>

@@ -3,16 +3,16 @@ package com.student.job.pojo;
 import java.util.Date;
 
 public class FeedBack {
-    private String f_id;
-    private String s_id;
-    private String j_id;
+    private int f_id;
+    private int s_id;
+    private int j_id;
     private String f_content;
     private Date f_time;
 
     public FeedBack() {
     }
 
-    public FeedBack(String f_id, String s_id, String j_id, String f_content, Date f_time) {
+    public FeedBack(int f_id, int s_id, int j_id, String f_content, Date f_time) {
         this.f_id = f_id;
         this.s_id = s_id;
         this.j_id = j_id;
@@ -20,27 +20,27 @@ public class FeedBack {
         this.f_time = f_time;
     }
 
-    public String getF_id() {
+    public int getF_id() {
         return f_id;
     }
 
-    public void setF_id(String f_id) {
+    public void setF_id(int f_id) {
         this.f_id = f_id;
     }
 
-    public String getS_id() {
+    public int getS_id() {
         return s_id;
     }
 
-    public void setS_id(String s_id) {
+    public void setS_id(int s_id) {
         this.s_id = s_id;
     }
 
-    public String getJ_id() {
+    public int getJ_id() {
         return j_id;
     }
 
-    public void setJ_id(String j_id) {
+    public void setJ_id(int j_id) {
         this.j_id = j_id;
     }
 
@@ -63,9 +63,9 @@ public class FeedBack {
     @Override
     public String toString() {
         return "FeedBack{" +
-                "f_id='" + f_id + '\'' +
-                ", s_id='" + s_id + '\'' +
-                ", j_id='" + j_id + '\'' +
+                "f_id=" + f_id +
+                ", s_id=" + s_id +
+                ", j_id=" + j_id +
                 ", f_content='" + f_content + '\'' +
                 ", f_time=" + f_time +
                 '}';

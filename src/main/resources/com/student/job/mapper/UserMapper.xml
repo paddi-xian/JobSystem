@@ -7,14 +7,29 @@
         insert into user
         (u_id,u_name,u_pass,telephone,role)
         values
-        (#{u_id},#{u_name},#{u_pass},#{telephone},#{role})
+        (null,#{u_name},#{u_pass},#{telephone},#{role})
     </insert>
 
-    <select id="selectByIdAndPass" resultType="com.student.job.pojo.User">
-        select * from user where u_id = #{u_id} and u_pass = #{u_pass}
+    <sql id="userColumnNameSql">
+        u_id as uId,
+        u_name as uName,
+        u_pass as uPass,
+        telephone,
+        role
+    </sql>
+
+    <select id="selectByNameAndPass" resultType="com.student.job.pojo.User">
+        select * from user where u_name = #{u_name} and u_pass = #{u_pass}
     </select>
 
-    <select id="getUserById" resultType="com.student.job.pojo.User">
-        select * from user where u_id = #{u_id}
+    <select id="getUserByName" resultType="com.student.job.pojo.User">
+        select * from user where u_name = #{u_name}
+    </select>
+
+    <select id="selectAllUser" resultType="com.student.job.pojo.User">
+        select * from user
+    </select>
+    <select id="selectByTelAndPass" resultType="com.student.job.pojo.User">
+        select * from user where telephone = #{telephone} and u_pass = #{u_pass}
     </select>
 </mapper>

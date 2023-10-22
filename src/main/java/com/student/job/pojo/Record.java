@@ -3,9 +3,9 @@ package com.student.job.pojo;
 import java.util.Date;
 
 public class Record {
-    private String r_id;
-    private String s_id;
-    private String j_id;
+    private int r_id;
+    private int s_id;
+    private int j_id;
     private Date startTime;
     private Date endTime;
     private Date workTime;
@@ -13,7 +13,7 @@ public class Record {
     public Record() {
     }
 
-    public Record(String r_id, String s_id, String j_id, Date startTime, Date endTime, Date workTime) {
+    public Record(int r_id, int s_id, int j_id, Date startTime, Date endTime, Date workTime) {
         this.r_id = r_id;
         this.s_id = s_id;
         this.j_id = j_id;
@@ -22,27 +22,27 @@ public class Record {
         this.workTime = workTime;
     }
 
-    public String getR_id() {
+    public int getR_id() {
         return r_id;
     }
 
-    public void setR_id(String r_id) {
+    public void setR_id(int r_id) {
         this.r_id = r_id;
     }
 
-    public String getS_id() {
+    public int getS_id() {
         return s_id;
     }
 
-    public void setS_id(String s_id) {
+    public void setS_id(int s_id) {
         this.s_id = s_id;
     }
 
-    public String getJ_id() {
+    public int getJ_id() {
         return j_id;
     }
 
-    public void setJ_id(String j_id) {
+    public void setJ_id(int j_id) {
         this.j_id = j_id;
     }
 
@@ -73,9 +73,9 @@ public class Record {
     @Override
     public String toString() {
         return "Record{" +
-                "r_id='" + r_id + '\'' +
-                ", s_id='" + s_id + '\'' +
-                ", j_id='" + j_id + '\'' +
+                "r_id=" + r_id +
+                ", s_id=" + s_id +
+                ", j_id=" + j_id +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
                 ", workTime=" + workTime +

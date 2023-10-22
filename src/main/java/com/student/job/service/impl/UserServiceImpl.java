@@ -15,7 +15,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> login(String u_id, String u_pass) {
-        return userMapper.selectByIdAndPass(u_id,u_pass);
+    public User login(String u_name, String u_pass) {
+        return userMapper.selectByNameAndPass(u_name,u_pass);
     }
+
+
 }

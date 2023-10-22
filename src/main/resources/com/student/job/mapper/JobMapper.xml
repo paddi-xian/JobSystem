@@ -4,29 +4,8 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.student.job.mapper.JobMapper">
 
-    <insert id="insertJob">
-        insert into job
-        (j_id,j_name,j_description,j_salary,j_hours)
-        values
-        (#{j_id},#{j_name},#{j_description},#{j_salary},#{j_hours})
-    </insert>
 
-    <update id="updateJob">
-        update job set
-        j_id=${j_id},j_name=#{j_name},j_description=#{j_description},j_salary=#{j_salary},j_hours=#{j_hours}
-        where j_id = ${j_id}
-    </update>
-
-    <delete id="deleteById">
-        delete from user where id = #{j_id}
-    </delete>
-
-
-    <select id="selectById" resultType="com.student.job.pojo.Job">
-        select * from job where id = #{j_id}
-    </select>
-
-    <select id="selectAll" resultType="com.student.job.pojo.Job">
-        select * from job
+    <select id="selectJobByUid" resultType="com.student.job.pojo.Job">
+        select * from job where u_id = #{u_id}
     </select>
 </mapper>

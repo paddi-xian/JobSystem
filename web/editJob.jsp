@@ -23,7 +23,7 @@
         <div class="admin-content">
             <div class="admin-content-body">
                 <div class="am-g">
-                    <form class="am-form am-form-horizontal" action="role/addroleSubmit.action" method="post" style="padding-top: 30px;">
+                    <form class="am-form am-form-horizontal" action="job.jsp" method="post" style="padding-top: 30px;">
                         <input value="504" name="roleId" type="hidden">
                         <div class="am-form-group">
                             <label for="j_name" class="am-u-sm-3 am-form-label">

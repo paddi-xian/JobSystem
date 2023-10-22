@@ -6,8 +6,9 @@
     <properties resource="jdbc.properties"/>
     <!--mybatis的全局设置-->
     <settings>
-        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="mapUnderscoreToCamelCase" value="false"/>
     </settings>
+
     <typeAliases>
         <package name="com.student.job.pojo"/>
     </typeAliases>
