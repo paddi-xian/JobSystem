@@ -18,6 +18,6 @@ public class StuListServlet extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Student>studentList = Service.getStuList();
         req.setAttribute("stuList",studentList);
-        req.getRequestDispatcher("student.jsp").forward(req,resp);
+        req.getRequestDispatcher("showStudent.jsp").forward(req,resp);
     }
 }

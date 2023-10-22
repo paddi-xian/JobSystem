@@ -28,5 +28,13 @@ public class JobMapperTest {
 //        jobs.forEach(car -> System.out.println(jobs));
 //        sqlSession.close();
     }
+    @Test
+    public void testSelectJobByUid(){
+        SqlSession sqlSession = SqlSessionUtil.openSession();
+        JobMapper mapper = sqlSession.getMapper(JobMapper.class);
+        List<Job> jobs = mapper.selectJobByUid(2);
+        jobs.forEach(car -> System.out.println(jobs));
+        sqlSession.close();
+    }
 
 }

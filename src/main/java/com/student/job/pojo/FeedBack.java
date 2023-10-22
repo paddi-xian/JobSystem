@@ -3,9 +3,9 @@ package com.student.job.pojo;
 import java.util.Date;
 
 public class FeedBack {
-    private int f_id;
-    private int s_id;
-    private int j_id;
+    private Integer f_id;
+    private Integer s_id;
+    private Integer j_id;
     private String f_content;
     private Date f_time;
 
