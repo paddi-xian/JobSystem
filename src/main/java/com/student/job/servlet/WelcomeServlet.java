@@ -18,21 +18,21 @@ public class WelcomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Cookie[] cookies = request.getCookies();
-        String u_id = null;
+        String telephone = null;
         String u_pass = null;
         if (cookies!=null) {
             for (Cookie cookie : cookies) {
                 String name = cookie.getName();
-                if ("u_id".equals(name)) {
-                    u_id = cookie.getValue();
+                if ("telephone".equals(name)) {
+                    telephone = cookie.getValue();
                 }else if("u_pass".equals(name)){
                     u_pass = cookie.getValue();
                 }
             }
         }
 
-        //使用u_id和u_name变量
-        if (u_id != null && u_pass != null) {
+        //使用telephoned和u_pass变量
+        if (telephone != null && u_pass != null) {
             //验证用户名和密码是否正确
             Connection conn = null;
             PreparedStatement ps = null;
@@ -40,9 +40,9 @@ public class WelcomeServlet extends HttpServlet {
             boolean success = false;
             try {
                 conn = DBUtil.getConnection();
-                String sql = "select * from user where u_id = ? and u_pass = ?";
+                String sql = "select * from user where telephone = ? and u_pass = ?";
                 ps = conn.prepareStatement(sql);
-                ps.setString(1,u_id);
+                ps.setString(1,telephone);
                 ps.setString(2,u_pass);
                 rs = ps.executeQuery();
                 if(rs.next()){

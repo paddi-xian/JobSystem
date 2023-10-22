@@ -16,7 +16,8 @@
 <body>
 <h1>欢迎${s_name}！</h1>
 <p>这是学生页面。</p>
-    <table>
+    <table border="1">
+        <thead>
         <tr>
             <th>ID</th>
             <th>姓名</th>
@@ -25,15 +26,19 @@
             <th>电话</th>
             <th>邮箱</th>
         </tr>
-        <c:forEach items="${StuList}" var="s"></c:forEach>
+        </thead>
+        <tbody>
+        <c:forEach items="${stuList}" var="s">
             <tr>
-            <td>${s.s__id}</td>
-            <td>${s.s_name}</td>
-            <td>${s.s_gender}</td>
-            <td>${s.s_age}</td>
-            <td>${s.s_phone}</td>
-            <td>${s.s_email}</td>
+                <td>${s.s_id}</td>
+                <td>${s.s_name}</td>
+                <td>${s.s_gender}</td>
+                <td>${s.s_age}</td>
+                <td>${s.s_phone}</td>
+                <td>${s.s_email}</td>
             </tr>
+        </c:forEach>
+        </tbody>
     </table>
 </body>
 </html>

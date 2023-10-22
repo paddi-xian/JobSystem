@@ -44,7 +44,7 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="">主页</a>
+                    <a class="" href="javascript:;">主页</a>
                     <dl class="layui-nav-child">
                         <dd>
                             <a href="showStudent.jsp" target="right">发布者个人中心</a>

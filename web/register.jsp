@@ -10,6 +10,9 @@
 <head>
     <title>注册</title>
     <style>
+        body{
+            background-image: url("img/register1.jpg");
+        }
         .login{width: 400px;margin: 0 auto;}
         .login-form>input{
             display: block;
@@ -122,7 +125,7 @@
                     u_passErrorSpan.innerText = "密码不一致";
                 }else{
                     //密码一致
-                    u_passErrorSpan.innerText = "密码一致";
+                    //u_passErrorSpan.innerText = "密码一致";
                 }
             }
             //绑定focus事件
@@ -172,6 +175,7 @@
                 telephoneElt.blur();
             }
         }
+
     </script>
 </body>
 </html>
