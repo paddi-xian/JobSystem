@@ -47,7 +47,7 @@
                     <a class="" href="javascript:;">主页</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="showStudent.jsp" target="right">学生个人中心</a>
+                            <a href="/student" target="right">学生个人中心</a>
                         </dd>
                         <dd>
                             <a href="message.jsp" target="right">学生修改个人信息</a>

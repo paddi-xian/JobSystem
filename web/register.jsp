@@ -175,6 +175,7 @@
                 telephoneElt.blur();
             }
         }
+
     </script>
 </body>
 </html>
