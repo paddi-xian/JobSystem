@@ -1,7 +1,7 @@
 package com.student.job.pojo;
 
 public class Student {
-    private int s_id;
+    private Integer s_id;
     private String s_name;
     private String s_gender;
     private Integer s_age;

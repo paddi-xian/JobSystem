@@ -17,16 +17,16 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo">学生兼职管理系统</div>
+        <div class="layui-logo">兼职管理系统——发布者端</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a href="javascript:;">
-                    <img src="images/1.gif" class="layui-nav-img"> 用户
+                    <img src="img/user.jpg" class="layui-nav-img"> ${user.u_name}
                 </a>
                 <dl class="layui-nav-child">
                     <dd>
-                        <a href="">个人中心</a>
+                        <a href="showPublisher.jsp">个人中心</a>
                     </dd>
                     <dd>
                         <a href="">安全设置</a>
@@ -47,10 +47,10 @@
                     <a class="" href="">主页</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="student.jsp" target="right">发布者个人中心</a>
+                            <a href="showStudent.jsp" target="right">发布者个人中心</a>
                         </dd>
                         <dd>
-                            <a href="publisher.jsp" target="right">发布者信息</a>
+                            <a href="message.jsp" target="right">发布者信息</a>
                         </dd>
                         <dd>
                             <a href="Job?u_id=${user.u_id}" target="right">兼职岗位信息</a>

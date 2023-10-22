@@ -3,9 +3,9 @@ package com.student.job.pojo;
 import java.util.Date;
 
 public class Record {
-    private int r_id;
-    private int s_id;
-    private int j_id;
+    private Integer r_id;
+    private Integer s_id;
+    private Integer j_id;
     private Date startTime;
     private Date endTime;
     private Date workTime;

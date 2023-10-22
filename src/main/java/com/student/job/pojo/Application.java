@@ -3,9 +3,9 @@ package com.student.job.pojo;
 import java.util.Date;
 
 public class Application {
-    private int a_id;
-    private int s_id;
-    private int j_id;
+    private Integer a_id;
+    private Integer s_id;
+    private Integer j_id;
     private Date a_time;
     private String a_status;
 

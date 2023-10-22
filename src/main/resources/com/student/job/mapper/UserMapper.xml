@@ -10,17 +10,10 @@
         (null,#{u_name},#{u_pass},#{telephone},#{role})
     </insert>
 
-    <sql id="userColumnNameSql">
-        u_id as uId,
-        u_name as uName,
-        u_pass as uPass,
-        telephone,
-        role
-    </sql>
 
-    <select id="selectByNameAndPass" resultType="com.student.job.pojo.User">
-        select * from user where u_name = #{u_name} and u_pass = #{u_pass}
-    </select>
+<!--    <select id="selectByNameAndPass" resultType="com.student.job.pojo.User">-->
+<!--        select * from user where u_name = #{u_name} and u_pass = #{u_pass}-->
+<!--    </select>-->
 
     <select id="getUserByName" resultType="com.student.job.pojo.User">
         select * from user where u_name = #{u_name}
