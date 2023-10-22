@@ -10,7 +10,13 @@
 <head>
     <title>用户登录页面</title>
     <style>
-        .login{width: 400px;margin: 0 auto;}
+        body{
+            background-image: url("img/register1.jpg");
+        }
+        .login{
+            width: 400px;
+            margin: 0 auto;
+        }
         .login-form>input{
             display: block;
             width: 98%;
