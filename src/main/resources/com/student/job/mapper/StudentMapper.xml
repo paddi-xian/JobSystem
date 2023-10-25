@@ -3,10 +3,18 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.student.job.mapper.StudentMapper">
+
     <select id="getStuList" resultType="com.student.job.pojo.Student">
         select * from student
     </select>
     <select id="findById"  parameterType="String" resultType="com.student.job.pojo.Student">
         select * from student where s_id =#{s_id}
     </select>
+    <update id="updateStudent">
+        UPDATE student SET s_name=#{s_name},s_gender=#{s_gender},s_age=#{s_age},s_phone=#{s_phone},s_email=#{s_email},
+        s_intro=#{s_intro} WHERE s_id=#{s_id};
+    </update>
+    <insert id="insertStudent">
+        insert into student(s_name,s_gender,s_age,s_phone, s_email,s_intro)values(?,?,?,?,?,?)"
+    </insert>
 </mapper>
