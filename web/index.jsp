@@ -52,7 +52,7 @@
               <a class="" href="javascript:;">主页</a>
               <dl class="layui-nav-child">
                 <dd>
-                  <a href="showStudent.jsp" target="right">学生管理</a>
+                  <a href="student" target="right">学生管理</a>
                 </dd>
                 <dd>
                   <a href="showPublisher.jsp" target="right">发布者管理</a>
@@ -107,7 +107,6 @@
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
           <iframe src="welcome.jsp" name="right" frameborder="0" width="100%" height="1200"></iframe>
-
         </div>
       </div>
 

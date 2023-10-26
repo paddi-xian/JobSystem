@@ -44,13 +44,13 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="">主页</a>
+                    <a class="" href="javascript:;">主页</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="showStudent.jsp" target="right">学生个人中心</a>
+                            <a href="/student" target="right">学生个人中心</a>
                         </dd>
                         <dd>
-                            <a href="message.jsp" target="right">学生修改个人信息</a>
+                            <a href="studentUpdate.jsp" target="right">学生修改个人信息</a>
                         </dd>
                         <dd>
                             <a href="Job?u_id=${user.u_id}" target="right">学生查看兼职岗位信息</a>

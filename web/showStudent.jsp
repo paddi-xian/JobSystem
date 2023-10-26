@@ -11,30 +11,116 @@
 
 <html>
 <head>
-    <title>学生页面</title>
+    <title>查看学生信息页面</title>
+    <link rel="stylesheet" href="css/amazeui.min.css"/>
+    <link rel="stylesheet" href="css/admin.css"/>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="myplugs/js/plugs.js"></script>
 </head>
 <body>
-<h1>欢迎${s_name}！</h1>
-<p>这是学生页面。</p>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>姓名</th>
-            <th>性别</th>
-            <th>年龄</th>
-            <th>电话</th>
-            <th>邮箱</th>
-        </tr>
-        <c:forEach items="${StuList}" var="s"></c:forEach>
-            <tr>
-            <td>${s.s__id}</td>
-            <td>${s.s_name}</td>
-            <td>${s.s_gender}</td>
-            <td>${s.s_age}</td>
-            <td>${s.s_phone}</td>
-            <td>${s.s_email}</td>
-            </tr>
-    </table>
+<div class="admin-content-body">
+    <div class="am-cf am-padding am-padding-bottom-0">
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">查看所有学生用户信息</strong><small></small>
+        </div>
+    </div>
+    <hr>
+
+    <div class="am-g">
+        <div class="am-u-sm-12 am-u-md-6">
+            <div class="am-btn-toolbar">
+                <div class="am-btn-group am-btn-group-xs">
+                    <button type="button" class="am-btn am-btn-default">
+                        <span class="am-icon-plus"></span> 禁用</button>
+                </div>
+            </div>
+        </div>
+        <div class="am-u-sm-12 am-u-md-3">
+        </div>
+        <div class="am-u-sm-12 am-u-md-3">
+            <div class="am-input-group am-input-group-sm">
+                <input type="text" class="am-form-field" placeholder="请输入用户ID">
+                <span class="am-input-group-btn">
+                <button class="am-btn am-btn-default" type="button">搜索</button>
+              </span>
+            </div>
+        </div>
+        <div class="am-g">
+            <div class="am-u-sm-12">
+                <form class="am-form">
+                    <table class="am-table am-table-striped am-table-hover table-main">
+                        <thead>
+                        <tr>
+                            <th class="table-check"><input type="checkbox"></th>
+                            <th class="table-id">ID</th>
+                            <th class="table-title">姓名</th>
+                            <th class="table-title">性别</th>
+                            <th class="table-title">年龄</th>
+                            <th class="table-title">电话</th>
+                            <th class="table-set">邮箱</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach items="${stuList}" var="s">
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>${s.s_id}</td>
+                                <td>${s.s_name}</td>
+                                <td>${s.s_gender}</td>
+                                <td>${s.s_age}</td>
+                                <td>${s.s_phone}</td>
+                                <td>${s.s_email}</td>
+
+                            <td>
+                                <div class="am-btn-toolbar">
+                                    <div class="am-btn-group am-btn-group-xs">
+                                        <button type="button"
+                                                class="btnedit am-btn am-btn-default am-btn-xs am-text-secondary"><span
+                                                class="am-icon-pencil-square-o"></span> 解禁
+                                        </button>
+                                        <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span
+                                                class="am-icon-trash-o"></span> 禁用
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                            </tr>
+                    </c:forEach>
+                    </tbody>
+                    </table>
+                    <div class="am-cf">
+                        共 2 条记录
+                        <div class="am-fr">
+                            <ul class="am-pagination">
+                                <li class="am-disabled">
+                                    <a href="#">«</a>
+                                </li>
+                                <li class="am-active">
+                                    <a href="#">1</a>
+                                </li>
+                                <li>
+                                    <a href="#">2</a>
+                                </li>
+                                <li>
+                                    <a href="#">3</a>
+                                </li>
+                                <li>
+                                    <a href="#">4</a>
+                                </li>
+                                <li>
+                                    <a href="#">5</a>
+                                </li>
+                                <li>
+                                    <a href="#">»</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
 
