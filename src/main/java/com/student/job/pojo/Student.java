@@ -7,17 +7,19 @@ public class Student {
     private Integer s_age;
     private String s_phone;
     private String s_email;
+    private String s_intro;
 
     public Student() {
     }
 
-    public Student(int s_id, String s_name, String s_gender, Integer s_age, String s_phone, String s_email) {
+    public Student(int s_id, String s_name, String s_gender, Integer s_age, String s_phone, String s_email,String s_intro) {
         this.s_id = s_id;
         this.s_name = s_name;
         this.s_gender = s_gender;
         this.s_age = s_age;
         this.s_phone = s_phone;
         this.s_email = s_email;
+        this.s_intro=s_intro;
     }
 
     public int getS_id() {
@@ -68,6 +70,12 @@ public class Student {
         this.s_email = s_email;
     }
 
+    public String getS_intro(){return  s_intro;}
+
+    public void setS_intro(String s_intro) {
+        this.s_intro = s_intro;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -77,6 +85,7 @@ public class Student {
                 ", s_age=" + s_age +
                 ", s_phone='" + s_phone + '\'' +
                 ", s_email='" + s_email + '\'' +
+                ",s_intro='"+s_intro+'\''+
                 '}';
     }
 }

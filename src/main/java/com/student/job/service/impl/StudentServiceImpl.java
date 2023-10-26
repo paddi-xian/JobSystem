@@ -11,9 +11,18 @@ import java.util.List;
 public class StudentServiceImpl implements StudentService {
     private StudentMapper studentMapper= SqlSessionUtil.openSession().getMapper(StudentMapper.class);
 
-
     @Override
     public List<Student> getStuList() {
-        return studentMapper.getStuList();
+        List<Student> students=studentMapper.getStuList();
+        return students;
     }
+
+
+
+    @Override
+    public int updateStudent(String s_name,String s_gender,Integer s_age,String s_phone,String s_email,String s_intro) {
+        return studentMapper.updateStudent( s_name, s_gender, s_age, s_phone, s_email, s_intro);
+    }
+
+
 }

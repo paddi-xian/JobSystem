@@ -50,7 +50,7 @@
                             <a href="/student" target="right">学生个人中心</a>
                         </dd>
                         <dd>
-                            <a href="message.jsp" target="right">学生修改个人信息</a>
+                            <a href="studentUpdate.jsp" target="right">学生修改个人信息</a>
                         </dd>
                         <dd>
                             <a href="Job?u_id=${user.u_id}" target="right">学生查看兼职岗位信息</a>
