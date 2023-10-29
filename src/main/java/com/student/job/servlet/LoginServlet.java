@@ -28,18 +28,20 @@ public class LoginServlet extends HttpServlet {
         //String u_name = request.getParameter("u_name");
         String telephone = request.getParameter("telephone");
         String u_pass = request.getParameter("u_pass");
-//        System.out.println(telephone+"+++++"+u_pass);
-
+        System.out.println(telephone+"+++++"+u_pass);
 
         SqlSessionFactory sqlSessionFactory = SqlSessionUtil.getSqlSessionFactory();
         try (SqlSession session = sqlSessionFactory.openSession()) {
             // 获取 mapper
             UserMapper userMapper = session.getMapper(UserMapper.class);
             User user = userMapper.selectByTelAndPass(telephone,u_pass);
-            if (user == null) {
+
+            if (user == null || !user.getTelephone().equals(telephone) && !user.getU_pass().equals(u_pass)) {
                 // 如果没有找到用户或用户名或密码错误，则重定向到错误页面
+                String message = "手机号或密码错误";
+                request.setAttribute("message", message);
+                request.getRequestDispatcher("login.jsp").forward(request, response);
                 System.out.println("登陆失败");
-                request.getRequestDispatcher("error.jsp").forward(request,response);
             } else {
                 // 获取用户的角色类型
                 String role = user.getRole();
