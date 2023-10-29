@@ -24,121 +24,142 @@
 
     <hr>
 
-<%--    <div class="am-g">--%>
-<%--        <div class="am-u-sm-12 am-u-md-6">--%>
-<%--            <div class="am-btn-toolbar">--%>
-<%--                <div class="am-btn-group am-btn-group-xs">--%>
-<%--                    <button type="button" id="" class="btnadd am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="am-u-sm-12 am-u-md-3">--%>
+    <div class="am-g">
+        <div class="am-u-sm-12 am-u-md-6">
+            <div class="am-btn-toolbar">
+                <div class="am-btn-group am-btn-group-xs">
+                    <button type="button" id="" class="btnadd am-btn am-btn-default"><span class="am-icon-plus"></span>
+                        新增
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="am-u-sm-12 am-u-md-3">
 
-<%--        </div>--%>
-<%--        <div class="am-u-sm-12 am-u-md-3">--%>
-<%--            <div class="am-input-group am-input-group-sm">--%>
-<%--                <input type="text" class="am-form-field" placeholder="请输入兼职岗位名称">--%>
-<%--                <span class="am-input-group-btn">--%>
-<%--                <button class="am-btn am-btn-default" type="button">搜索</button>--%>
-<%--              </span>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
+        </div>
+        <div class="am-u-sm-12 am-u-md-3">
+            <div class="am-input-group am-input-group-sm">
+                <input type="text" class="am-form-field" placeholder="请输入兼职岗位名称">
+                <span class="am-input-group-btn">
+                <button class="am-btn am-btn-default" type="button">搜索</button>
+              </span>
+            </div>
+        </div>
+    </div>
     <div class="am-g">
         <div class="am-u-sm-12">
             <form class="am-form">
                 <table class="am-table am-table-striped am-table-hover table-main">
                     <thead>
                     <tr>
-<%--                        <th class="table-check"></th>--%>
-                        <th class="table-id">ID</th>
+                        <th class="table-check"></th>
                         <th class="table-title">兼职岗位名称</th>
                         <th class="table-title">兼职岗位描述</th>
                         <th class="table-title">工资</th>
                         <th class="table-title">工作时间</th>
-<%--                        <th class="table-set">操作</th>--%>
+                        <th class="table-set">操作</th>
                     </tr>
                     </thead>
                     <tbody>
                     <c:forEach items="${jobs}" var="job">
                         <tr>
-<%--                            <td><input type="checkbox"></td>--%>
-                            <td>${job.j_id}</td>
+                            <td><input id="${job.j_id}" type="checkbox"></td>
                             <td>${job.j_name}</td>
                             <td>${job.j_description}</td>
                             <td>${job.j_salary}</td>
                             <td>${job.j_hours}</td>
-<%--                            <td>--%>
-<%--                                <div class="am-btn-toolbar">--%>
-<%--                                    <div class="am-btn-group am-btn-group-xs">--%>
-<%--                                        <button type="button"--%>
-<%--                                                class="btnedit am-btn am-btn-default am-btn-xs am-text-secondary"><span--%>
-<%--                                                class="am-icon-pencil-square-o"></span> 编辑--%>
-<%--                                        </button>--%>
-<%--                                        <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span--%>
-<%--                                                class="am-icon-trash-o"></span> 删除--%>
-<%--                                        </button>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </td>--%>
+                            <td>
+                                <div class="am-btn-toolbar">
+                                    <div class="am-btn-group am-btn-group-xs">
+                                        <button id="${job.j_id}" class="delete" name="${job.u_id}">删除</button>
+                                        <button id="edit">编辑</button>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
-<%--                <div class="am-cf">--%>
-<%--                    共 15 条记录--%>
-<%--                    <div class="am-fr">--%>
-<%--                        <ul class="am-pagination">--%>
-<%--                            <li class="am-disabled">--%>
-<%--                                <a href="#">«</a>--%>
-<%--                            </li>--%>
-<%--                            <li class="am-active">--%>
-<%--                                <a href="#">1</a>--%>
-<%--                            </li>--%>
-<%--                            <li>--%>
-<%--                                <a href="#">2</a>--%>
-<%--                            </li>--%>
-<%--                            <li>--%>
-<%--                                <a href="#">3</a>--%>
-<%--                            </li>--%>
-<%--                            <li>--%>
-<%--                                <a href="#">4</a>--%>
-<%--                            </li>--%>
-<%--                            <li>--%>
-<%--                                <a href="#">5</a>--%>
-<%--                            </li>--%>
-<%--                            <li>--%>
-<%--                                <a href="#">»</a>--%>
-<%--                            </li>--%>
-<%--                        </ul>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
+                <div class="am-cf">
+                    共 15 条记录
+                    <div class="am-fr">
+                        <ul class="am-pagination">
+                            <li class="am-disabled">
+                                <a href="#">«</a>
+                            </li>
+                            <li class="am-active">
+                                <a href="#">1</a>
+                            </li>
+                            <li>
+                                <a href="#">2</a>
+                            </li>
+                            <li>
+                                <a href="#">3</a>
+                            </li>
+                            <li>
+                                <a href="#">4</a>
+                            </li>
+                            <li>
+                                <a href="#">5</a>
+                            </li>
+                            <li>
+                                <a href="#">»</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 <hr>
             </form>
         </div>
     </div>
 </div>
-<%--<script>--%>
-<%--    $(function () {--%>
-<%--        $(".btnedit").click(function () {--%>
-<%--            $.jq_Panel({--%>
-<%--                title: "修改兼职岗位",--%>
-<%--                iframeWidth: 500,--%>
-<%--                iframeHeight: 300,--%>
-<%--                url: "editJob.jsp"--%>
-<%--            });--%>
-<%--        });--%>
-<%--        $(".btnadd").click(function (){--%>
-<%--            $.jq_Panel({--%>
-<%--                title:"添加兼职岗位",--%>
-<%--                iframeHeight: 300,--%>
-<%--                iframeWidth: 500,--%>
-<%--                url:"addJob.jsp"--%>
-<%--            })--%>
-<%--        })--%>
+<script>
+    $(function () {
+        $(".btnedit").click(function () {
+            $.jq_Panel({
+                title: "修改兼职岗位",
+                iframeWidth: 500,
+                iframeHeight: 300,
+                url: "editJob.jsp"
+            });
+        });
+        $(".btnadd").click(function () {
+            $.jq_Panel({
+                title: "添加兼职岗位",
+                iframeHeight: 300,
+                iframeWidth: 500,
+                url: "addJob.jsp"
+            })
+        })
+
+        $(".delete").click(function () {
+            let j_id = $(this).attr("id")
+            let u_id = $(this).attr("name")
+            $.ajax({
+                async:false,
+                cache:false,
+                type:"post",
+                url:"deleteJob",
+                data:{"j_id":j_id,"u_id":u_id},
+                dataType:'json',
+                success:function (res){
+                    if(!res){
+                        alert("删除失败")
+                    }else {
+                        alert("删除成功" + j_id + "===" + u_id)
+                        // window.location.href = "job.jsp"
+                        $.ajax({
+                            async:false,
+                            cache:false,
+                            type:"get",
+                            url:"Job?u_id="+u_id,})
+                    }
+                }
+            });
+        })
 
 
-<%--    })--%>
-<%--</script>--%>
+    })
+</script>
 </body>
 </html>

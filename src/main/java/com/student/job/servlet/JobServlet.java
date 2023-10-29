@@ -20,11 +20,8 @@ public class JobServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Integer u_id = Integer.parseInt(request.getParameter("u_id"));
-        System.out.println(u_id);
         List<Job>jobs=jobService.selectJobByUid(u_id);
-        for (Job job: jobs){
-            System.out.println(job);
-        }
+        request.getSession().removeAttribute("jobs");
         request.getSession().setAttribute("jobs",jobs);
         response.sendRedirect("job.jsp");
     }

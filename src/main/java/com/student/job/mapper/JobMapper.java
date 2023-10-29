@@ -11,4 +11,8 @@ public interface JobMapper {
 
 
     List<Job> selectJobByUid(@Param("u_id") Integer uId);
+
+    boolean addJob(Job job);
+
+    int deleteJobByJID(Integer jId);
 }

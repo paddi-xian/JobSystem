@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
         //String u_name = request.getParameter("u_name");
         String telephone = request.getParameter("telephone");
         String u_pass = request.getParameter("u_pass");
-        System.out.println(telephone+"+++++"+u_pass);
+//        System.out.println(telephone+"+++++"+u_pass);
 
 
         SqlSessionFactory sqlSessionFactory = SqlSessionUtil.getSqlSessionFactory();

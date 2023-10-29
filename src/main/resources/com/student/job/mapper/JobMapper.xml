@@ -3,6 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.student.job.mapper.JobMapper">
+    <insert id="addJob">
+        insert into Job value(null,#{j_name},#{j_description},#{j_salary},#{j_hours},#{u_id})
+    </insert>
+
+    <delete id="deleteJobByJID">
+        delete from job where j_id = #{j_id}
+    </delete>
 
 
     <select id="selectJobByUid" resultType="com.student.job.pojo.Job">

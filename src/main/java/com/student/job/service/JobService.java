@@ -9,4 +9,7 @@ public interface JobService {
 
     List<Job> selectJobByUid(Integer uId);
 
+    boolean addJob(Job job);
+
+    int deleteJobByJID(Integer jId);
 }
