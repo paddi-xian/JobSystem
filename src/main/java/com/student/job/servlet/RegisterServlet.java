@@ -43,9 +43,11 @@ public class RegisterServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
             //注册失败，返回错误页面
-            response.sendRedirect("register.jsp");
+            //response.sendRedirect("register.jsp");
+            request.getRequestDispatcher("register.jsp").forward(request,response);
         }
         //注册成功后跳转到登陆页面
-        response.sendRedirect("login.jsp");
+        //response.sendRedirect("login.jsp");
+        request.getRequestDispatcher("login.jsp").forward(request,response);
     }
 }

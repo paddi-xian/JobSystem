@@ -12,7 +12,7 @@ public class Student {
     public Student() {
     }
 
-    public Student(int s_id, String s_name, String s_gender, Integer s_age, String s_phone, String s_email,String s_intro) {
+    public Student(Integer s_id, String s_name, String s_gender, Integer s_age, String s_phone, String s_email,String s_intro) {
         this.s_id = s_id;
         this.s_name = s_name;
         this.s_gender = s_gender;
@@ -26,7 +26,7 @@ public class Student {
         return s_id;
     }
 
-    public void setS_id(int s_id) {
+    public void setS_id(Integer s_id) {
         this.s_id = s_id;
     }
 
