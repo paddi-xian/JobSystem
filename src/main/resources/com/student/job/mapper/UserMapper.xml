@@ -5,11 +5,10 @@
 <mapper namespace="com.student.job.mapper.UserMapper">
     <insert id="insertUser">
         insert into user
-        (u_id,u_name,u_pass,telephone,role)
+        (u_id, u_name, u_pass, telephone, role)
         values
-        (null,#{u_name},#{u_pass},#{telephone},#{role})
+        (null, #{u_name}, SHA1(#{u_pass}), #{telephone}, #{role})
     </insert>
-
 
 <!--    <select id="selectByNameAndPass" resultType="com.student.job.pojo.User">-->
 <!--        select * from user where u_name = #{u_name} and u_pass = #{u_pass}-->

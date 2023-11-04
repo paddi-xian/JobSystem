@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,13 +33,22 @@ public class LoginServlet extends HttpServlet {
         String u_pass = request.getParameter("u_pass");
         System.out.println(telephone+"+++++"+u_pass);
 
+        //从前端获取的密码进行SHA1加密
+        String shA1Password = null;
+        try {
+            shA1Password = getSHA1Hash(u_pass);
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("SHA1加密后的密码：" + shA1Password);
+
         SqlSessionFactory sqlSessionFactory = SqlSessionUtil.getSqlSessionFactory();
         try (SqlSession session = sqlSessionFactory.openSession()) {
             // 获取 mapper
             UserMapper userMapper = session.getMapper(UserMapper.class);
-            User user = userMapper.selectByTelAndPass(telephone,u_pass);
+            User user = userMapper.selectByTelAndPass(telephone,shA1Password);
 
-            if (user == null || !user.getTelephone().equals(telephone) && !user.getU_pass().equals(u_pass)) {
+            if (user == null || !user.getTelephone().equals(telephone) && !user.getU_pass().equals(shA1Password)) {
                 // 如果没有找到用户或用户名或密码错误，则重定向到错误页面
                 String message = "手机号或密码错误";
                 request.setAttribute("message", message);
@@ -71,4 +83,18 @@ public class LoginServlet extends HttpServlet {
         }
     }
 
+    private String getSHA1Hash(String input) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-1");
+        md.update(input.getBytes(StandardCharsets.UTF_8));
+        byte[] digest = md.digest();
+        return bytesToHex(digest); // 将字节数组转换为十六进制字符串
+    }
+
+    public static String bytesToHex(byte[] bytes) {
+        StringBuilder result = new StringBuilder();
+        for (byte b : bytes) {
+            result.append(String.format("%02x", b));
+        }
+        return result.toString();
+    }
 }

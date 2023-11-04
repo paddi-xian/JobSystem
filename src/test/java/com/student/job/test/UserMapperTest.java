@@ -40,7 +40,7 @@ public class UserMapperTest {
     public void testSelectByTelAndPass(){
         SqlSession sqlSession = SqlSessionUtil.openSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        User user = mapper.selectByTelAndPass("12345678","123");
+        User user = mapper.selectByTelAndPass("13456876598","12345");
         System.out.println(user);
         sqlSession.close();
     }
