@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Bo'o'm
@@ -41,20 +42,58 @@
         .register-link a:hover{
             color: blueviolet;
         }
+        #message{
+            color:red;
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
+    <script type="text/javascript" src="js/jquery-3.6.3.min.js"></script>
     <div class="login">
-        <form action="login" method="post" name="login">
+        <form action="login" method="post" id="login">
             <div class="login-form">
                 <h2>欢迎来到学生兼职系统</h2>
-                <input type="text" placeholder="your telephone" name="telephone" id="telephone">
-                <input type="password" placeholder="password" name="u_pass" id="u_pass">
+                <input type="text" placeholder="your telephone" name="telephone" id="telephone" required>
+                <input type="password" placeholder="password" name="u_pass" id="u_pass" required>
+                <%-- 如果有提示信息，则显示 --%>
+                <c:if test="${not empty message}">
+                    <span id="message" >${message}</span>
+                </c:if>
                 <input type="submit" value="Next" class="login-btn">
-                <p class="register-link"><a href="register.jsp">请先注册</a></p>
-                <p id="msg"></p>
+                <p class="register-link"><a href="register.jsp">没有账号？请先注册</a></p>
             </div>
         </form>
     </div>
+    <script>
+        window.onload = function (){
+            var form = document.getElementById("login");
+            form.onsubmit = function (){
+                var telephone = form.telephone.value;
+                var u_pass = form.u_pass.value;
+
+                // 使用正则表达式校验手机号格式
+                //编写telephone的正则
+                var telephoneRegEXp = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
+                if (!telephoneRegEXp.test(telephone)) {
+                    alert("手机号格式不正确");
+                    return false;
+                }
+            }
+            
+            var msgElt = document.getElementById("message");
+            var telephoneElt = document.getElementById("telephone");
+            var passElt = document.getElementById("u_pass");
+            //给telephone这个文本框绑定获得焦点事件
+            telephoneElt.onfocus = function(){
+                //清空span
+                msgElt.innerText = "";
+            }
+            passElt.onfocus = function(){
+                //清空span
+                msgElt.innerText = "";
+            }
+        }
+    </script>
 </body>
 </html>

@@ -47,7 +47,7 @@
                     <a class="" href="">主页</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="showStudent.jsp" target="right">发布者个人中心</a>
+                            <a href="message.jsp" target="right">发布者个人中心</a>
                         </dd>
                         <dd>
                             <a href="message.jsp" target="right">发布者信息</a>
