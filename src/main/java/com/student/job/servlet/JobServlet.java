@@ -1,8 +1,10 @@
 package com.student.job.servlet;
 
+import com.student.job.pojo.BeanFactory;
 import com.student.job.pojo.Job;
 import com.student.job.service.JobService;
 import com.student.job.service.impl.JobServiceImpl;
+import com.sun.xml.internal.ws.model.AbstractWrapperBeanGenerator;
 
 
 import javax.servlet.ServletException;
@@ -15,7 +17,7 @@ import java.util.List;
 
 @WebServlet("/Job")
 public class JobServlet extends HttpServlet {
-    private JobService jobService = new JobServiceImpl();
+    private final JobService jobService = (JobService) BeanFactory.getBean("jobService");
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
