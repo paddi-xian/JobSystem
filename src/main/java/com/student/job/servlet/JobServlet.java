@@ -3,8 +3,6 @@ package com.student.job.servlet;
 import com.student.job.pojo.BeanFactory;
 import com.student.job.pojo.Job;
 import com.student.job.service.JobService;
-import com.student.job.service.impl.JobServiceImpl;
-import com.sun.xml.internal.ws.model.AbstractWrapperBeanGenerator;
 
 
 import javax.servlet.ServletException;
@@ -22,10 +20,13 @@ public class JobServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Integer u_id = Integer.parseInt(request.getParameter("u_id"));
+        int total = jobService.JobTotal(u_id);
         List<Job>jobs=jobService.selectJobByUid(u_id);
         request.getSession().removeAttribute("jobs");
         request.getSession().setAttribute("jobs",jobs);
-        response.sendRedirect("job.jsp");
+        request.getSession().setAttribute("total",total);
+        request.getRequestDispatcher("job.jsp").forward(request,response);
     }
+
 
 }

@@ -45,7 +45,7 @@
     </style>
 </head>
     <div class="login">
-        <form action="/register" method="post" name="login" id="loginForm">
+        <form action="register" method="post" name="login" id="loginForm">
             <div class="login-form">
                 <h2>欢迎来到学生兼职系统</h2>
                 <input type="text" placeholder="您的用户名" name="u_name" id="u_name" required>

@@ -90,29 +90,23 @@
             addJob() {
                 axios.post('addJobServlet', this.job)
                     .then(response => {
-                        if (response.data != null) {
-                            console.log(response.data)
-                            this.job.u_id = response.data;
-                            console.log(this.job.u_id)
-                            alert("添加成功")
-                            $.ajax({
-                                async: false,
-                                cache: false,
-                                type: "get",
-                                url: "Job?u_id=" + this.job.u_id,
-                            })
-                        } else {
-                            alert(response.data)
+                        if (response.data == false) {
                             console.log(response.data)
                             this.job.u_id = response.data;
                             console.log(this.job.u_id)
                             alert("增加失败!!!")
-
+                            return;
+                        } else {
+                            console.log(response.data)
+                            this.job.u_id = response.data;
+                            console.log(this.job.u_id)
+                            alert("添加成功")
                         }
                     })
                     .catch(error => {
                         console.error(error);
                     });
+
             },
         }
     })
