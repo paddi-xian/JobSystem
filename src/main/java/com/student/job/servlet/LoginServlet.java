@@ -50,10 +50,10 @@ public class LoginServlet extends HttpServlet {
 
             if (user == null || !user.getTelephone().equals(telephone) && !user.getU_pass().equals(shA1Password)) {
                 // 如果没有找到用户或用户名或密码错误，则重定向到错误页面
-                String message = "手机号或密码错误";
+                String message = "手机号不存在或手机号密码错误";
                 request.setAttribute("message", message);
                 request.getRequestDispatcher("login.jsp").forward(request, response);
-                System.out.println("登陆失败");
+                System.out.println("登录失败");
             } else {
                 // 获取用户的角色类型
                 String role = user.getRole();
