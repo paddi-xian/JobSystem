@@ -15,4 +15,6 @@ public interface JobMapper {
     boolean addJob(Job job);
 
     int deleteJobByJID(Integer jId);
+
+    int JobTotal(Integer uId);
 }

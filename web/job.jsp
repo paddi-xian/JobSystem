@@ -82,7 +82,7 @@
                     </tbody>
                 </table>
                 <div class="am-cf">
-                    共 15 条记录
+                    共 ${total} 条记录
                     <div class="am-fr">
                         <ul class="am-pagination">
                             <li class="am-disabled">
@@ -132,31 +132,6 @@
                 url: "addJob.jsp"
             })
         })
-        // $(".add").click(function (){
-        //     let j_id = $(this).attr("id")
-        //     let u_id = $(this).attr("name")
-        //     $.ajax({
-        //         async:false,
-        //         cache:false,
-        //         type:"post",
-        //         url:"addJob",
-        //         data:{"j_id":j_id,"u_id":u_id},
-        //         dataType: 'json',
-        //         success:function (res){
-        //             if(!res){
-        //                 alert("添加失败")
-        //             }else{
-        //                 alert("添加成功"+j_id+"==="+u_id)
-        //                 $.ajax({
-        //                     async:false,
-        //                     cache:false,
-        //                     type:"get",
-        //                     url:"Job?u_id="+u_id
-        //                 })
-        //             }
-        //         }
-        //     })
-        // })
 
         $(".delete").click(function () {
             let j_id = $(this).attr("id")

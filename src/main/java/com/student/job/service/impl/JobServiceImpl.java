@@ -43,5 +43,10 @@ public class JobServiceImpl implements JobService {
         return i;
     }
 
+    @Override
+    public int JobTotal(Integer uId) {
+        return jobMapper.JobTotal(uId);
+    }
+
 
 }

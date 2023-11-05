@@ -6,6 +6,9 @@
     <insert id="addJob">
         insert into Job value(null,#{j_name},#{j_description},#{j_salary},#{j_hours},#{u_id})
     </insert>
+    <select id="JobTotal">
+        select count(*)  from job where u_id = #{u_id}
+    </select>
 
     <delete id="deleteJobByJID">
         delete from job where j_id = #{j_id}
@@ -13,6 +16,6 @@
 
 
     <select id="selectJobByUid" resultType="com.student.job.pojo.Job">
-        select * from job where u_id = #{u_id}
+        select j_id,j_name,j_description,j_salary,j_hours,j_hours,u_id  from job where u_id = #{u_id}
     </select>
 </mapper>
