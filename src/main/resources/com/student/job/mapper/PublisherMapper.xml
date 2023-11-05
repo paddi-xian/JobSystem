@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.student.job.mapper.PublisherMapper">
 
-    <!-- 插入发布者。 -->
+    <!-- 插入发布者 -->
     <insert id="insertPublisher" parameterType="com.student.job.pojo.Publisher">
         INSERT INTO publisher (p_id, p_name, p_email,p_telephone,p_address,p_introduction)
         VALUES (#{p_id}, #{p_name}, #{p_email},#{p_telephone},#{p_address},#{p_introduction})
