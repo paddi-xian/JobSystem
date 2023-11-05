@@ -3,6 +3,7 @@ package com.student.job.service.impl;
 import com.student.job.mapper.JobMapper;
 import com.student.job.mapper.StudentMapper;
 import com.student.job.pojo.Job;
+import com.student.job.pojo.Student;
 import com.student.job.service.JobService;
 import com.student.job.utils.SqlSessionUtil;
 import org.apache.ibatis.session.SqlSession;
@@ -43,9 +44,18 @@ public class JobServiceImpl implements JobService {
         return i;
     }
 
+//    @Override
+//    public int JobTotal(Integer uId) {
+//        return jobMapper.JobTotal(uId);
+//    }
+
     @Override
-    public int JobTotal(Integer uId) {
-        return jobMapper.JobTotal(uId);
+    public List<Job> selectAllJob() {
+        SqlSessionUtil.close(session);
+        session = SqlSessionUtil.openSession();
+        jobMapper = session.getMapper(JobMapper.class);
+        List<Job> AllJob=jobMapper.selectAllJob();
+        return AllJob;
     }
 
 

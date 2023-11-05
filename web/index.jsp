@@ -63,7 +63,7 @@
               <a href="javascript:;">岗位管理</a>
               <dl class="layui-nav-child">
                 <dd>
-                  <a href="job.jsp" target="right">兼职岗位审核</a>
+                  <a href="AllJob" target="right">兼职岗位审核</a>
                 </dd>
                 <dd>
                   <a href="message.jsp" target="right">留言区管理</a>
