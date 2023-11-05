@@ -11,13 +11,16 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import java.util.List;
 
 public class JobServiceImpl implements JobService {
-//    private SqlSession session = SqlSessionUtil.openSession();
-//    private JobMapper jobMapper = session.getMapper(JobMapper.class);
+    private SqlSession session = SqlSessionUtil.openSession();
+    private JobMapper jobMapper = session.getMapper(JobMapper.class);
 
     @Override
     public List<Job> selectJobByUid(Integer uId) {
-        SqlSession session = SqlSessionUtil.openSession();
-        JobMapper jobMapper = session.getMapper(JobMapper.class);
+        if (session != null) {
+            SqlSessionUtil.close(session);
+            session = SqlSessionUtil.openSession();
+            jobMapper = session.getMapper(JobMapper.class);
+        }
         List<Job> jobs = jobMapper.selectJobByUid(uId);
         return jobs;
     }
@@ -26,7 +29,9 @@ public class JobServiceImpl implements JobService {
     public boolean addJob(Job job) {
         SqlSession session = SqlSessionUtil.openSession();
         JobMapper jobMapper = session.getMapper(JobMapper.class);
-        return jobMapper.addJob(job);
+        boolean res =  jobMapper.addJob(job);
+        session.commit();
+        return res;
     }
 
     @Override

@@ -28,9 +28,10 @@
         <div class="am-u-sm-12 am-u-md-6">
             <div class="am-btn-toolbar">
                 <div class="am-btn-group am-btn-group-xs">
-                    <button type="button" id="" class="btnadd am-btn am-btn-default"><span class="am-icon-plus"></span>
+                    <button type="button" id="add" class="btnadd am-btn am-btn-default"><span class="am-icon-plus"></span>
                         新增
                     </button>
+<%--                    <button id="${job.j_id}" class="add" name="${job.u_id}">新增</button>--%>
                 </div>
             </div>
         </div>
@@ -72,7 +73,7 @@
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">
                                         <button id="${job.j_id}" class="delete" name="${job.u_id}">删除</button>
-                                        <button id="edit">编辑</button>
+                                        <button id="${job.j_id}" class="edit" name="${job.u_id}">编辑</button>
                                     </div>
                                 </div>
                             </td>
@@ -131,6 +132,31 @@
                 url: "addJob.jsp"
             })
         })
+        // $(".add").click(function (){
+        //     let j_id = $(this).attr("id")
+        //     let u_id = $(this).attr("name")
+        //     $.ajax({
+        //         async:false,
+        //         cache:false,
+        //         type:"post",
+        //         url:"addJob",
+        //         data:{"j_id":j_id,"u_id":u_id},
+        //         dataType: 'json',
+        //         success:function (res){
+        //             if(!res){
+        //                 alert("添加失败")
+        //             }else{
+        //                 alert("添加成功"+j_id+"==="+u_id)
+        //                 $.ajax({
+        //                     async:false,
+        //                     cache:false,
+        //                     type:"get",
+        //                     url:"Job?u_id="+u_id
+        //                 })
+        //             }
+        //         }
+        //     })
+        // })
 
         $(".delete").click(function () {
             let j_id = $(this).attr("id")
