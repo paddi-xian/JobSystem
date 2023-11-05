@@ -3,6 +3,7 @@ package com.student.job.mapper;
 import com.student.job.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 @Mapper
@@ -20,4 +21,7 @@ public interface UserMapper {
     User getUserByName(String u_name);
 
     List<User> selectAllUser();
+    User selectByTelephone(@Param("telephone") String telephone);
+
+    boolean checkTelephoneExits(@Param("telephone") String telephone);
 }

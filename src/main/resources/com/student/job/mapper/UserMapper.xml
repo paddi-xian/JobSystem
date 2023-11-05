@@ -24,4 +24,15 @@
     <select id="selectByTelAndPass" resultType="com.student.job.pojo.User">
         select * from user where telephone = #{telephone} and u_pass = #{u_pass}
     </select>
+
+    <select id="selectByTelephone" resultType="com.student.job.pojo.User">
+        select * from user where telephone = #{telephone}
+    </select>
+
+    <select id="checkTelephoneExits" resultType="java.lang.Boolean">
+<!--            select count(*) from user where telephone = #{telephone}-->
+        SELECT EXISTS (SELECT 1 FROM user WHERE telephone = #{telephone})
+    </select>
+
+
 </mapper>

@@ -1,6 +1,7 @@
 package com.student.job.service;
 
 import com.student.job.pojo.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -13,9 +14,11 @@ public interface UserService {
 
     /**
      * 登录用户
-     * @param u_name
+     * @param telephone
      * @param u_pass
      * @return
      */
     public User login(String telephone, String u_pass);
+
+    //public boolean checkTelephoneExits(@Param("telephone") String telephone);
 }

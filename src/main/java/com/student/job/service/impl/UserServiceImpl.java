@@ -4,6 +4,8 @@ import com.student.job.mapper.UserMapper;
 import com.student.job.pojo.User;
 import com.student.job.service.UserService;
 import com.student.job.utils.SqlSessionUtil;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 
 import java.util.List;
 
@@ -19,5 +21,12 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectByTelAndPass(telephone,u_pass);
     }
 
-
+/*    @Override
+    public boolean checkTelephoneExits(String telephone) {
+        SqlSessionFactory sqlSessionFactory = SqlSessionUtil.getSqlSessionFactory();
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            UserMapper userMapper = session.getMapper(UserMapper.class);
+            return userMapper.checkTelephoneExits(telephone);
+        }
+    }*/
 }
