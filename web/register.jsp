@@ -49,11 +49,11 @@
             <div class="login-form">
                 <h2>欢迎来到学生兼职系统</h2>
                 <input type="text" placeholder="您的用户名" name="u_name" id="u_name" required>
-                <label><span id="u_nameError"></span></label><br>
-                <input type="password" placeholder="请输入密码" name="u_pass" id="u_pass" ><br>
-                <input type="password" placeholder="请确认密码" name="u_pass2" id="u_pass2"><br>
-                <label><span id="u_passError"></span></label><br>
-                <input type="text" placeholder="输入手机号" name="telephone" id="telephone" required><br>
+                <label><span id="u_nameError"></span></label>
+                <input type="password" placeholder="请输入密码" name="u_pass" id="u_pass" >
+                <input type="password" placeholder="请确认密码" name="u_pass2" id="u_pass2">
+                <label><span id="u_passError"></span></label>
+                <input type="text" placeholder="输入手机号" name="telephone" id="telephone" required>
                 <label><span id="telephoneError">${telephoneError}</span></label><br>
                 <label for="role">请选择用户类型:</label>
                 <select id="role" name="role">
