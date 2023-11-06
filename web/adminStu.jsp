@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%--
   Created by IntelliJ IDEA.
@@ -8,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
@@ -60,15 +60,15 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${stuList}" var="s">
+                        <c:forEach items="${stuList}" var="stu">
                             <tr>
                                 <td><input type="checkbox"></td>
-                                <td>${s.s_id}</td>
-                                <td>${s.s_name}</td>
-                                <td>${s.s_gender}</td>
-                                <td>${s.s_age}</td>
-                                <td>${s.s_phone}</td>
-                                <td>${s.s_email}</td>
+                                <td>${stu.s_id}</td>
+                                <td>${stu.s_name}</td>
+                                <td>${stu.s_gender}</td>
+                                <td>${stu.s_age}</td>
+                                <td>${stu.s_phone}</td>
+                                <td>${stu.s_email}</td>
 
                             <td>
                                 <div class="am-btn-toolbar">

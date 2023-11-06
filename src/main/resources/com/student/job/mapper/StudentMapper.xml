@@ -7,14 +7,12 @@
     <select id="getStuList" resultType="com.student.job.pojo.Student">
         select * from student
     </select>
-    <select id="findById"  parameterType="String" resultType="com.student.job.pojo.Student">
-        select * from student where s_id =#{s_id}
+
+    <select id="selectStudentByUid" resultType="com.student.job.pojo.Student">
+        select s_id,s_name,s_gender,s_age,s_phone,s_email,s_intro,u_id  from student where u_id = #{u_id}
     </select>
-    <update id="updateStudent">
-        UPDATE student SET s_name=#{s_name},s_gender=#{s_gender},s_age=#{s_age},s_phone=#{s_phone},s_email=#{s_email},
-        s_intro=#{s_intro} WHERE s_id=#{s_id};
-    </update>
-    <insert id="insertStudent">
-        insert into student(s_name,s_gender,s_age,s_phone, s_email,s_intro)values(?,?,?,?,?,?)"
+
+    <insert id="addStudent">
+        insert into student value(null,#{s_name},#{s_gender},#{s_age},#{s_phone},#{s_email},#{s_intro},#{u_id})
     </insert>
 </mapper>

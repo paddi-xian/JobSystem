@@ -9,15 +9,35 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="css/amazeui.min.css"/>
+    <link rel="stylesheet" href="css/admin.css"/>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="myplugs/js/plugs.js"></script>
 </head>
 <body>
+<div class="am-g">
+    <div class="am-u-sm-12 am-u-md-6">
+        <div class="am-btn-toolbar">
+            <div class="am-btn-group am-btn-group-xs">
+                <button type="button" id="add" class="btnadd am-btn am-btn-default"><span class="am-icon-plus"></span>
+                    新增
+                </button>
+                <%--                    <button id="${job.j_id}" class="add" name="${job.u_id}">新增</button>--%>
+            </div>
+        </div>
+    </div>
+    <div class="am-u-sm-12 am-u-md-3">
+
+    </div>
 <div class="layui-content">
     <div class="layui-row">
         <div class="layui-card">
-            <div class="layui-card-header">修改个人信息</div>
-            <form class="layui-form layui-card-body" action="/updateStuServlet" method="get">
-<%--                修改姓名--%>
-                <div class="layui-form-item">
+            <div class="layui-card-header">个人信息</div>
+<%--            <form class="layui-form layui-card-body" action="/updateStuServlet" method="get">--%>
+
+                <%--                修改姓名--%>
+
+    <div class="layui-form-item">
                     <label class="layui-form-label">学生姓名</label>
                     <div class="layui-input-block">
                         <input type="text" name="s_name" value="${student.s_id}" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
@@ -75,6 +95,18 @@
 <script>
     var form = layui.form
         ,layer = layui.layer;
+    $(function () {
+        $(".btnadd").click(function () {
+            $.jq_Panel({
+                title: "添加个人信息",
+                iframeHeight: 300,
+                iframeWidth: 500,
+                url: "addStudent.jsp"
+            })
+        })
+    })
 </script>
+</div>
+
 </body>
 </html>

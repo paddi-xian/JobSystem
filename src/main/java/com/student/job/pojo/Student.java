@@ -8,11 +8,12 @@ public class Student {
     private String s_phone;
     private String s_email;
     private String s_intro;
+    private Integer u_id;
 
     public Student() {
     }
 
-    public Student(Integer s_id, String s_name, String s_gender, Integer s_age, String s_phone, String s_email,String s_intro) {
+    public Student(Integer s_id, String s_name, String s_gender, Integer s_age, String s_phone, String s_email,String s_intro,Integer u_id) {
         this.s_id = s_id;
         this.s_name = s_name;
         this.s_gender = s_gender;
@@ -20,6 +21,7 @@ public class Student {
         this.s_phone = s_phone;
         this.s_email = s_email;
         this.s_intro=s_intro;
+        this.u_id=u_id;
     }
 
     public int getS_id() {
@@ -75,6 +77,15 @@ public class Student {
     public void setS_intro(String s_intro) {
         this.s_intro = s_intro;
     }
+
+    public Integer getU_id()
+    {
+        return u_id;
+    }
+    public void setU_id(Integer u_id) {
+        this.u_id = u_id;
+    }
+
 
     @Override
     public String toString() {
