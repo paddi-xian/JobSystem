@@ -22,19 +22,20 @@ public class JobServlet extends HttpServlet {
             throws ServletException, IOException {
         String servletPath =request.getServletPath();
         if ("/Job".equals(servletPath)) {
-            doList(request,response);
+            doGet(request,response);
         }else if ("/AllJob".equals(servletPath)){
             doALL(request, response);
         }
     }
 
-    private void doList(HttpServletRequest request, HttpServletResponse response)
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Integer u_id = Integer.parseInt(request.getParameter("u_id"));
         List<Job>jobs=jobService.selectJobByUid(u_id);
         request.getSession().removeAttribute("jobs");
         request.getSession().setAttribute("jobs",jobs);
-        request.getRequestDispatcher("job.jsp").forward(request,response);
+        response.sendRedirect("job.jsp");
     }
 
 

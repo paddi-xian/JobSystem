@@ -28,10 +28,10 @@
         <div class="am-u-sm-12 am-u-md-6">
             <div class="am-btn-toolbar">
                 <div class="am-btn-group am-btn-group-xs">
-                    <button type="button" id="add" class="btnadd am-btn am-btn-default"><span class="am-icon-plus"></span>
+                    <button type="button" id="add" class="btnadd am-btn am-btn-default"><span
+                            class="am-icon-plus"></span>
                         新增
                     </button>
-<%--                    <button id="${job.j_id}" class="add" name="${job.u_id}">新增</button>--%>
                 </div>
             </div>
         </div>
@@ -72,44 +72,50 @@
                             <td>
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">
-                                        <button type="button"  id="${job.j_id}"  class="btnedit am-btn am-btn-default am-btn-xs am-text-secondary" name="${job.u_id}"> <span class="am-icon-pencil-square-o"></span> 编辑</button>
-                                        <button id="${job.j_id}" class="delete am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o" name="${job.u_id}"></span> 删除</button>
-<%--                                        <button id="${job.j_id}" class="delete" name="${job.u_id}">删除</button>--%>
-                                        <%--<button id="${job.j_id}" class="edit" name="${job.u_id}">编辑</button>--%>
+                                        <button type="button" id="${job.j_id}" class="btnedit am-btn am-btn-default am-btn-xs am-text-secondary am-hide-sm-only" name="${job.u_id}"><span class="am-icon-pencil-square-o"></span> 编辑 </button>
+                                        <button id="${job.j_id}" class="delete am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" name="${job.u_id}"><span class="am-icon-trash-o"></span> 删除 </button>
                                     </div>
                                 </div>
+<%--                                <div class="am-btn-toolbar">--%>
+<%--                                    <div class="am-btn-group am-btn-group-xs">--%>
+<%--                                        <button class="edit am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only">--%>
+<%--                                            <span--%>
+<%--                                                    class=""></span> 编辑--%>
+<%--                                        </button>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
                             </td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
                 <div class="am-cf">
-                    共 ${total} 条记录
-                    <div class="am-fr">
-                        <ul class="am-pagination">
-                            <li class="am-disabled">
-                                <a href="#">«</a>
-                            </li>
-                            <li class="am-active">
-                                <a href="#">1</a>
-                            </li>
-                            <li>
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#">4</a>
-                            </li>
-                            <li>
-                                <a href="#">5</a>
-                            </li>
-                            <li>
-                                <a href="#">»</a>
-                            </li>
-                        </ul>
-                    </div>
+                    共 条记录
+                    <%--                    <div class="am-fr">--%>
+                    <%--                        <ul class="am-pagination">--%>
+                    <%--                            <li class="am-disabled">--%>
+                    <%--                                <a href="#">«</a>--%>
+                    <%--                            </li>--%>
+                    <%--                            <li class="am-active">--%>
+                    <%--                                <a href="#">1</a>--%>
+                    <%--                            </li>--%>
+                    <%--                            <li>--%>
+                    <%--                                <a href="#">2</a>--%>
+                    <%--                            </li>--%>
+                    <%--                            <li>--%>
+                    <%--                                <a href="#">3</a>--%>
+                    <%--                            </li>--%>
+                    <%--                            <li>--%>
+                    <%--                                <a href="#">4</a>--%>
+                    <%--                            </li>--%>
+                    <%--                            <li>--%>
+                    <%--                                <a href="#">5</a>--%>
+                    <%--                            </li>--%>
+                    <%--                            <li>--%>
+                    <%--                                <a href="#">»</a>--%>
+                    <%--                            </li>--%>
+                    <%--                        </ul>--%>
+                    <%--                    </div>--%>
                 </div>
                 <hr>
             </form>
@@ -126,7 +132,6 @@
                 url: "editJob.jsp"
             });
         });
-
         $(".btnadd").click(function () {
             $.jq_Panel({
                 title: "添加兼职岗位",
@@ -140,23 +145,24 @@
             let j_id = $(this).attr("id")
             let u_id = $(this).attr("name")
             $.ajax({
-                async:false,
-                cache:false,
-                type:"post",
-                url:"deleteJob",
-                data:{"j_id":j_id,"u_id":u_id},
-                dataType:'json',
-                success:function (res){
-                    if(!res){
+                async: false,
+                cache: false,
+                type: "post",
+                url: "deleteJob",
+                data: {"j_id": j_id, "u_id": u_id},
+                dataType: 'json',
+                success: function (res) {
+                    if (!res) {
                         alert("删除失败")
-                    }else {
+                    } else {
                         alert("删除成功" + j_id + "===" + u_id)
                         // window.location.href = "job.jsp"
                         $.ajax({
-                            async:false,
-                            cache:false,
-                            type:"get",
-                            url:"Job?u_id="+u_id,})
+                            async: false,
+                            cache: false,
+                            type: "get",
+                            url: "Job?u_id=" + u_id
+                        })
                     }
                 }
             });

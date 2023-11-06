@@ -42,7 +42,7 @@ public class PublisherMapperTest {
     public void testInsertPublisher(){
         SqlSession sqlSession = SqlSessionUtil.openSession();
         PublisherMapper mapper = sqlSession.getMapper(PublisherMapper.class);
-        Publisher publisher = new Publisher(1999,"李四","123",415,"1234","hh");
+        Publisher publisher = new Publisher(1999,"李四","123","415","1234","hh");
         int count = mapper.insertPublisher(publisher);
         System.out.println("插入"+count);
         sqlSession.commit();

@@ -6,9 +6,9 @@
     <insert id="addJob">
         insert into Job value(null,#{j_name},#{j_description},#{j_salary},#{j_hours},#{u_id})
     </insert>
-    <select id="JobTotal" resultType="com.student.job.pojo.Job">
-        select count(*)  from job where u_id = #{u_id}
-    </select>
+    <update id="editJob">
+        update job set j_name = #{j_name} ,j_description = #{j_description},j_salary = #{j_salary}, j_hours = #{j_hours} where j_id = #{j_id}
+    </update>
 
     <delete id="deleteJobByJID">
         delete from job where j_id = #{j_id}

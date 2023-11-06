@@ -16,9 +16,10 @@ public interface JobMapper {
 
     int deleteJobByJID(Integer jId);
 
-//    int JobTotal(Integer uId);
+    boolean editJob(Job job);
 
     List<Job> selectAllJob();
+
 
 
 }

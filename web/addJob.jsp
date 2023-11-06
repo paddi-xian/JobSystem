@@ -64,7 +64,7 @@
 
                     <div class="am-form-group">
                         <div class="am-u-sm-9 am-u-sm-push-3">
-                            <input id="addRole" class="am-btn am-btn-success" value="提交" @click="addJob"/>
+                            <input type="button" id="addRole" class="am-btn am-btn-success" value="提交" @click="addJob"/>
                         </div>
                     </div>
                 </form>

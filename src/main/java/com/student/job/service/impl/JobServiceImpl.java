@@ -44,10 +44,15 @@ public class JobServiceImpl implements JobService {
         return i;
     }
 
-//    @Override
-//    public int JobTotal(Integer uId) {
-//        return jobMapper.JobTotal(uId);
-//    }
+    @Override
+    public boolean editJob(Job job) {
+        SqlSession session = SqlSessionUtil.openSession();
+        JobMapper jobMapper = session.getMapper(JobMapper.class);
+        boolean res =  jobMapper.editJob(job);
+        session.commit();
+        return res;
+    }
+
 
     @Override
     public List<Job> selectAllJob() {
