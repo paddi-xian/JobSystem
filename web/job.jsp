@@ -72,8 +72,10 @@
                             <td>
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">
-                                        <button id="${job.j_id}" class="delete" name="${job.u_id}">删除</button>
-                                        <button id="${job.j_id}" class="edit" name="${job.u_id}">编辑</button>
+                                        <button type="button"  id="${job.j_id}"  class="btnedit am-btn am-btn-default am-btn-xs am-text-secondary" name="${job.u_id}"> <span class="am-icon-pencil-square-o"></span> 编辑</button>
+                                        <button id="${job.j_id}" class="delete am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o" name="${job.u_id}"></span> 删除</button>
+<%--                                        <button id="${job.j_id}" class="delete" name="${job.u_id}">删除</button>--%>
+                                        <%--<button id="${job.j_id}" class="edit" name="${job.u_id}">编辑</button>--%>
                                     </div>
                                 </div>
                             </td>
@@ -124,6 +126,7 @@
                 url: "editJob.jsp"
             });
         });
+
         $(".btnadd").click(function () {
             $.jq_Panel({
                 title: "添加兼职岗位",
