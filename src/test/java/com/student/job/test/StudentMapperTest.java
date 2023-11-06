@@ -2,7 +2,9 @@ package com.student.job.test;
 
 import com.student.job.mapper.JobMapper;
 import com.student.job.mapper.StudentMapper;
+import com.student.job.mapper.UserMapper;
 import com.student.job.pojo.Student;
+import com.student.job.pojo.User;
 import com.student.job.utils.SqlSessionUtil;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.io.Resources;
@@ -19,11 +21,22 @@ import java.util.List;
 
 public class StudentMapperTest {
     @Test
-    public static void main(String[] args) {
+    public  void testSelectStudentByUid() {
         SqlSession sqlSession = SqlSessionUtil.openSession();
         StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
-       Student student=mapper.selectStudentByUid(1017);
-       System.out.println(student);
+        Student student=mapper.selectStudentByUid(1002);
+        System.out.println(student);
         sqlSession.close();
     }
+    @Test
+    public void testAddStudent(){
+        SqlSession sqlSession = SqlSessionUtil.openSession();
+        StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
+        Student student = new Student(2021103,"敖嗷嗷","男",20,"14356789076","zs@qq.com","我是嗷嗷",1005);
+        int count = mapper.addStudent(student);
+        System.out.println("插入"+count);
+        sqlSession.commit();
+        sqlSession.close();
+    }
+
 }

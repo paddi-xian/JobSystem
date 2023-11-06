@@ -9,7 +9,6 @@ import org.apache.ibatis.session.SqlSession;
 import java.util.List;
 
 public class StudentServiceImpl implements StudentService {
-    private SqlSession session = SqlSessionUtil.openSession();
     private StudentMapper studentMapper= SqlSessionUtil.openSession().getMapper(StudentMapper.class);
 
     @Override
@@ -19,22 +18,22 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public int addStudent(Student student) {
+        return studentMapper.addStudent(student);
+    }
+
+/*    @Override
     public boolean addStudent(Student student) {
         SqlSession session = SqlSessionUtil.openSession();
         StudentMapper studentMapper = session.getMapper(StudentMapper.class);
         boolean res =  studentMapper.addStudent(student);
         session.commit();
         return res;
-    }
+    }*/
 
     @Override
     public Student selectStudentByUid(Integer uId) {
-        if (session != null) {
-            SqlSessionUtil.close(session);
-            session = SqlSessionUtil.openSession();
-            studentMapper =session.getMapper(StudentMapper.class);
-        }
-       Student student=studentMapper.selectStudentByUid(uId);
+        Student student = studentMapper.selectStudentByUid(uId);
         return student;
     }
 

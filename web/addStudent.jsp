@@ -16,7 +16,7 @@
     <div class="admin-content">
         <div class="admin-content-body">
             <div class="am-g">
-                <form class="am-form am-form-horizontal" action="addStuServlet" method="post"
+                <form class="am-form am-form-horizontal" action="addStudServlet" method="post"
                       style="padding-top: 20px;">
                     <input value="504" name="roleId" type="hidden">
                     <div class="am-form-group">
@@ -66,7 +66,7 @@
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
-                            <button  type="submit" class="layui-btn layui-btn-blue"lay-submit  lay-filter="formDemo" @click="addStuServlet">立即提交</button>
+                            <button  type="submit" class="layui-btn layui-btn-blue"lay-submit  lay-filter="formDemo" @click="addStudent">立即提交</button>
                             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
         },
         methods: {
             addStudent() {
-                axios.post('addStuServlet', this.student)
+                axios.post('addStudServlet', this.student)
                     .then(response => {
                         if (response.data == false) {
                             console.log(response.data)

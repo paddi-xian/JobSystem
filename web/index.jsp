@@ -52,7 +52,7 @@
               <a class="" href="javascript:;">主页</a>
               <dl class="layui-nav-child">
                 <dd>
-                  <a href="student" target="right">学生管理</a>
+                  <a href="adminStu" target="right">学生管理</a>
                 </dd>
                 <dd>
                   <a href="showPublisher.jsp" target="right">发布者管理</a>

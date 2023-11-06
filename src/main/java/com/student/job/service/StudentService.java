@@ -7,7 +7,7 @@ import java.util.List;
 public interface StudentService {
     List<Student> getStuList();
 
-    boolean addStudent(Student student);
+    int addStudent(Student student);
 
     Student selectStudentByUid(Integer uId);
 
