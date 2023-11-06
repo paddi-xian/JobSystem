@@ -31,11 +31,9 @@ public class JobServlet extends HttpServlet {
     private void doList(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Integer u_id = Integer.parseInt(request.getParameter("u_id"));
-        //int total = jobService.JobTotal(u_id);
         List<Job>jobs=jobService.selectJobByUid(u_id);
         request.getSession().removeAttribute("jobs");
         request.getSession().setAttribute("jobs",jobs);
-        //request.getSession().setAttribute("total",total);
         request.getRequestDispatcher("job.jsp").forward(request,response);
     }
 
