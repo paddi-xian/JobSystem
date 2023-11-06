@@ -13,5 +13,7 @@ public interface JobService {
 
     int deleteJobByJID(Integer jId);
 
-    int JobTotal(Integer uId);
+//    int JobTotal(Integer uId);
+
+    List<Job> selectAllJob();
 }

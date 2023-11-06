@@ -7,12 +7,7 @@ import com.student.job.service.impl.UserServiceImpl;
 import com.student.job.utils.SqlSessionUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,24 +15,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
 
 
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
-/*    @Autowired
-    private UserMapper userMapper;
-    @PostMapping("/checkTelephone")
-    public ResponseEntity<String> checkPhoneExists(@RequestParam String telephone) {
-        boolean exists = userMapper.checkTelephoneExits(telephone); // 调用MyBatis查询方法检查手机号是否存在
-        if (exists) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("手机号已存在"); // 返回手机号已存在的错误信息（HTTP状态码为409）
-        } else {
-            return ResponseEntity.status(HttpStatus.OK).body("手机号不存在"); // 返回手机号不存在的错误信息（HTTP状态码为200）或其他适当的响应信息（如成功消息）
-        }
-    }*/
+
 private UserMapper userMapper = SqlSessionUtil.openSession().getMapper(UserMapper.class);
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -53,7 +35,7 @@ private UserMapper userMapper = SqlSessionUtil.openSession().getMapper(UserMappe
         boolean phoneExists = userMapper.checkTelephoneExits(telephone); // 调用MyBatis查询方法检查手机号是否存在
         if (phoneExists) {
             //手机号已存在，返回错误页面
-            request.setAttribute("telephoneError", "手机号已存在");
+            request.setAttribute("telephoneError", "对不起，该手机号已存在");
             request.getRequestDispatcher("register.jsp").forward(request,response);
             return;
         }

@@ -32,7 +32,7 @@ public class JobMapperTest {
     public void testSelectJobByUid(){
         SqlSession sqlSession = SqlSessionUtil.openSession();
         JobMapper mapper = sqlSession.getMapper(JobMapper.class);
-        List<Job> jobs = mapper.selectJobByUid(2);
+        List<Job> jobs = mapper.selectJobByUid(1003);
         jobs.forEach(car -> System.out.println(jobs));
         sqlSession.close();
     }
