@@ -64,12 +64,17 @@
                                    value="" name="s_intro" type="text">
                         </div>
                     </div>
-
-                    <div class="am-form-group">
-                        <div class="am-u-sm-9 am-u-sm-push-3">
-                            <input id="addRole" class="am-btn am-btn-success" value="提交" @click="addStudent"/>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button  type="submit" class="layui-btn layui-btn-blue"lay-submit  lay-filter="formDemo" @click="addStuServlet">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                         </div>
                     </div>
+<%--                    <div class="am-form-group">--%>
+<%--                        <div class="am-u-sm-9 am-u-sm-push-3">--%>
+<%--                            <input id="addRole" class="am-btn am-btn-success" value="提交" @click="addStudent"/>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
                 </form>
             </div>
         </div>
@@ -93,7 +98,7 @@
         },
         methods: {
             addStudent() {
-                axios.post('StudentServlet', this.student)
+                axios.post('addStuServlet', this.student)
                     .then(response => {
                         if (response.data == false) {
                             console.log(response.data)

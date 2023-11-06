@@ -9,7 +9,7 @@ import java.util.List;
 public interface StudentMapper {
     List<Student> getStuList();
 //    Student findById(String u_id);
-    List<Student>selectStudentByUid(@Param("u_id") Integer uId);
+    Student selectStudentByUid(@Param("u_id") Integer uId);
     boolean addStudent(Student student);
 //    List<Job> selectJobByUid(@Param("u_id") Integer uId);
 }

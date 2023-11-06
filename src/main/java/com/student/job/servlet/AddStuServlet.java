@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/addStudServlet")
-public class addStuServlet extends HttpServlet {
+@WebServlet(name = "addStuServlet",value = "/addStudServlet")
+public class AddStuServlet extends HttpServlet {
  private final StudentService stuService =(StudentService) BeanFactory.getBean("stuService");
  @Override
  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {

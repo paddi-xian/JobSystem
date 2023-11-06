@@ -9,7 +9,7 @@ public interface StudentService {
 
     boolean addStudent(Student student);
 
-    List<Student>selectStudentByUid(Integer uId);
+    Student selectStudentByUid(Integer uId);
 
 }
 

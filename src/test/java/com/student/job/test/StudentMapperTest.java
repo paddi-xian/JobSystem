@@ -22,8 +22,8 @@ public class StudentMapperTest {
     public static void main(String[] args) {
         SqlSession sqlSession = SqlSessionUtil.openSession();
         StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
-        List<Student>student=mapper.selectStudentByUid(1017);
-        student.forEach(car -> System.out.println(student));
+       Student student=mapper.selectStudentByUid(1017);
+       System.out.println(student);
         sqlSession.close();
     }
 }
