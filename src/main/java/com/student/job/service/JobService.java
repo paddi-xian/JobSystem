@@ -16,4 +16,6 @@ public interface JobService {
     boolean editJob(Job job);
 
     List<Job> selectAllJob();
+
+    Job SelectJobByJid(Integer jId);
 }

@@ -7,7 +7,23 @@
         insert into Job value(null,#{j_name},#{j_description},#{j_salary},#{j_hours},#{u_id})
     </insert>
     <update id="editJob">
-        update job set j_name = #{j_name} ,j_description = #{j_description},j_salary = #{j_salary}, j_hours = #{j_hours} where j_id = #{j_id}
+        <!--动态sql-->
+        update job
+        <set>
+            <if test="j_name != null and j_name !=''">
+                j_name = #{j_name},
+            </if>
+            <if test="j_description != null and j_description !=''">
+                j_description = #{j_description},
+            </if>
+            <if test="j_salary != null and j_salary !=''">
+                j_salary = #{j_salary},
+            </if>
+            <if test="j_hours != null and j_hours !=''">
+                j_hours = #{j_hours}
+            </if>
+        </set>
+        where j_id = #{j_id}
     </update>
 
     <delete id="deleteJobByJID">
@@ -20,5 +36,8 @@
 
     <select id="selectAllJob" resultType="com.student.job.pojo.Job">
         select * from job
+    </select>
+    <select id="SelectJobByJid" resultType="com.student.job.pojo.Job">
+        select * from Job where j_id = #{j_id}
     </select>
 </mapper>

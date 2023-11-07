@@ -21,5 +21,5 @@ public interface JobMapper {
     List<Job> selectAllJob();
 
 
-
+    Job SelectJobByJid(Integer jId);
 }

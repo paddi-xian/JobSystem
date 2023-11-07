@@ -63,5 +63,15 @@ public class JobServiceImpl implements JobService {
         return AllJob;
     }
 
+    @Override
+    public Job SelectJobByJid(Integer jId) {
+        if (session != null) {
+            SqlSessionUtil.close(session);
+            session = SqlSessionUtil.openSession();
+            jobMapper = session.getMapper(JobMapper.class);
+        }
+        return jobMapper.SelectJobByJid(jId);
+    }
+
 
 }

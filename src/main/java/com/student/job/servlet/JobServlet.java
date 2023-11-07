@@ -39,7 +39,6 @@ public class JobServlet extends HttpServlet {
     }
 
 
-
     private void doALL(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<Job> AllJob = jobService.selectAllJob();

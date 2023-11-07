@@ -28,7 +28,7 @@
         <div class="am-u-sm-12 am-u-md-6">
             <div class="am-btn-toolbar">
                 <div class="am-btn-group am-btn-group-xs">
-                    <button type="button" id="add" class="btnadd am-btn am-btn-default"><span
+                    <button type="button" id="add" class="btnadd am-btn am-btn-default" name="${jobs}"><span
                             class="am-icon-plus"></span>
                         新增
                     </button>
@@ -72,18 +72,17 @@
                             <td>
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">
-                                        <button type="button" id="${job.j_id}" class="btnedit am-btn am-btn-default am-btn-xs am-text-secondary am-hide-sm-only" name="${job.u_id}"><span class="am-icon-pencil-square-o"></span> 编辑 </button>
-                                        <button id="${job.j_id}" class="delete am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" name="${job.u_id}"><span class="am-icon-trash-o"></span> 删除 </button>
+                                        <button type="button" id="${job.j_id}"
+                                                class="btnedit am-btn am-btn-default am-btn-xs am-text-secondary am-hide-sm-only"
+                                                name="${job.u_id}"><span class="am-icon-pencil-square-o"></span> 编辑
+                                        </button>
+                                        <button id="${job.j_id}"
+                                                class="delete am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"
+                                                name="${job.u_id}"><span class="am-icon-trash-o"></span> 删除
+                                        </button>
                                     </div>
                                 </div>
-<%--                                <div class="am-btn-toolbar">--%>
-<%--                                    <div class="am-btn-group am-btn-group-xs">--%>
-<%--                                        <button class="edit am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only">--%>
-<%--                                            <span--%>
-<%--                                                    class=""></span> 编辑--%>
-<%--                                        </button>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
+
                             </td>
                         </tr>
                     </c:forEach>
@@ -125,19 +124,54 @@
 <script>
     $(function () {
         $(".btnedit").click(function () {
-            $.jq_Panel({
+            let j_id = $(this).attr("id");
+            let u_id = $(this).attr("name");
+            $.ajax({
+                async: false,
+                cache: false,
+                type: "post",
+                url: "SelectJobByJIdServlet",
+                data: {"j_id": j_id},
+                dataType: 'json',
+                success: function (res) {
+                    if (res != false) {
+                        console.log(res)
+                    } else {
+                        console.log(res)
+                    }
+                }
+            });
+                $.jq_Panel({
                 title: "修改兼职岗位",
                 iframeWidth: 500,
                 iframeHeight: 300,
                 url: "editJob.jsp"
-            });
+            })
+            window.addEventListener("message",e => {
+                if (e.data == "closeEditJob"){
+                    $.jq_Panel_close();
+                    location.href = "Job?u_id=" + u_id;
+                }
+            })
         });
         $(".btnadd").click(function () {
+            let jobs = $(this).attr("name").toString();
+            //从第一个u_id=开始分割，到第一个)结束，获取到中间的u_id
+            let u_id = jobs.split("u_id=")[1].split(")")[0];
             $.jq_Panel({
                 title: "添加兼职岗位",
                 iframeHeight: 300,
                 iframeWidth: 500,
                 url: "addJob.jsp"
+            })
+            //给父页创建一个监听者，监听子页的message
+            window.addEventListener("message", e => {
+                if (e.data == "closeAddJob") {
+                    $.jq_Panel_close();
+                    if (u_id != null) {
+                        location.href = "Job?u_id=" + u_id;
+                    }
+                }
             })
         })
 

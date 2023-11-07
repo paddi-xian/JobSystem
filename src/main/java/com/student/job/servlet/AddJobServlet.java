@@ -13,7 +13,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 
 @WebServlet(name = "addJobServlet", value = "/addJobServlet")
-public class addJobServlet extends HttpServlet {
+public class AddJobServlet extends HttpServlet {
     private final JobService jobService = (JobService) BeanFactory.getBean("jobService");
 
     @Override

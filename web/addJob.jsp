@@ -101,6 +101,8 @@
                             this.job.u_id = response.data;
                             console.log(this.job.u_id)
                             alert("添加成功")
+                            //给父页job.jsp传递关闭该子页的信息
+                            parent.postMessage("closeAddJob","http:localhost:8080/job_system_war_exploded/")
                         }
                     })
                     .catch(error => {

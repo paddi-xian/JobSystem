@@ -17,17 +17,13 @@ public class EditJobServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Job job1 = (Job) request.getSession().getAttribute("jobs");
-        System.out.println(job1.getJ_id());
         request.setCharacterEncoding("UTF-8");
         String s = request.getReader().readLine();
         Job job = JSON.parseObject(s, Job.class);
+        Job job1 = (Job) request.getSession().getAttribute("job");
         job.setJ_id(job1.getJ_id());
-        System.out.println(job);
 
-        if (job.getJ_name()!=null&&job.getJ_description()!=null&&job.getJ_salary()!=null&&job.getJ_hours()!=null){
-
-            System.out.println(job);
+        if (job.getJ_id() != null){
             //传入的值没有空值才修改job
             if (jobService.editJob(job)) {
                 response.getWriter().println(job.getU_id());
