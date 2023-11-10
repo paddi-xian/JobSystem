@@ -3,6 +3,30 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.student.job.mapper.StudentMapper">
+    <update id="updateStudent">
+        update student
+        <set>
+            <if test="s_name != null and s_name!=''">
+                s_name = #{s_name}
+            </if>
+            <if test="s_gender != null and s_gender!=''">
+                s_gender = #{s_gender}
+            </if>
+            <if test="s_age != null and s_age!=''">
+                s_age = #{s_age}
+            </if>
+            <if test="s_phone != null and s_phone!=''">
+                s_phone = #{s_phone}
+            </if>
+            <if test="s_email != null and s_email!=''">
+                s_email = #{s_email}
+            </if>
+            <if test="s_intro != null and s_intro !=''">
+                s_intro = #{s_intro}
+            </if>
+        </set>
+        where s_id = {#s_id}
+    </update>
 
     <select id="getStuList" resultType="com.student.job.pojo.Student">
         select * from student
@@ -12,10 +36,9 @@
         select s_id,s_name,s_gender,s_age,s_phone,s_email,s_intro,u_id  from student where u_id = #{u_id}
     </select>
 
-<!--    <update id="updateStudent">-->
-<!--        UPDATE student SET s_name=#{s_name},s_gender=#{s_gender},s_age=#{s_age},s_phone=#{s_phone},s_email=#{s_email},-->
-<!--        s_intro=#{s_intro} WHERE s_id=#{s_id};-->
-<!--    </update>-->
+    <select id="checkU_idExits" resultType="java.lang.Boolean">
+        SELECT EXISTS (SELECT 1 FROM student WHERE u_id = #{u_id})
+    </select>
 
     <insert id="addStudent">
         insert into student value(null,#{s_name},#{s_gender},#{s_age},#{s_phone},#{s_email},#{s_intro},#{u_id})

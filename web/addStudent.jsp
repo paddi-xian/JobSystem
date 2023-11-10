@@ -64,6 +64,7 @@
                                    value="" name="s_intro" type="text">
                         </div>
                     </div>
+                    <label><span id="u_idError">${u_idError}</span></label>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
                             <button  type="submit" class="layui-btn layui-btn-blue"lay-submit  lay-filter="formDemo" @click="addStudent">立即提交</button>

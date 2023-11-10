@@ -12,4 +12,8 @@ public interface StudentMapper {
     Student selectStudentByUid(@Param("u_id") Integer uId);
     int addStudent(Student student);
 //    List<Job> selectJobByUid(@Param("u_id") Integer uId);
+    boolean updateStudent(Student student);
+//    boolean checkU_idExits(@Param("u_id") Integer u_id);
+    boolean checkU_idExits(@Param("u_id")Integer u_id );
+
 }

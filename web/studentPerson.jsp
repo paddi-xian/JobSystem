@@ -16,6 +16,7 @@
   <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
   <script type="text/javascript" src="myplugs/js/plugs.js"></script>
 </head>
+<body>
 <div class="layui-content">
   <div class="layui-row">
     <div class="layui-card">
@@ -83,75 +84,16 @@
         <div class="layui-block">
        <td>${student.s_intro}</td>
         </div>
-      </div>
-
-<%--      <div class="layui-form-item">--%>
-<%--        <div class="layui-input-block">--%>
-<%--          <button  type="submit" class="layui-btn layui-btn-blue" lay-submit lay-filter="formDemo">立即提交</button>--%>
-<%--        </div>--%>
-<%--      </div>--%>
+      </div></div>
       </form>
     </div>
   </div>
-<%--</div>--%>
-<%--<thead>--%>
-<%--<tr>--%>
-<%--  <td class="table-check"></td>--%>
-
-<%--  <td class="table-title">性别</td>--%>
-<%--  <td class="table-title">年龄</td>--%>
-<%--  <td class="table-title">电话</td>--%>
-<%--  <td class="table-title">邮箱</td>--%>
-<%--  <td class="table-title">简介</td>--%>
-<%--</tr>--%>
-<%--<tbody>--%>
-<%--<tr>--%>
-<%--  <td><input id="${s.s_id}" type="checkbox"></td>--%>
-<%--  <td>${student.s_name}</td>--%>
-<%--  <td>${student.s_gender}</td>--%>
-<%--  <td>${student.s_age}</td>--%>
-<%--  <td>${student.s_phone}</td>--%>
-<%--  <td>${student.s_email}</td>--%>
-<%--  <td>${student.s_intro}</td>--%>
-
-<%--</tr>--%>
-<%--</tbody>--%>
-<%--</thead>--%>
-<%--<div class="admin-content-body">--%>
-<%--  <div class="am-cf am-padding am-padding-bottom-0">--%>
-<%--    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">学生个人信息</strong><small></small>--%>
-<%--    </div>--%>
-<%--  </div>--%>
-
-<%--  <hr>--%>
-
-<%--  <div class="am-g">--%>
-<%--    <div class="am-u-sm-12 am-u-md-6">--%>
-<%--      <div class="am-btn-toolbar">--%>
-<%--        <div class="am-btn-group am-btn-group-xs">--%>
-<%--          <button type="button" id="add" class="btnadd am-btn am-btn-default">--%>
-<%--            <span class="am-icon-plus"></span>--%>
-<%--            新增--%>
-<%--          </button>--%>
-<%--        </div>--%>
-<%--      </div>--%>
-<%--    </div>--%>
-<%--    <div class="am-u-sm-12 am-u-md-3">--%>
-
-<%--    </div>--%>
-<%--  </div>--%>
-<%--  <div class="am-g">--%>
-<%--    <div class="am-u-sm-12">--%>
-<%--      <form class="am-form">--%>
-<%--        <table class="am-table am-table-striped am-table-hover table-main">--%>
 
 
-<%--        </table>--%>
-<%--        <hr>--%>
-<%--      </form>--%>
-<%--    </div>--%>
-<%--  </div>--%>
-<%--</div>--%>
+
+
+
+</body>
 <script>
   $(function () {
     $(".btnedit").click(function () {

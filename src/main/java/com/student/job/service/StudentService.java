@@ -11,5 +11,7 @@ public interface StudentService {
 
     Student selectStudentByUid(Integer uId);
 
+    boolean updateStudent(Student student);
+
 }
 

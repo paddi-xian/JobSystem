@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<div class="layui-content">
+<div id="app" class="layui-content">
     <div class="layui-row">
         <div class="layui-card">
             <div class="layui-card-header">修改个人信息</div>
@@ -20,7 +20,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">学生姓名</label>
                     <div class="layui-input-block">
-                        <input type="text" name="s_name" value="${student.s_id}" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                        <input type="text" name="s_name" value="${student.s_name}" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
                     </div>
                 </div>
 <%--    修改性别--%>
@@ -75,6 +75,45 @@
 <script>
     var form = layui.form
         ,layer = layui.layer;
+    new Vue({
+        el:'#app',
+        data:{
+            student: {
+                s_name: '',
+                s_gender: '',
+                s_age: '',
+                s_phone: '',
+                s_email:'',
+                s_intro:'',
+                u_id: '',
+            }
+        },
+        methods:{
+            studentUpdate(){
+                console.log(JSON.parse(sessionStorage.getItem("student")))
+                // this.job.j_id = JSON.parse(sessionStorage.getItem("job")).j_id;
+                axios.post('StudentServlet',this.student)
+                    .then(response => {
+                        if(response.data == false){
+                            console.log(response.data)
+                            this.student.u_id = response.data;
+                            console.log(this.student.u_id)
+                            alert("修改失败！！")
+                            return;
+                        }else{
+                            console.log(response.data)
+                            this.student.u_id = response.data;
+                            console.log(this.student.u_id)
+                            alert("修改成功")
+                        }
+                        parent.postMessage("closeStudentUpdate","http:localhost:8080/job_system_war_exploded/")
+                    })
+                    .catch(error =>{
+                        console.error(error);
+                    });
+            },
+        }
+    })
 </script>
 </body>
 </html>

@@ -1,12 +1,8 @@
 package com.student.job.servlet;
 
-import com.alibaba.fastjson.JSON;
 import com.student.job.mapper.StudentMapper;
-import com.student.job.mapper.UserMapper;
-import com.student.job.pojo.BeanFactory;
 import com.student.job.pojo.Student;
 import com.student.job.pojo.User;
-import com.student.job.service.StudentService;
 import com.student.job.utils.SqlSessionUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -20,7 +16,7 @@ import java.io.IOException;
 
 @WebServlet("/addStudServlet")
 public class AddStuServlet extends HttpServlet {
-
+    private StudentMapper studentMapper =SqlSessionUtil.openSession().getMapper(StudentMapper.class);
    @Override
    protected void doPost(HttpServletRequest request, HttpServletResponse response)
            throws ServletException, IOException {
@@ -48,7 +44,12 @@ public class AddStuServlet extends HttpServlet {
        student.setS_intro(s_intro);
        student.setU_id(user.getU_id());
 
-
+       boolean u_idExists=studentMapper.checkU_idExits(student.getU_id());
+       if (u_idExists) {
+           request.setAttribute("u_idError","请勿重复添加信息");
+           request.getParameter("student.jsp");
+           return;
+       }
        //调用Mybatis的Mapper接口插入用户数据
        SqlSessionFactory sqlSessionFactory = SqlSessionUtil.getSqlSessionFactory();
        try (SqlSession session = sqlSessionFactory.openSession()) {

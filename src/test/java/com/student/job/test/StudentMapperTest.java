@@ -1,23 +1,10 @@
 package com.student.job.test;
-
-import com.student.job.mapper.JobMapper;
 import com.student.job.mapper.StudentMapper;
-import com.student.job.mapper.UserMapper;
 import com.student.job.pojo.Student;
-import com.student.job.pojo.User;
 import com.student.job.utils.SqlSessionUtil;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.junit.Test;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import org.apache.ibatis.session.SqlSession;
+import org.junit.Test;
 
 public class StudentMapperTest {
     @Test
@@ -38,5 +25,10 @@ public class StudentMapperTest {
         sqlSession.commit();
         sqlSession.close();
     }
-
+    @Test
+    public  void testUpdateStudent(){
+        SqlSession sqlSession = SqlSessionUtil.openSession();
+        StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
+//        Student student = mapper.updateStudent()
+    }
 }
