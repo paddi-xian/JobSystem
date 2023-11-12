@@ -49,7 +49,7 @@ public class StudentServlet extends HttpServlet {
         String s = request.getReader().readLine();
        Student student=JSON.parseObject(s,Student.class);
        Student student1=(Student)request.getSession().getAttribute("student");
-//        Integer u_id = Integer.parseInt(request.getParameter( "u_id"));
+        student.setS_id(student1.getS_id());
         student.setS_id(student1.getS_id());
 //        System.out.println(u_id);
 
