@@ -45,14 +45,16 @@
                         <div class="am-form-group">
                             <label for="j_salary" class="am-u-sm-3 am-form-label">兼职岗位薪资</label>
                             <div class="am-u-sm-9">
-                                <input id="j_salary" v-model="job.j_salary" required="" placeholder="${job.j_salary}" value="" name="j_salary" type="text">
+                                <input id="j_salary" v-model="job.j_salary" required="" placeholder="${job.j_salary}" class="verify" name="j_salary" type="text">
+                                <div id="is_j_salary"></div>
                             </div>
                         </div>
 
                         <div class="am-form-group">
                             <label for="j_hours" class="am-u-sm-3 am-form-label">兼职岗位工作时间</label>
                             <div class="am-u-sm-9">
-                                <input id="j_hours" v-model="job.j_hours" required="" placeholder="${job.j_hours}" value="" name="j_hours" type="text">
+                                <input id="j_hours" v-model="job.j_hours" required="" placeholder="${job.j_hours}" class="verify" name="j_hours" type="text">
+                                <div id="is_j_hours"></div>
                             </div>
                         </div>
 
@@ -68,6 +70,7 @@
     </div>
 </body>
 <script>
+    let boolean = false;
     new Vue({
         el:"#app",
         data:{
@@ -82,6 +85,9 @@
         },
         methods:{
             editJob(){
+                if(!boolean){
+                    return;
+                }
                 console.log(JSON.parse(sessionStorage.getItem("job")))
                 // this.job.j_id = JSON.parse(sessionStorage.getItem("job")).j_id;
                 axios.post('EditJobServlet',this.job)
@@ -106,5 +112,42 @@
             },
         }
     })
+    $(function(){
+        $(".verify").focus(function (){
+            let id = $(this).attr("id");
+            id = "is_" + id;
+            $("#"+id).text("");
+        });
+        $("#j_salary").blur(function (){
+            verifyjSalary();
+        });
+        $("#j_hours").blur(function (){
+            verifyjHours();
+        });
+    });
+    function verifyjSalary(){
+        let value = $("#j_salary").val();
+        let regex = /^(?:\d+|\d{1,}[.,]\d+)$/;
+        if(value != ''){
+            if(!regex.test(value)){
+                $("#is_j_salary").text("您输入的格式不对").css({'color':'red'});
+                boolean = false;
+            }else{
+                boolean = true;
+            }
+        }
+    }
+    function verifyjHours() {
+        let value = $("#j_hours").val();
+        let regex = /^\d+$/;
+        if(value != ''){
+            if (!regex.test(value)) {
+                $("#is_j_hours").text("您输入的格式不对").css({'color': 'red'});
+                boolean = false;
+            } else {
+                boolean = true;
+            }
+        }
+    }
 </script>
 </html>

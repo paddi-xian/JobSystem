@@ -22,4 +22,6 @@ public interface JobMapper {
 
 
     Job SelectJobByJid(Integer jId);
+
+    List<Job> SelectJobByLikeName(Job job);
 }

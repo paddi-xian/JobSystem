@@ -25,8 +25,9 @@ public class AddJobServlet extends HttpServlet {
         String s = request.getReader().readLine();
         Job job = JSON.parseObject(s, Job.class);
         System.out.println(job);
+        System.out.println(job.getJ_hours());
         //在传入的值没有一项为空才增加job
-        if (job.getJ_name()!=null&&job.getJ_description()!=null&&job.getJ_salary()!=null&&job.getJ_hours()!=null){
+        if (job.getJ_name()!=null && job.getJ_description()!=null && job.getJ_salary()!=null && job.getJ_hours()!=null){
             job.setU_id(user.getU_id());
             System.out.println(job);
 

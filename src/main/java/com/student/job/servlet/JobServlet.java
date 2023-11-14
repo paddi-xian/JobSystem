@@ -1,7 +1,10 @@
 package com.student.job.servlet;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.student.job.pojo.BeanFactory;
 import com.student.job.pojo.Job;
+import com.student.job.pojo.User;
 import com.student.job.service.JobService;
 
 
@@ -31,12 +34,26 @@ public class JobServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Integer u_id = Integer.parseInt(request.getParameter("u_id"));
+        User user = (User) request.getSession().getAttribute("user");
+        Integer u_id = user.getU_id();
+        //获取前端第几页
+        Integer  pageNum = Integer.parseInt(request.getParameter("pageNum"));
+
+        //每页多少条数据
+        int  pageSize =  10 ;
+        //分页
+        PageHelper.startPage(pageNum,pageSize);
         List<Job>jobs=jobService.selectJobByUid(u_id);
-        request.getSession().removeAttribute("jobs");
-        request.getSession().setAttribute("jobs",jobs);
+
+        PageInfo<Job> info = new PageInfo<>(jobs);
+        System.out.println(info.getList());
+
+//        request.getSession().removeAttribute("jobs");
+//        request.getSession().setAttribute("jobs",jobs);
+        request.getSession().setAttribute("info",info);
         response.sendRedirect("job.jsp");
     }
+
 
 
     private void doALL(HttpServletRequest request, HttpServletResponse response)

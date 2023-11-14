@@ -28,8 +28,11 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public boolean addJob(Job job) {
-        SqlSession session = SqlSessionUtil.openSession();
-        JobMapper jobMapper = session.getMapper(JobMapper.class);
+        if (session != null) {
+            SqlSessionUtil.close(session);
+            session = SqlSessionUtil.openSession();
+            jobMapper = session.getMapper(JobMapper.class);
+        }
         boolean res =  jobMapper.addJob(job);
         session.commit();
         return res;
@@ -37,8 +40,11 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public int deleteJobByJID(Integer jId) {
-        SqlSession session = SqlSessionUtil.openSession();
-        JobMapper jobMapper = session.getMapper(JobMapper.class);
+        if (session != null) {
+            SqlSessionUtil.close(session);
+            session = SqlSessionUtil.openSession();
+            jobMapper = session.getMapper(JobMapper.class);
+        }
         int i = jobMapper.deleteJobByJID(jId);
         session.commit();
         return i;
@@ -46,8 +52,11 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public boolean editJob(Job job) {
-        SqlSession session = SqlSessionUtil.openSession();
-        JobMapper jobMapper = session.getMapper(JobMapper.class);
+        if (session != null) {
+            SqlSessionUtil.close(session);
+            session = SqlSessionUtil.openSession();
+            jobMapper = session.getMapper(JobMapper.class);
+        }
         boolean res =  jobMapper.editJob(job);
         session.commit();
         return res;
@@ -71,6 +80,16 @@ public class JobServiceImpl implements JobService {
             jobMapper = session.getMapper(JobMapper.class);
         }
         return jobMapper.SelectJobByJid(jId);
+    }
+
+    @Override
+    public List<Job> SelectJobByLikeName(Job job) {
+        if (session != null) {
+            SqlSessionUtil.close(session);
+            session = SqlSessionUtil.openSession();
+            jobMapper = session.getMapper(JobMapper.class);
+        }
+        return jobMapper.SelectJobByLikeName(job);
     }
 
 

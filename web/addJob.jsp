@@ -27,38 +27,41 @@
     <div class="admin-content">
         <div class="admin-content-body">
             <div class="am-g">
-                <form class="am-form am-form-horizontal" action="addJobServlet" method="post"
-                      style="padding-top: 30px;">
+                <form class="am-form am-form-horizontal" style="padding-top: 30px;">
                     <input value="504" name="roleId" type="hidden">
                     <div class="am-form-group">
                         <label for="j_name" class="am-u-sm-3 am-form-label">兼职岗位名称</label>
                         <div class="am-u-sm-9">
-                            <input id="j_name" v-model="job.j_name" required="" placeholder="输入兼职岗位名称" value=""
+                            <input id="j_name" v-model="job.j_name"  placeholder="输入兼职岗位名称" class="verify"
                                    name="j_name" type="text">
+                            <div id="is_j_name"></div>
                         </div>
                     </div>
 
                     <div class="am-form-group">
                         <label for="j_description" class="am-u-sm-3 am-form-label">兼职岗位描述</label>
                         <div class="am-u-sm-9">
-                            <input id="j_description" v-model="job.j_description" required=""
-                                   placeholder="输入兼职岗位描述" value="" name="j_description" type="text">
+                            <input id="j_description" v-model="job.j_description"
+                                   placeholder="输入兼职岗位描述" class="verify" name="j_description" type="text">
+                            <div id="is_j_description"></div>
                         </div>
                     </div>
 
                     <div class="am-form-group">
                         <label for="j_salary" class="am-u-sm-3 am-form-label">兼职岗位薪资</label>
                         <div class="am-u-sm-9">
-                            <input id="j_salary" v-model="job.j_salary" required="" placeholder="输入兼职岗位薪资"
-                                   value="" name="j_salary" type="text">
+                            <input id="j_salary" v-model="job.j_salary"  placeholder="输入兼职岗位薪资"
+                                   class="verify" name="j_salary" type="text" />
+                            <div id="is_j_salary"></div>
                         </div>
                     </div>
 
                     <div class="am-form-group">
                         <label for="j_hours" class="am-u-sm-3 am-form-label">兼职岗位工作时间</label>
                         <div class="am-u-sm-9">
-                            <input id="j_hours" v-model="job.j_hours" required="" placeholder="输入兼职岗位工作时间"
-                                   value="" name="j_hours" type="text">
+                            <input id="j_hours" v-model="job.j_hours"  placeholder="输入兼职岗位工作时间"
+                                   class="verify" name="j_hours" type="text" />
+                            <div id="is_j_hours"></div>
                         </div>
                     </div>
 
@@ -74,6 +77,7 @@
 </div>
 </body>
 <script>
+    let bool = false;
     new Vue({
         el: "#app",
         data: {
@@ -88,6 +92,9 @@
         },
         methods: {
             addJob() {
+                if(!verifyjName() || !verifyjDescription() || !verifyjSalary() || !verifyjHours()){
+                    return;
+                }
                 axios.post('addJobServlet', this.job)
                     .then(response => {
                         if (response.data == false) {
@@ -112,5 +119,70 @@
             },
         }
     })
+    $(function(){
+        $(".verify").focus(function (){
+            let id = $(this).attr("id");
+            id = "is_" + id;
+            $("#"+id).text("");
+        });
+        $("#j_name").blur(function (){
+            verifyjName();
+        });
+        $("#j_description").blur(function (){
+            verifyjDescription();
+        });
+        $("#j_salary").blur(function (){
+            verifyjSalary();
+        });
+        $("#j_hours").blur(function (){
+            verifyjHours();
+        });
+    });
+    function verifyjName(){
+        let value = $("#j_name").val();
+        if(value === ""){
+            $("#is_j_name").text("兼职岗位名称不能为空").css({'color':'red'});
+            return  false;
+        }else{
+            return  true;
+        }
+    }
+    function verifyjDescription(){
+        let value = $("#j_description").val();
+        if(value === ""){
+            $("#is_j_description").text("兼职岗位描述不能为空").css({'color':'red'});
+            return  false;
+        }else{
+            return  true;
+        }
+    }
+    function verifyjSalary(){
+        let value = $("#j_salary").val();
+        let regex = /^(?:\d+|\d{1,}[.,]\d+)$/;
+        if(value === ""){
+            $("#is_j_salary").text("兼职岗位薪资不能为空").css({'color':'red'});
+            return  false;
+        }
+        if(!regex.test(value)){
+            $("#is_j_salary").text("您输入的格式不对").css({'color':'red'});
+            return  false;
+        }else{
+            return  true;
+        }
+    }
+    function verifyjHours(){
+        let value = $("#j_hours").val();
+        let regex = /^\d+$/;
+        if(value === ""){
+            $("#is_j_hours").text("兼职岗位工作时间不能为空").css({'color':'red'});
+            return  false;
+        }
+        if(!regex.test(value)){
+            $("#is_j_hours").text("您输入的格式不对").css({'color':'red'});
+            return  false;
+        }else{
+            return  true;
+        }
+    }
 </script>
 </html>

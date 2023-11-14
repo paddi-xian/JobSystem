@@ -18,4 +18,6 @@ public interface JobService {
     List<Job> selectAllJob();
 
     Job SelectJobByJid(Integer jId);
+
+    List<Job> SelectJobByLikeName(Job job);
 }

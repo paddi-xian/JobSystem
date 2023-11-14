@@ -40,4 +40,17 @@
     <select id="SelectJobByJid" resultType="com.student.job.pojo.Job">
         select * from Job where j_id = #{j_id}
     </select>
+
+    <select id="SelectJobByLikeName" resultType="com.student.job.pojo.Job">
+        select * from Job
+        <where>
+            <if test="u_id != null and u_id != ''">
+                u_id = #{u_id}
+            </if>
+            <if test="j_name != null and j_name != ''">
+                and j_name like concat('%',#{j_name},'%')
+            </if>
+        </where>
+
+    </select>
 </mapper>
