@@ -29,7 +29,7 @@
                         <a href="#.jsp">个人中心</a>
                     </dd>
                     <dd>
-                        <a href="">安全设置</a>
+                        <a href="updatePwd.jsp">修改密码</a>
                     </dd>
                 </dl>
             </li>
@@ -53,7 +53,7 @@
                             <a href="studentUpdate.jsp" target="right">学生修改个人信息</a>
                         </dd>
                         <dd>
-                            <a href="Job?u_id=${user.u_id}" target="right">学生查看兼职岗位信息</a>
+                            <a href="StuShowJob" target="right">学生查看兼职岗位信息</a>
                         </dd>
                     </dl>
                 </li>
@@ -121,7 +121,7 @@
             title: title,
             iframeWidth: 500,
             iframeHeight: 300,
-            url: "updatePwd.html"
+            url: "updatePwd.jsp"
         });
     }
 </script>
