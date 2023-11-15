@@ -15,6 +15,17 @@
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="myplugs/js/plugs.js"></script>
     <script src="js/axios.js"></script>
+    <style>
+        .page{
+            text-align: center;
+        }
+        .page-button{
+            text-decoration: none;
+            background: white;
+            color:#000000;
+            margin-left: 15px;
+        }
+    </style>
 </head>
 <body class="layui-padding-3">
 <div id="app" class="admin-content-body">
@@ -91,9 +102,9 @@
                 </table>
                 <hr>
 
-
+            <div class="page">
                 <c:if test="${info.hasPreviousPage}">
-                <a href="Job?pageNum=${info.prePage}">上一页</a>
+                <a href="Job?pageNum=${info.prePage }" class="page-button">上一页</a>
                 </c:if>
                 <c:if test="${info.pages <= 10}">
                     <c:set var="begin" value="1"></c:set>
@@ -126,10 +137,10 @@
                 </c:if>
 
                 <c:forEach begin="${begin}" end="${end}" var="i">
-                <a href="Job?pageNum=${i}">[${i}]</a>
+                <a href="Job?pageNum=${i}" class="page-button">${i}</a>
                 </c:forEach>
                 <c:if test="${info.hasNextPage}">
-                <a href="Job?pageNum=${info.nextPage}">下一页</a>
+                <a href="Job?pageNum=${info.nextPage}" class="page-button">下一页</a>
                 </c:if>
         </div>
         <hr>
