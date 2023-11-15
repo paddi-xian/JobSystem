@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet({"/Job","/AllJob"})
+@WebServlet({"/Job","/AllJob","/StuShowJob"})
 public class JobServlet extends HttpServlet {
     private final JobService jobService = (JobService) BeanFactory.getBean("jobService");
 
@@ -28,6 +28,8 @@ public class JobServlet extends HttpServlet {
             doGet(request,response);
         }else if ("/AllJob".equals(servletPath)){
             doALL(request, response);
+        }else if ("/StuShowJob".equals(servletPath)){
+            doAllJob(request, response);
         }
     }
 
@@ -54,8 +56,6 @@ public class JobServlet extends HttpServlet {
         response.sendRedirect("job.jsp");
     }
 
-
-
     private void doALL(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<Job> AllJob = jobService.selectAllJob();
@@ -64,5 +64,12 @@ public class JobServlet extends HttpServlet {
         response.sendRedirect("showJob.jsp");
     }
 
+    private void doAllJob(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        List<Job> AllJob = jobService.selectAllJob();
+        request.getSession().removeAttribute("AllJob");
+        request.getSession().setAttribute("AllJob",AllJob);
+        response.sendRedirect("stuShowJob.jsp");
+    }
 
 }
