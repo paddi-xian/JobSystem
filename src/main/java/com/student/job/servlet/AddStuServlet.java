@@ -1,8 +1,12 @@
 package com.student.job.servlet;
 
 import com.student.job.mapper.StudentMapper;
+import com.student.job.pojo.BeanFactory;
 import com.student.job.pojo.Student;
 import com.student.job.pojo.User;
+import com.student.job.service.JobService;
+import com.student.job.service.StudentService;
+import com.student.job.service.impl.StudentServiceImpl;
 import com.student.job.utils.SqlSessionUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -17,22 +21,28 @@ import java.io.IOException;
 @WebServlet("/addStudServlet")
 public class AddStuServlet extends HttpServlet {
     private StudentMapper studentMapper =SqlSessionUtil.openSession().getMapper(StudentMapper.class);
-   @Override
+    private final StudentService studentService = new StudentServiceImpl();
+    @Override
    protected void doPost(HttpServletRequest request, HttpServletResponse response)
            throws ServletException, IOException {
        //从session里面获取user的ID
        User user = (User) request.getSession().getAttribute("user");
        System.out.println(user.getU_id());
        request.setCharacterEncoding("UTF-8");
-
        String s_name = request.getParameter("s_name");
        String s_gender = request.getParameter("s_gender");
        String s_age = request.getParameter("s_age");
        String s_phone = request.getParameter("s_phone");
        String s_email = request.getParameter("s_email");
        String s_intro = request.getParameter("s_intro");
-
-
+       String u_id = request.getParameter("u_id");
+//
+//       boolean u_idExists = studentMapper.checkU_idExits(u_id) ;
+//       if (u_idExists) {
+//           request.setAttribute("uidError", "请勿重复添加信息");
+//           request.getRequestDispatcher("addStudent.jsp").forward(request,response);
+//           return;
+//       }
        //在传入的值没有一项为空才增加学生信息
        //创建学生对象
        Student student = new Student();
@@ -44,23 +54,28 @@ public class AddStuServlet extends HttpServlet {
        student.setS_intro(s_intro);
        student.setU_id(user.getU_id());
 
-       boolean u_idExists=studentMapper.checkU_idExits(student.getU_id());
-       if (u_idExists) {
-           request.setAttribute("u_idError","请勿重复添加信息");
-           request.getParameter("student.jsp");
-           return;
-       }
        //调用Mybatis的Mapper接口插入用户数据
        SqlSessionFactory sqlSessionFactory = SqlSessionUtil.getSqlSessionFactory();
        try (SqlSession session = sqlSessionFactory.openSession()) {
         StudentMapper studentMapper = session.getMapper(StudentMapper.class);
         studentMapper.addStudent(student);
+           if (student.getU_id().equals(user.getU_id())) {
+               String uidError = "请勿重复添加信息";
+               request.setAttribute("uidError", uidError);
+               request.getRequestDispatcher("addStudent.jsp").forward(request, response);
+           }
         session.commit();
         request.getSession().setAttribute("student",student);
         request.getRequestDispatcher("studentPerson.jsp").forward(request,response);
        } catch (Exception e) {
         e.printStackTrace();
-        request.getRequestDispatcher("addStudent.jsp").forward(request,response);
+        request.getRequestDispatcher("studentPerson.jsp").forward(request,response);
        }
+       int res = studentService.addStudent(student);
+        if (res>0) {
+            response.getWriter().println(student.getU_id());
+        }else {
+            response.getWriter().println(false);
+        }
    }
 }

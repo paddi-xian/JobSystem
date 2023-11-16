@@ -14,6 +14,7 @@ public interface StudentMapper {
 //    List<Job> selectJobByUid(@Param("u_id") Integer uId);
     boolean updateStudent(Student student);
 //    boolean checkU_idExits(@Param("u_id") Integer u_id);
-    boolean checkU_idExits(@Param("u_id")Integer u_id );
+    boolean checkU_idExits(@Param("u_id")String u_id );
+    Student getStudentByUid(String u_id);
 
 }

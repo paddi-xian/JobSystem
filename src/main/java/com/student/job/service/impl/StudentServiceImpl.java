@@ -1,6 +1,5 @@
 package com.student.job.service.impl;
 
-import com.student.job.mapper.JobMapper;
 import com.student.job.mapper.StudentMapper;
 import com.student.job.pojo.Student;
 import com.student.job.service.StudentService;
@@ -17,11 +16,11 @@ public class StudentServiceImpl implements StudentService {
         List<Student> students=studentMapper.getStuList();
         return students;
     }
-
     @Override
     public int addStudent(Student student) {
         return studentMapper.addStudent(student);
     }
+
 
     public boolean updateStudent(Student student){
         SqlSession session = SqlSessionUtil.openSession();
@@ -31,11 +30,6 @@ public class StudentServiceImpl implements StudentService {
         return res;
     }
 
-    @Override
-    public Student selectStudentByUid(Integer uId) {
-        Student student = studentMapper.selectStudentByUid(uId);
-        return student;
-    }
 
 
 }

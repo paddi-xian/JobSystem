@@ -9,15 +9,20 @@
 <html>
 <head>
     <title>录入信息界面</title>
+    <link rel="stylesheet" href="css/layui.css">
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="myplugs/js/plugs.js"></script>
+    <script src="js/layui.js"></script>
 </head>
 <body>
-<div id="app" class="am-cf admin-main">
+<div  class="am-cf admin-main">
     <!-- content start -->
     <div class="admin-content">
         <div class="admin-content-body">
             <div class="am-g">
                 <form class="am-form am-form-horizontal" action="addStudServlet" method="post"
                       style="padding-top: 20px;">
+
                     <input value="504" name="roleId" type="hidden">
                     <div class="am-form-group">
                         <label for="s_name" class="am-u-sm-3 am-form-label">姓名</label>
@@ -71,7 +76,9 @@
                             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                         </div>
                     </div>
-<%--                    <div class="am-form-group">--%>
+                    <label><span id="uidError">${uidError}</span></label><br>
+
+                <%--                    <div class="am-form-group">--%>
 <%--                        <div class="am-u-sm-9 am-u-sm-push-3">--%>
 <%--                            <input id="addRole" class="am-btn am-btn-success" value="提交" @click="addStudent"/>--%>
 <%--                        </div>--%>
@@ -83,43 +90,81 @@
 </div>
 </body>
 <script>
-    new Vue({
-        el: "#app",
-        data: {
-            student: {
-                s_name: '',
-                s_gender: '',
-                s_age: '',
-                s_phone: '',
-                s_email:'',
-                s_intro:'',
-                u_id: '',
+    function checkStudent(u_id,
+                          s_name,
+                          s_gender,
+                          s_age,
+                          s_phone,
+                          s_email,
+                          s_intro) {
+        $.ajax({
+            url: "/addStudServlet",
+            method: "Post",
+            data:{ s_name: s_name,
+                s_gender: s_gender,
+                s_age: s_age,
+                s_phone: s_phone,
+                s_email:s_email,
+                s_intro:s_intro},
+            success:function (){
+                console.log("添加成功");
             },
+            error:function (){
+                console.log("添加失败");
+            }
+        })
+        //
+        // $.ajax({
+        //     url:"/checkStudent",
+        //     method:"GET",
+        //     data: {u_id:u_id},
+        //     success:function (data) {
+        //         if (data.exits){
+        //             console.log("请勿重复添加信息");
+        //         }else {
+        //         }
+        //
+        //     }
+        // })
+    }
+    // new Vue({
+    //     el: "#app",
+    //     data: {
+    //         student: {
+    //             s_name: '',
+    //             s_gender: '',
+    //             s_age: '',
+    //             s_phone: '',
+    //             s_email:'',
+    //             s_intro:'',
+    //             u_id: '',
+    //         },
+    //
+    //     },
+    //     methods: {
+    //         addStudent() {
+    //             axios.post('addStudServlet', this.student)
+    //                 .then(response => {
+    //                     if (response.data == false) {
+    //                         console.log(response.data)
+    //                         this.student.u_id = response.data;
+    //                         console.log(this.student.u_id)
+    //                         alert("增加失败!!!")
+    //                         return;
+    //                     } else {
+    //                         console.log(response.data)
+    //                         this.student.u_id = response.data;
+    //                         console.log(this.student.u_id)
+    //                         alert("添加成功")
+    //                     }
+    //                 })
+    //                 .catch(error => {
+    //                     console.error(error);
+    //                 });
+    //
+    //         },
+    //     }
+    // })
 
-        },
-        methods: {
-            addStudent() {
-                axios.post('addStudServlet', this.student)
-                    .then(response => {
-                        if (response.data == false) {
-                            console.log(response.data)
-                            this.student.u_id = response.data;
-                            console.log(this.job.u_id)
-                            alert("增加失败!!!")
-                            return;
-                        } else {
-                            console.log(response.data)
-                            this.student.u_id = response.data;
-                            console.log(this.student.u_id)
-                            alert("添加成功")
-                        }
-                    })
-                    .catch(error => {
-                        console.error(error);
-                    });
-
-            },
-        }
-    })
 </script>
 </html>
