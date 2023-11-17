@@ -9,8 +9,8 @@
     </insert>
 
     <!-- 根据ID查询发布者 -->
-    <select id="getPublisherById" parameterType="int" resultType="com.student.job.pojo.Publisher">
-        SELECT * FROM publisher WHERE p_id = #{p_id}
+    <select id="getPublisherById" resultType="com.student.job.pojo.Publisher">
+        SELECT * FROM publisher WHERE u_id = #{u_id}
     </select>
 
     <!-- 查询所有发布者 -->
