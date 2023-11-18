@@ -49,8 +49,9 @@ public class JobServlet extends HttpServlet {
         List<Job>jobs=jobService.selectJobByUid(u_id);
 
         PageInfo<Job> info = new PageInfo<>(jobs);
-        System.out.println(info.getList());
-        System.out.println("info.getTotal()="+info.getTotal());
+//        System.out.println(info.getList());
+//        System.out.println("info.getTotal()="+info.getTotal());
+//        System.out.println(info.getSize());
 
 //        request.getSession().removeAttribute("jobs");
 //        request.getSession().setAttribute("jobs",jobs);

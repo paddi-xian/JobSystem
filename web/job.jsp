@@ -17,7 +17,7 @@
     <script src="js/axios.js"></script>
     <style>
         .page{
-            text-align: center;
+            /*text-align: center;*/
         }
         .page-button{
             text-decoration: none;
@@ -26,7 +26,11 @@
             margin-left: 15px;
         }
         .total{
-            margin-right: 50px;
+            display: inline;
+        }
+        .page2{
+            margin-left: 250px;
+            display: inline;
         }
     </style>
 </head>
@@ -106,9 +110,8 @@
                 <hr>
 
             <div class="page">
-                <span class="total">
-                共${info.getTotal()}条数据
-                </span>
+                <span class="total">共 ${info.getTotal()} 条数据</span>
+                <div class="page2">
                 <c:if test="${info.hasPreviousPage}">
                 <a href="Job?pageNum=${info.prePage }" class="page-button">上一页</a>
                 </c:if>
@@ -148,7 +151,8 @@
                 <c:if test="${info.hasNextPage}">
                 <a href="Job?pageNum=${info.nextPage}" class="page-button">下一页</a>
                 </c:if>
-                <span></span>
+                </div>
+                <span class="total" style="margin-left: 50px">当前页面有 ${info.getSize()} 条数据</span>
 
         </div>
         <hr>
