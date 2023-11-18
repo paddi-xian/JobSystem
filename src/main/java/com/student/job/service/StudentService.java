@@ -9,9 +9,7 @@ public interface StudentService {
 
     int addStudent(Student student);
 
-    Student selectStudentByUid(Integer uId);
 
     boolean updateStudent(Student student);
-
 }
 

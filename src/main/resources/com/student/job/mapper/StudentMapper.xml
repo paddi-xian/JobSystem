@@ -39,7 +39,9 @@
     <select id="checkU_idExits" resultType="java.lang.Boolean">
         SELECT EXISTS (SELECT 1 FROM student WHERE u_id = #{u_id})
     </select>
-
+    <select id="getStudentByUid" resultType="com.student.job.pojo.Student">
+        select*from student where u_id =#{u_id}
+    </select>
     <insert id="addStudent">
         insert into student value(null,#{s_name},#{s_gender},#{s_age},#{s_phone},#{s_email},#{s_intro},#{u_id})
     </insert>

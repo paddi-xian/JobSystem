@@ -24,7 +24,8 @@
         <div class="am-u-sm-12 am-u-md-6">
           <div class="am-btn-toolbar">
             <div class="am-btn-group am-btn-group-xs">
-              <button type="button" id="add" class="btnadd am-btn am-btn-default"><span class="am-icon-plus"></span>
+              <button type="button" id="add" class="btnadd am-btn am-btn-default">
+                  <span class="am-icon-plus"></span>
                 新增个人信息
               </button>
             </div>
@@ -32,16 +33,6 @@
         </div>
         <div class="am-u-sm-12 am-u-md-3">
 
-        </div>
-        <div class="am-u-sm-12 am-u-md-3">
-          <div class="am-input-group am-input-group-sm">
-            <input type="text" class="am-form-field" placeholder="请输入兼职岗位名称">
-            <span class="am-input-group-btn">
-                <button class="am-btn am-btn-default" type="button">搜索</button>
-              </span>
-          </div>
-        </div>
-      </div>
       <div class="layui-card-header">个人信息</div>
       <div class="layui-form-item">
         <label class="layui-form-label">学生姓名</label>
@@ -91,8 +82,8 @@
 
 
 
-
-
+  </div>
+</div>
 </body>
 <script>
   $(function () {
