@@ -42,13 +42,15 @@ public class JobServlet extends HttpServlet {
         Integer  pageNum = Integer.parseInt(request.getParameter("pageNum"));
 
         //每页多少条数据
-        int  pageSize =  10 ;
+        int  pageSize =  5 ;
+
         //分页
         PageHelper.startPage(pageNum,pageSize);
         List<Job>jobs=jobService.selectJobByUid(u_id);
 
         PageInfo<Job> info = new PageInfo<>(jobs);
         System.out.println(info.getList());
+        System.out.println("info.getTotal()="+info.getTotal());
 
 //        request.getSession().removeAttribute("jobs");
 //        request.getSession().setAttribute("jobs",jobs);

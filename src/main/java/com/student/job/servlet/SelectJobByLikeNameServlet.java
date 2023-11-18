@@ -25,7 +25,7 @@ public class SelectJobByLikeNameServlet extends HttpServlet {
         Integer  pageNum = Integer.parseInt(request.getParameter("pageNum"));
 
         //每页多少条数据
-        int  pageSize =  10 ;
+        int  pageSize =  5 ;
         //分页
         PageHelper.startPage(pageNum,pageSize);
         Job job = new Job();

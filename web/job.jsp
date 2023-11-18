@@ -25,6 +25,9 @@
             color:#000000;
             margin-left: 15px;
         }
+        .total{
+            margin-right: 50px;
+        }
     </style>
 </head>
 <body class="layui-padding-3">
@@ -90,7 +93,7 @@
                                         </button>
                                         <button id="${job.j_id}"
                                                 class="delete am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"
-                                                name="${job.u_id}"><span class="am-icon-trash-o"></span> 删除
+                                                name="${job.u_id}" onclick="del();"><span class="am-icon-trash-o"></span> 删除
                                         </button>
                                     </div>
                                 </div>
@@ -103,6 +106,9 @@
                 <hr>
 
             <div class="page">
+                <span class="total">
+                共${info.getTotal()}条数据
+                </span>
                 <c:if test="${info.hasPreviousPage}">
                 <a href="Job?pageNum=${info.prePage }" class="page-button">上一页</a>
                 </c:if>
@@ -142,6 +148,8 @@
                 <c:if test="${info.hasNextPage}">
                 <a href="Job?pageNum=${info.nextPage}" class="page-button">下一页</a>
                 </c:if>
+                <span></span>
+
         </div>
         <hr>
         </form>
@@ -212,28 +220,32 @@
         $(".delete").click(function () {
             let j_id = $(this).attr("id")
             let u_id = $(this).attr("name")
-            $.ajax({
-                async: false,
-                cache: false,
-                type: "post",
-                url: "deleteJob",
-                data: {"j_id": j_id, "u_id": u_id},
-                dataType: 'json',
-                success: function (res) {
-                    if (!res) {
-                        alert("删除失败")
-                    } else {
-                        alert("删除成功" + j_id + "===" + u_id)
-                        // window.location.href = "job.jsp"
-                        $.ajax({
-                            async: false,
-                            cache: false,
-                            type: "get",
-                            url: "Job?pageNum=1"
-                        })
+            var ok = window.confirm("是否确认删除？");
+            if(ok){
+                $.ajax({
+                    async: false,
+                    cache: false,
+                    type: "post",
+                    url: "deleteJob",
+                    data: {"j_id": j_id, "u_id": u_id},
+                    dataType: 'json',
+                    success: function (res) {
+                        if (!res) {
+                            alert("删除失败")
+                        } else {
+                            alert("删除成功" + j_id + "===" + u_id)
+                            // window.location.href = "job.jsp"
+                            $.ajax({
+                                async: false,
+                                cache: false,
+                                type: "get",
+                                url: "Job?pageNum=1"
+                            })
+                        }
                     }
-                }
-            });
+                });
+            }
+
         })
     })
 </script>

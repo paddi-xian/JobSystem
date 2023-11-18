@@ -12,6 +12,10 @@
     <typeAliases>
         <package name="com.student.job.pojo"/>
     </typeAliases>
+    <plugins>
+        <!--com.github.pagehelper.PageInterceptor为PageHelper类所在的包名-->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+    </plugins>
     <environments default="dev">
         <environment id="dev">
             <transactionManager type="JDBC"/>
