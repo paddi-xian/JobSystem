@@ -15,6 +15,12 @@
   <link rel="stylesheet" href="css/admin.css"/>
   <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
   <script type="text/javascript" src="myplugs/js/plugs.js"></script>
+    <style>
+        .test{
+            margin-top: 50px;
+            width: 200px;
+        }
+    </style>
 </head>
 <body>
 <div class="layui-content">
@@ -31,8 +37,8 @@
             </div>
           </div>
         </div>
-        <div class="am-u-sm-12 am-u-md-3">
-
+<%--        <div class="am-u-sm-12 am-u-md-3">--%>
+          <div class="test">
       <div class="layui-card-header">个人信息</div>
       <div class="layui-form-item">
         <label class="layui-form-label">学生姓名</label>
@@ -75,7 +81,8 @@
         <div class="layui-block">
        <td>${student.s_intro}</td>
         </div>
-      </div></div>
+      </div>
+          </div>
       </form>
     </div>
   </div>

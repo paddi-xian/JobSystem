@@ -187,6 +187,7 @@
                 iframeHeight: 300,
                 url: "editJob.jsp"
             })
+            //创建监听者
             window.addEventListener("message", e => {
                 if (e.data == "closeEditJob") {
                     $.jq_Panel_close();
@@ -198,7 +199,8 @@
 
         $(".search").click(function () {
             let j_name = $('#search').val()
-            location.href = "SelectJobByLikeNameServlet?" + "&j_name=" + j_name + "&pageNum=1"
+            location.href = "SelectJobByLikeNameServlet?" + "j_name=" + j_name + "&pageNum=1"
+
         })
 
         $(".btnadd").click(function () {

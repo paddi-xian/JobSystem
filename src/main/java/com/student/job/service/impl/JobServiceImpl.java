@@ -12,7 +12,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import java.util.List;
 
 public class JobServiceImpl implements JobService {
+    //打开SqlSession，创建会话
     private SqlSession session = SqlSessionUtil.openSession();
+    //获取JobMapper的代理对象
     private JobMapper jobMapper = session.getMapper(JobMapper.class);
 
     @Override

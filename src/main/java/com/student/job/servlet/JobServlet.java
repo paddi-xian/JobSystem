@@ -46,7 +46,8 @@ public class JobServlet extends HttpServlet {
 
         //分页
         PageHelper.startPage(pageNum,pageSize);
-        List<Job>jobs=jobService.selectJobByUid(u_id);
+        //查询所有job
+        List<Job> jobs = jobService.selectJobByUid(u_id);
 
         PageInfo<Job> info = new PageInfo<>(jobs);
 //        System.out.println(info.getList());
