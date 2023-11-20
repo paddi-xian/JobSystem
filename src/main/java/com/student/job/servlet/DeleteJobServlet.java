@@ -16,8 +16,9 @@ public class DeleteJobServlet extends HttpServlet {
     private final JobService jobService = (JobService) BeanFactory.getBean("jobService");
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //获取前端传来的j_id
         Integer j_id = Integer.parseInt(request.getParameter("j_id"));
-        System.out.println(j_id);
+//        System.out.println(j_id);
         int res = jobService.deleteJobByJID(j_id);
 
         if (res == 1) {

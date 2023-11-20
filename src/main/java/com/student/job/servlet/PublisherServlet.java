@@ -1,7 +1,9 @@
 package com.student.job.servlet;
 
 import com.student.job.mapper.PublisherMapper;
+import com.student.job.mapper.StudentMapper;
 import com.student.job.pojo.Publisher;
+import com.student.job.pojo.Student;
 import com.student.job.utils.SqlSessionUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -17,15 +19,33 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet({"/publisher","/updatePubServlet"})
+@WebServlet({"/showPublisher","/updatePubServlet","/publisherPerson"})
 public class PublisherServlet extends HttpServlet {
     @Override
     protected  void  service(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         String servletPath =request.getServletPath();
-        if ("/publisher".equals(servletPath)) {
+        if ("/showPublisher".equals(servletPath)) {
             doList(request,response);
         }else if ("/updatePubServlet".equals(servletPath)){
             doUpdate(request, response);
+        }else if("/publisherPerson".equals(servletPath)){
+            doPerson(request,response);
+        }
+    }
+
+
+    private   void doPerson(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        Integer u_id = Integer.parseInt(request.getParameter( "u_id"));
+        System.out.println(u_id);
+        SqlSessionFactory sqlSessionFactory = SqlSessionUtil.getSqlSessionFactory();
+        try(SqlSession session =sqlSessionFactory.openSession()){
+            PublisherMapper publisherMapper = session.getMapper(PublisherMapper.class);
+            Publisher publisher=publisherMapper.getPublisherById(u_id);
+            System.out.println(publisher);
+            request.getSession().removeAttribute("publisher");
+            request.getSession().setAttribute("publisher",publisher);
+            request.getRequestDispatcher("publisherPerson.jsp").forward(request,response);
         }
     }
 
@@ -36,9 +56,9 @@ public class PublisherServlet extends HttpServlet {
         try (SqlSession session = sqlSessionFactory.openSession()) {
             // 获取 mapper
             PublisherMapper publisherMapper = session.getMapper(PublisherMapper.class);
-            List<Publisher> pList = publisherMapper.getAllPublishers();
-            request.setAttribute("pList",pList);
-            System.out.println(pList);
+            List<Publisher> publisherList = publisherMapper.getAllPublishers();
+            request.setAttribute("publisherList",publisherList);
+            System.out.println(publisherList);
             session.commit();
         } catch (Exception e) {
             // 处理异常，返回错误页面和错误信息给用户
@@ -48,7 +68,7 @@ public class PublisherServlet extends HttpServlet {
         request.getRequestDispatcher("showPublisher.jsp").forward(request,response);
     }
     //更新发布者个人信息
-    private  void  doUpdate(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
+    protected  void  doUpdate(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
 
         String p_name = request.getParameter("p_name");
@@ -63,12 +83,11 @@ public class PublisherServlet extends HttpServlet {
             PublisherMapper publisherMapper = session.getMapper(PublisherMapper.class);
             publisherMapper.updatePublisher(p_name, p_email, p_telephone, p_address, p_introduction);
             session.commit();
-            session.commit();
         }catch (Exception e){
             request.getRequestDispatcher("error.jsp").forward(request,response);
             e.printStackTrace();
         }finally {
-            request.getRequestDispatcher("publisher.jsp").forward(request,response);
+            request.getRequestDispatcher("publisherUpdate.jsp").forward(request,response);
 
         }
 

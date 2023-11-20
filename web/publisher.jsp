@@ -29,7 +29,7 @@
                         <a href="showPublisher.jsp">个人中心</a>
                     </dd>
                     <dd>
-                        <a href="">安全设置</a>
+                        <a href="updatePwd.jsp">修改密码</a>
                     </dd>
                 </dl>
             </li>
@@ -47,10 +47,10 @@
                     <a class="" href="">主页</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="message.jsp" target="right">发布者个人中心</a>
+                            <a href="publisherPerson?u_id=${user.u_id}" target="right">发布者个人中心</a>
                         </dd>
                         <dd>
-                            <a href="message.jsp" target="right">发布者信息</a>
+                            <a href="publisherUpdate.jsp" target="right">发布者信息</a>
                         </dd>
                         <dd>
                             <a href="Job?pageNum=1" target="right">兼职岗位信息</a>
@@ -121,7 +121,7 @@
             title: title,
             iframeWidth: 500,
             iframeHeight: 300,
-            url: "updatePwd.html"
+            url: "updatePwd.jsp"
         });
     }
 </script>

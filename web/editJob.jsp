@@ -90,25 +90,29 @@
                 }
                 console.log(JSON.parse(sessionStorage.getItem("job")))
                 // this.job.j_id = JSON.parse(sessionStorage.getItem("job")).j_id;
-                axios.post('EditJobServlet',this.job)
-                    .then(response => {
-                        if(response.data == false){
-                            console.log(response.data)
-                            this.job.u_id = response.data;
-                            console.log(this.job.u_id)
-                            alert("修改失败！！")
-                            return;
-                        }else{
-                            console.log(response.data)
-                            this.job.u_id = response.data;
-                            console.log(this.job.u_id)
-                            alert("修改成功")
-                        }
-                        parent.postMessage("closeEditJob","http:localhost:8080/job_system_war_exploded/")
-                    })
-                    .catch(error =>{
-                        console.error(error);
-                    });
+                var ok = window.confirm("是否确认修改？");
+                if(ok){
+                    axios.post('EditJobServlet',this.job)
+                        .then(response => {
+                            if(response.data == false){
+                                console.log(response.data)
+                                this.job.u_id = response.data;
+                                console.log(this.job.u_id)
+                                alert("修改失败！！")
+                                return;
+                            }else{
+                                console.log(response.data)
+                                this.job.u_id = response.data;
+                                console.log(this.job.u_id)
+                                alert("修改成功")
+                            }
+                            parent.postMessage("closeEditJob","http:localhost:8080/job_system_war_exploded/")
+                        })
+                        .catch(error =>{
+                            console.error(error);
+                        });
+                }
+
             },
         }
     })
