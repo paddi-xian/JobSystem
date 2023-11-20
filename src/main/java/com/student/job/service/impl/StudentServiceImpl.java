@@ -11,6 +11,7 @@ import java.util.List;
 public class StudentServiceImpl implements StudentService {
     private StudentMapper studentMapper= SqlSessionUtil.openSession().getMapper(StudentMapper.class);
 
+    private SqlSession session = SqlSessionUtil.openSession();
     @Override
     public List<Student> getStuList() {
         List<Student> students=studentMapper.getStuList();
@@ -21,14 +22,22 @@ public class StudentServiceImpl implements StudentService {
         return studentMapper.addStudent(student);
     }
 
-
-    public boolean updateStudent(Student student){
-        SqlSession session = SqlSessionUtil.openSession();
-        StudentMapper studentMapper = session.getMapper(StudentMapper.class);
-        boolean res =studentMapper.updateStudent(student);
-        session.commit();
-        return res;
+    @Override
+    public int updateStudent(Student student) {
+        return studentMapper.updateStudent(student);
     }
+
+//    @Override
+//    public boolean updateStudent(Student student){
+//        if (session == null) {
+//            SqlSessionUtil.close(session);
+//            SqlSession session = SqlSessionUtil.openSession();
+//             studentMapper = session.getMapper(StudentMapper.class);
+//        }
+//        boolean res =studentMapper.updateStudent(student);
+//        session.commit();
+//        return res;
+//    }
 
 
 

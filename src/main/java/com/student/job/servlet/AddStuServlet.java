@@ -58,24 +58,28 @@ public class AddStuServlet extends HttpServlet {
        SqlSessionFactory sqlSessionFactory = SqlSessionUtil.getSqlSessionFactory();
        try (SqlSession session = sqlSessionFactory.openSession()) {
         StudentMapper studentMapper = session.getMapper(StudentMapper.class);
-        studentMapper.addStudent(student);
+
            if (student.getU_id().equals(user.getU_id())) {
                String uidError = "请勿重复添加信息";
                request.setAttribute("uidError", uidError);
                request.getRequestDispatcher("addStudent.jsp").forward(request, response);
+
+           }else{
+               studentMapper.addStudent(student);
+               request.getSession().setAttribute("student",student);
+               request.getRequestDispatcher("studentPerson.jsp").forward(request,response);
+               session.commit();
            }
-        session.commit();
-        request.getSession().setAttribute("student",student);
-        request.getRequestDispatcher("studentPerson.jsp").forward(request,response);
+
        } catch (Exception e) {
         e.printStackTrace();
         request.getRequestDispatcher("studentPerson.jsp").forward(request,response);
        }
-       int res = studentService.addStudent(student);
-        if (res>0) {
-            response.getWriter().println(student.getU_id());
-        }else {
-            response.getWriter().println(false);
-        }
+//       int res = studentService.addStudent(student);
+//        if (res>0) {
+//            response.getWriter().println(student.getU_id());
+//        }else {
+//            response.getWriter().println(false);
+//        }
    }
 }

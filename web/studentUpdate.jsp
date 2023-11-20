@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" href="css/app.css">
     <script src="js/vue.js"></script>
-    <script src="js/jquery-3.6.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="myplugs/js/plugs.js"></script>
     <script src="js/layui.js"></script>
 </head>
 <body>
@@ -22,7 +23,7 @@
     <div class="layui-row">
         <div class="layui-card">
             <div class="layui-card-header">修改个人信息</div>
-            <form class="layui-form layui-card-body" action="/updateStudent" method="post">
+            <form class="layui-form layui-card-body" action="updateStudent" method="post">
 <%--                修改姓名--%>
                 <div class="layui-form-item">
                     <label class="layui-form-label">学生姓名</label>
@@ -34,10 +35,11 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">性别</label>
                     <div class="layui-input-block">
-                     <select id="s_gender" v_model="student.s_gender">
-                     <option value="男">男性</option>
-                        <option value="女">女性</option>
-                     </select>
+<%--                     <select id="s_gender" v_model="student.s_gender">--%>
+<%--                     <option value="男">男性</option>--%>
+<%--                        <option value="女">女性</option>--%>
+<%--                     </select>--%>
+    <input type="text" id="s_gender" name="s_gender" v_model="student.s_gender" value="${student.s_gender}" value="" required  lay-verify="required"  class="layui-input">
                     </div>
                 </div>
 <%--    修改年龄--%>
@@ -70,8 +72,10 @@
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block">
-                        <input  type="button" class="layui-btn layui-btn-blue" id="editRole" lay-submit  value="提交" @click="studentUpdate"/>
-                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        <input type="hidden" name="u_id" value="${sessionScope.u_id}">
+                        <button  type="submit" value="update" class="layui-btn layui-btn-blue"lay-submit  lay-filter="formDemo" @click="studentUpdate">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </button>
                     </div>
                 </div>
             </form>
@@ -82,49 +86,66 @@
 <script>
     var form = layui.form
         ,layer = layui.layer;
-    new Vue({
-        el:'#app',
-        data:{
-            student: {
-                s_name: '',
-                s_gender: '',
-                s_age: '',
-                s_phone: '',
-                s_email:'',
-                s_intro:'',
-                u_id: '',
-            }
+    $.ajax({
+        url: 'updateStudent',
+        type: 'POST',
+        data: {
+            name: $('#name').val(),
+            gender: $('#gender').val(),
+            age: $('#age').val(),
+            phone: $('#phone').val(),
+            email: $('#email').val(),
+            intro: $('#intro').val(),
+            u_id: $('#u_id').val()
         },
-        methods:{
-            studentUpdate(){
-                console.log(JSON.parse(sessionStorage.getItem("student")))
-                // this.job.j_id = JSON.parse(sessionStorage.getItem("job")).j_id;
-                // this.student.u_id=JSON.parse(sessionStorage.getItem("u_id")).u_id;
-                this.student.s_id=JSON.parse(sessionStorage.getItem("s_id")).s_id;
-
-                axios.post('StudentServlet',this.student)
-                    .then(response => {
-                        if(response.data == false){
-                            // response.data.forEach((item))=>{
-                            console.log(response.data)
-                            this.student.s_id = response.data;
-                            console.log(this.student.s_id)
-                            alert("修改失败！！")
-                            return;
-                        }else{
-                            console.log(response.data)
-                            this.student.s_id = response.data;
-                            console.log(this.student.s_id)
-                            alert("修改成功")
-                        }
-                        parent.postMessage("closeStudentUpdate","http:localhost:8080/job_system_war_exploded/")
-                    })
-                    .catch(error =>{
-                        console.error(error);
-                    });
-            },
+        success: function(response) {
+            // 处理响应数据
         }
-    })
+    });
+    // boolean = false;
+    // new Vue({
+    //     el:'#app',
+    //     data:{
+    //         student: {
+    //             s_id:'',
+    //             s_name: '',
+    //             s_gender: '',
+    //             s_age: '',
+    //             s_phone: '',
+    //             s_email:'',
+    //             s_intro:'',
+    //             u_id: '',
+    //         }
+    //     },
+    //     methods:{
+    //         updateStudent(){
+    //             if(!boolean){
+    //                 return;
+    //             }
+    //             console.log(JSON.parse(sessionStorage.getItem("student")))
+    //             axios.post('UpdateStuServlet',this.student)
+    //                 .then(response => {
+    //                     if(response.data == false){
+    //                         console.log(response.data)
+    //                         this.student.u_id = response.data;
+    //                         console.log(this.student.u_id)
+    //                         alert("修改失败！！")
+    //                         return;
+    //                     }else{
+    //                         console.log(response.data)
+    //                         this.student.u_id = response.data;
+    //                         console.log(this.student.u_id)
+    //                         alert("修改成功")
+    //                     }
+    //                     // parent.postMessage("closeStudentUpdate","http:localhost:8080/job_system_war_exploded/")
+    //                 })
+    //                 .catch(error =>{
+    //                     console.error(error);
+    //                 })
+    //         },
+    //
+    //     }
+    // })
 </script>
 </body>
 </html>

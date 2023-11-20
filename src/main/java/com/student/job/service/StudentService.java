@@ -10,6 +10,6 @@ public interface StudentService {
     int addStudent(Student student);
 
 
-    boolean updateStudent(Student student);
+    int updateStudent(Student student);
 }
 
