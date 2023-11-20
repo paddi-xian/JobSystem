@@ -3,10 +3,28 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.student.job.mapper.StudentMapper">
-    <update id="updateStudent" parameterType="com.student.job.pojo.Student">
-        Update student
-        SET s_name = #{s_name}, s_gender = #{s_gender},s_age =#{s_age},
-        s_phone=#{s_phone},s_email=#{s_email},s_intro=#{s_intro}
+    <update id="updateStudent">
+        update student
+        <set>
+            <if test="s_name != null and s_name!=''">
+                s_name = #{s_name},
+            </if>
+            <if test="s_gender != null and s_gender!=''">
+                s_gender = #{s_gender},
+            </if>
+            <if test="s_age != null and s_age!=''">
+                s_age = #{s_age},
+            </if>
+            <if test="s_phone != null and s_phone!=''">
+                s_phone = #{s_phone},
+            </if>
+            <if test="s_email != null and s_email!=''">
+                s_email = #{s_email},
+            </if>
+            <if test="s_intro != null and s_intro !=''">
+                s_intro = #{s_intro},
+            </if>
+        </set>
         where u_id = #{u_id}
     </update>
 
@@ -16,6 +34,12 @@
 
     <select id="selectStudentByUid" resultType="com.student.job.pojo.Student">
         select s_id,s_name,s_gender,s_age,s_phone,s_email,s_intro,u_id  from student where u_id = #{u_id}
+    </select>
+    <select id="selectTotalStudent" resultType="java.lang.Long">
+        select count(*)from student
+    </select>
+    <select id="selectStudentByName" resultType="com.student.job.pojo.Student">
+        select s_id,s_name,s_gender,s_age,s_phone,s_email,s_intro,u_id  from student where u_name = #{u_name}
     </select>
 
     <select id="checkU_idExits" resultType="java.lang.Boolean">

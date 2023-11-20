@@ -8,10 +8,12 @@ import java.util.List;
 
 public interface StudentMapper {
     List<Student> getStuList();
-//    Student findById(String u_id);
     Student selectStudentByUid(@Param("u_id") Integer uId);
     int addStudent(Student student);
-//    List<Job> selectJobByUid(@Param("u_id") Integer uId);
+
+    Long selectTotalStudent();
+    List<Student> selectStudentByName(@Param("s_name") String sName);
+
     int updateStudent(Student student);
 //    boolean checkU_idExits(@Param("u_id") Integer u_id);
     boolean checkU_idExits(@Param("u_id")String u_id );

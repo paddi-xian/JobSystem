@@ -28,7 +28,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">学生姓名</label>
                     <div class="layui-input-block">
-                        <input type="text" id="s_name" name="s_name" v_model="student.s_name" value="${student.s_name}" value="" required  lay-verify="required"  class="layui-input">
+                        <input type="text" id="s_name" name="s_name" v_model="student.s_name" value="${student.s_name}" value=""   lay-verify="required"  class="layui-input">
                     </div>
                 </div>
 <%--    修改性别--%>
@@ -39,28 +39,28 @@
 <%--                     <option value="男">男性</option>--%>
 <%--                        <option value="女">女性</option>--%>
 <%--                     </select>--%>
-    <input type="text" id="s_gender" name="s_gender" v_model="student.s_gender" value="${student.s_gender}" value="" required  lay-verify="required"  class="layui-input">
+    <input type="text" id="s_gender" name="s_gender" v_model="student.s_gender" value="${student.s_gender}" value=""   lay-verify="required"  class="layui-input">
                     </div>
                 </div>
 <%--    修改年龄--%>
     <div class="layui-form-item">
         <label class="layui-form-label">年龄</label>
         <div class="layui-input-block">
-            <input type="text"id="s_age" name="s_age" v_model="student.s_age"  placeholder="${student.s_age}" required value="" lay-verify="required" class="layui-input">
+            <input type="text" id="s_age" name="s_age" v_model="student.s_age"  placeholder="${student.s_age}"  value="" lay-verify="required" class="layui-input">
         </div>
     </div>
 <%--    修改电话--%>
     <div class="layui-form-item">
         <label class="layui-form-label">电话</label>
         <div class="layui-input-block">
-            <input type="text" id="s_phone" name="s_phone" v_model="student.s_phone" placeholder="${student.s_phone}" required value="" lay-verify="required"  class="layui-input">
+            <input type="text" id="s_phone" name="s_phone" v_model="student.s_phone" placeholder="${student.s_phone}"  value="" lay-verify="required"  class="layui-input">
         </div>
     </div>
 <%--    修改邮箱--%>
     <div class="layui-form-item">
         <label class="layui-form-label">邮箱</label>
         <div class="layui-input-block">
-            <input type="text" id="s_email" name="s_email" v_model="student.s_email" placeholder="${student.s_email}" required value="" lay-verify="required" class="layui-input">
+            <input type="text" id="s_email" name="s_email" v_model="student.s_email" placeholder="${student.s_email}"  value="" lay-verify="required" class="layui-input">
         </div>
     </div>
 <%--    修改简介--%>
@@ -72,7 +72,7 @@
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block">
-                        <input type="hidden" name="u_id" value="${sessionScope.u_id}">
+<%--                        <input type="hidden" name="u_id" value="${sessionScope.u_id}">--%>
                         <button  type="submit" value="update" class="layui-btn layui-btn-blue"lay-submit  lay-filter="formDemo" @click="studentUpdate">立即提交</button>
                             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                         </button>
@@ -87,7 +87,7 @@
     var form = layui.form
         ,layer = layui.layer;
     $.ajax({
-        url: 'updateStudent',
+        url: '/updateStudent',
         type: 'POST',
         data: {
             name: $('#name').val(),
@@ -96,7 +96,7 @@
             phone: $('#phone').val(),
             email: $('#email').val(),
             intro: $('#intro').val(),
-            u_id: $('#u_id').val()
+            // u_id: $('#u_id').val()
         },
         success: function(response) {
             // 处理响应数据
