@@ -41,6 +41,7 @@ private UserMapper userMapper = SqlSessionUtil.openSession().getMapper(UserMappe
             request.setAttribute("message",message);
             request.getRequestDispatcher("register.jsp").forward(request,response);
             System.out.println("注册失败");
+            return;
         }
 
         boolean phoneExists = userMapper.checkTelephoneExits(telephone); // 调用MyBatis查询方法检查手机号是否存在

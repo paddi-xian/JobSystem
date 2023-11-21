@@ -75,7 +75,7 @@
                 <label><span id="emailError"></span></label>
                 <div id="divVerifyCode">
                 <%--验证码--%>
-                <input type="" placeholder="" name="vCode" id="vCode" required>
+                <input type="" placeholder="请输入验证码" name="vCode" id="vCode" required>
 
                 <%--验证码图片--%>
                     <img id="imgVerifyCode" src="createVerifyCodeServlet"/>

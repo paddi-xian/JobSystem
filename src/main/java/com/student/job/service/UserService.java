@@ -31,4 +31,6 @@ public interface UserService {
      * @return
      */
     public boolean changPwd(@Param("u_id") Integer u_id,@Param("old_pass") String old_pass,@Param("new_pass") String new_pass);
+
+    Boolean isHasEmail(String email);
 }

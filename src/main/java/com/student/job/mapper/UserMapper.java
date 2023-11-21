@@ -3,6 +3,7 @@ package com.student.job.mapper;
 import com.student.job.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -29,4 +30,7 @@ public interface UserMapper {
     User checkPwd(@Param("u_id") Integer u_id,@Param("u_pass") String u_pass);
 
     void resetPass(@Param("email")String email,@Param("newPass") String newPass);
+
+     @Select("select * from user where email = #{email}")
+     User isHasEmail(String email);
 }

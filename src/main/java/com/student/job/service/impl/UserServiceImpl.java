@@ -16,7 +16,8 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     private SqlSession session = SqlSessionUtil.openSession();
     private UserMapper userMapper = session.getMapper(UserMapper.class);
-//    private UserMapper userMapper = SqlSessionUtil.openSession().getMapper(UserMapper.class);
+
+    //    private UserMapper userMapper = SqlSessionUtil.openSession().getMapper(UserMapper.class);
     @Override
     public void register(User user) {
         userMapper.insertUser(user);
@@ -24,19 +25,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User login(String telephone, String u_pass) {
-        return userMapper.selectByTelAndPass(telephone,u_pass);
+        return userMapper.selectByTelAndPass(telephone, u_pass);
     }
 
     @Override
     public User checkPwd(Integer u_id, String u_pass) {
-        return userMapper.checkPwd(u_id,u_pass);
+        return userMapper.checkPwd(u_id, u_pass);
     }
 
 
     @Override
     public boolean changPwd(Integer u_id, String old_pass, String new_pass) {
-        User user = checkPwd(u_id,old_pass);
-        if(user != null && old_pass.equals(user.getU_pass())){
+        User user = checkPwd(u_id, old_pass);
+        if (user != null && old_pass.equals(user.getU_pass())) {
             String sha1NewPass = null;
             try {
                 sha1NewPass = getSHA1Hash(new_pass);
@@ -44,6 +45,20 @@ public class UserServiceImpl implements UserService {
                 throw new RuntimeException(e);
             }
             userMapper.updatePwd(sha1NewPass);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public Boolean isHasEmail(String email) {
+        if (session != null) {
+            SqlSessionUtil.close(session);
+            session = SqlSessionUtil.openSession();
+            userMapper = session.getMapper(UserMapper.class);
+        }
+        User user = userMapper.isHasEmail(email);
+        if (user != null) {
             return true;
         }
         return false;
