@@ -74,15 +74,20 @@ window.onload = function(){
     emailElt.onblur = function(){
         //获取email
         var email = emailElt.value;
-        //编写email的正则
-        var emailRegEXp = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-        var ok = emailRegEXp.test(email);
-        if(ok){
-            //合法
+        if(email === ""){
+            emailSpan.innerText = "邮箱不能为空";
         }else{
-            //不合法
-            emailSpan.innerText="请输入正确的邮箱格式";
+            //编写email的正则
+            var emailRegEXp = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+            var ok = emailRegEXp.test(email);
+            if(ok){
+                //合法
+            }else{
+                //不合法
+                emailSpan.innerText="请输入正确的邮箱格式";
+            }
         }
+
     }
 
     //给emailElt绑定focus
@@ -100,15 +105,21 @@ window.onload = function(){
     telephoneElt.onblur = function(){
         //获取telephone
         var telephone = telephoneElt.value;
-        //编写telephone的正则
-        var telephoneRegEXp = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
-        var ok = telephoneRegEXp.test(telephone);
-        if(ok){
-            //手机号合法
+        if(telephone === ""){
+            telephoneSpan.innerText = "手机号不能为空";
         }else{
-            //不合法
-            telephoneSpan.innerText="手机号不合法";
+            //编写telephone的正则
+            var telephoneRegEXp = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
+            var ok = telephoneRegEXp.test(telephone);
+            if(ok){
+                //手机号合法
+            }else{
+                //不合法
+                telephoneSpan.innerText="手机号不合法";
+            }
         }
+
+
     }
     //给telephoneElt绑定focus
     telephoneElt.onfocus = function(){
