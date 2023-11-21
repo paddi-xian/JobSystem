@@ -182,7 +182,7 @@ $
 				});
 				var str = "<div class='jq_dvloading' style='z-index:2;box-shadow: 0px 0px 5px #BCD4E5;border: 1px solid #BCD4E5 !important;position:absolute;background-Color:#fff;min-width:578px;width:578px;border: 1px solid rgba(0, 0, 0, 0.2);font-size: 13px;opacity:0;filter:alpha(opacity=0);-moz-opacity:0;'>"
 						+ "<div style='height:100px;padding:30px 30px;'>"
-						+ "<div style='font-weight:bold;height:100px;line-height:100px;text-indent:160px;font-size:16px;color: rgb(57, 57, 57);background-Image:url(css/images/loading.gif);background-repeat:no-repeat;background-position:40px 0px;'>正在加载，请稍后……</div>"
+						+ "<div style='font-weight:bold;height:100px;line-height:100px;text-indent:160px;font-size:16px;color: rgb(57, 57, 57);background-Image:url(/img/1.jpg);background-repeat:no-repeat;background-position:40px 0px;'>正在加载，请稍后……</div>"
 						+ "</div>" + "</div>";
 				$("body").append(str);
 
