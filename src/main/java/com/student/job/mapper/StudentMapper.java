@@ -16,7 +16,9 @@ public interface StudentMapper {
 
     int updateStudent(Student student);
 //    boolean checkU_idExits(@Param("u_id") Integer u_id);
-    boolean checkU_idExits(@Param("u_id")String u_id );
-    Student getStudentByUid(String u_id);
+
+
+    int checkStudentExists(@Param("u_id") String u_id);
+//    Student getStudentByUid(String u_id);
 
 }

@@ -36,15 +36,7 @@ public class AddStuServlet extends HttpServlet {
        String s_email = request.getParameter("s_email");
        String s_intro = request.getParameter("s_intro");
        String u_id = request.getParameter("u_id");
-//
-//       boolean u_idExists = studentMapper.checkU_idExits(u_id) ;
-//       if (u_idExists) {
-//           request.setAttribute("uidError", "请勿重复添加信息");
-//           request.getRequestDispatcher("addStudent.jsp").forward(request,response);
-//           return;
-//       }
-       //在传入的值没有一项为空才增加学生信息
-       //创建学生对象
+
        Student student = new Student();
        student.setS_name(s_name);
        student.setS_gender(s_gender);
@@ -58,8 +50,8 @@ public class AddStuServlet extends HttpServlet {
        SqlSessionFactory sqlSessionFactory = SqlSessionUtil.getSqlSessionFactory();
        try (SqlSession session = sqlSessionFactory.openSession()) {
         StudentMapper studentMapper = session.getMapper(StudentMapper.class);
-
-           if (student.getU_id().equals(user.getU_id())) {
+           int result = studentMapper.checkStudentExists(String.valueOf(student.getU_id()));
+           if (result > 0) {
                String uidError = "请勿重复添加信息";
                request.setAttribute("uidError", uidError);
                request.getRequestDispatcher("addStudent.jsp").forward(request, response);

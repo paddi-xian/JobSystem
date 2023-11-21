@@ -35,6 +35,12 @@
                 新增个人信息
               </button>
             </div>
+              <div class="am-btn-group am-btn-group-xs">
+                  <button type="button" id="update" class="btnupdate am-btn am-btn-default">
+                      <span class="am-icon-plus"></span>
+                      修改个人信息
+                  </button>
+              </div>
           </div>
         </div>
 <%--        <div class="am-u-sm-12 am-u-md-3">--%>
@@ -94,11 +100,11 @@
 </body>
 <script>
   $(function () {
-    $(".btnedit").click(function () {
+    $(".btnupdate").click(function () {
       $.jq_Panel({
         title: "修改个人信息",
         iframeWidth: 500,
-        iframeHeight: 300,
+        iframeHeight: 500,
         url: "studentUpdate.jsp"
       });
     });

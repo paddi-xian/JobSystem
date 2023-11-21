@@ -25,33 +25,17 @@ public class StudentMapperTest {
         sqlSession.commit();
         sqlSession.close();
     }
-
-    @Test
-    public void testSelectTotalStudent(){
-        SqlSession sqlSession = SqlSessionUtil.openSession();
-        StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
-        Long total = mapper.selectTotalStudent();
-        System.out.println("总记录条数："+total);
-        sqlSession.close();
-    }
-
     @Test
     public  void testUpdateStudent(){
         SqlSession sqlSession = SqlSessionUtil.openSession();
         StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
-        Student student = new Student(2021101,"敖丽丽","女",19,"14356789076","alii@qq.com","我是张丽丽",1005);
-        int count = mapper.updateStudent(student);
-        System.out.println(count);
-        sqlSession.commit();
-        sqlSession.close();
     }
-
-    @Test
-    public void testCheckStudentUid(){
-        SqlSession sqlSession = SqlSessionUtil.openSession();
-        StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
-//        Student student = mapper.getStudentByUid("1017");
-        System.out.println(mapper.checkU_idExits("1017"));
-        sqlSession.close();
-    }
+//    @Test
+//    public void testCheckStudentUid(){
+//        SqlSession sqlSession = SqlSessionUtil.openSession();
+//        StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
+////        Student student = mapper.getStudentByUid("1017");
+//        System.out.println(mapper.checkU_idExits("1017"));
+//        sqlSession.close();
+//    }
 }

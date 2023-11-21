@@ -53,8 +53,9 @@ public class StudentServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-
+        request.setCharacterEncoding("UTF-8");
         User user = (User) request.getSession().getAttribute("user");
+
         Integer u_id = user.getU_id();
         System.out.println(user.getU_id());
         String s_name = request.getParameter("s_name");
@@ -84,9 +85,9 @@ public class StudentServlet extends HttpServlet {
             if (rowsAffected > 0) {
                 session.commit();
                 session.close();
-                out.println("<p>Student information updated successfully.</p>");
+                out.println("<p>学生信息修改成功</p>");
             } else {
-                out.println("<p>Failed to update student information.</p>");
+                out.println("<p>学生信息修改失败</p>");
             }
         } catch (Exception e) {
             e.printStackTrace();

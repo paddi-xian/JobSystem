@@ -13,22 +13,26 @@
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="myplugs/js/plugs.js"></script>
     <script src="js/layui.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 </head>
 <body>
 <div  class="am-cf admin-main">
     <!-- content start -->
     <div class="admin-content">
         <div class="admin-content-body">
+
             <div class="am-g">
                 <form class="am-form am-form-horizontal" action="addStudServlet" method="post"
                       style="padding-top: 20px;">
-
                     <input value="504" name="roleId" type="hidden">
                     <div class="am-form-group">
                         <label for="s_name" class="am-u-sm-3 am-form-label">姓名</label>
                         <div class="am-u-sm-9">
                             <input id="s_name" v-model="student.s_name" required="" placeholder="输入你的名字" value=""
-                                   name="s_name" type="text">
+                                    name="s_name" type="text">
                         </div>
                     </div>
 
@@ -47,21 +51,22 @@
                                    value="" name="s_age" type="text">
                         </div>
                     </div>
-
+<%--                    <form onsubmit="return validateInput()">--%>
                     <div class="am-form-group">
                         <label for="s_phone" class="am-u-sm-3 am-form-label">电话号码</label>
                         <div class="am-u-sm-9">
-                            <input id="s_phone" v-model="student.s_phone" required="" placeholder="请输入你的联系电话"
-                                   value="" name="s_phone" type="text">
+                            <input id="s_phone" v-model="s_phone"  required="" placeholder="请输入你的联系电话"
+                                   onblur="validateInput()"  value="" name="s_phone" type="text">
                         </div>
-                    </div>
+                           </div>
                     <div class="am-form-group">
                         <label for="s_phone" class="am-u-sm-3 am-form-label">邮箱</label>
                         <div class="am-u-sm-9">
-                            <input id="s_email" v-model="student.s_email" required="" placeholder="请输入你的邮箱"
+                            <input id="s_email" v-model="s_email"  required="" placeholder="请输入你的邮箱"
                                    value="" name="s_email" type="text">
                         </div>
                     </div>
+
                     <div class="am-form-group">
                         <label for="s_intro" class="am-u-sm-3 am-form-label">简介</label>
                         <div class="am-u-sm-9">
@@ -77,6 +82,7 @@
                         </div>
                     </div>
                     <label><span id="uidError">${uidError}</span></label><br>
+<%--                    </form>--%>
 
                 <%--                    <div class="am-form-group">--%>
 <%--                        <div class="am-u-sm-9 am-u-sm-push-3">--%>
@@ -85,7 +91,7 @@
 <%--                    </div>--%>
                 </form>
             </div>
-        </div>
+            </div>
     </div>
 </div>
 </body>
@@ -113,58 +119,27 @@
                 console.log("添加失败");
             }
         })
-        //
-        // $.ajax({
-        //     url:"/checkStudent",
-        //     method:"GET",
-        //     data: {u_id:u_id},
-        //     success:function (data) {
-        //         if (data.exits){
-        //             console.log("请勿重复添加信息");
-        //         }else {
-        //         }
-        //
-        //     }
-        // })
     }
-    // new Vue({
-    //     el: "#app",
-    //     data: {
-    //         student: {
-    //             s_name: '',
-    //             s_gender: '',
-    //             s_age: '',
-    //             s_phone: '',
-    //             s_email:'',
-    //             s_intro:'',
-    //             u_id: '',
-    //         },
-    //
-    //     },
-    //     methods: {
-    //         addStudent() {
-    //             axios.post('addStudServlet', this.student)
-    //                 .then(response => {
-    //                     if (response.data == false) {
-    //                         console.log(response.data)
-    //                         this.student.u_id = response.data;
-    //                         console.log(this.student.u_id)
-    //                         alert("增加失败!!!")
-    //                         return;
-    //                     } else {
-    //                         console.log(response.data)
-    //                         this.student.u_id = response.data;
-    //                         console.log(this.student.u_id)
-    //                         alert("添加成功")
-    //                     }
-    //                 })
-    //                 .catch(error => {
-    //                     console.error(error);
-    //                 });
-    //
-    //         },
-    //     }
-    // })
+    function validateInput() {
+        var s_phone = document.getElementById("s_phone").value;
+        var s_email = document.getElementById("s_email").value;
+
+        // 判断电话号码格式
+        var phoneRegex =  /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/; // 这是一个示例电话号码格式
+        if (!phoneRegex.test(s_phone)) {
+            alert("电话号码格式不正确,请输入135、138、137开头的11位数字");
+            document.getElementById("s_phone").value = ""; // 清除电话号码输入框的内容
+            return;
+        }
+
+        // 判断邮箱格式
+        var emailRegex = /^[^@]+@[^@]+\.(?:com|cn)$/; // 这是一个示例邮箱格式
+        if (!emailRegex.test(s_email)) {
+            alert("邮箱格式不正确，请输入@字符， 以com或者cn结尾");
+            document.getElementById("s_email").value = ""; // 清除邮箱输入框的内容
+            return;
+        }
+    }
 
 </script>
 </html>

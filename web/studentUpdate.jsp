@@ -28,7 +28,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">学生姓名</label>
                     <div class="layui-input-block">
-                        <input type="text" id="s_name" name="s_name" v_model="student.s_name" value="${student.s_name}" value=""   lay-verify="required"  class="layui-input">
+                        <input type="text" id="s_name" name="s_name" v_model="student.s_name" value="${student.s_name}" value=""   class="layui-input">
                     </div>
                 </div>
 <%--    修改性别--%>
@@ -39,28 +39,30 @@
 <%--                     <option value="男">男性</option>--%>
 <%--                        <option value="女">女性</option>--%>
 <%--                     </select>--%>
-    <input type="text" id="s_gender" name="s_gender" v_model="student.s_gender" value="${student.s_gender}" value=""   lay-verify="required"  class="layui-input">
+    <input type="text" id="s_gender" name="s_gender" v_model="student.s_gender" value="${student.s_gender}" value=""   class="layui-input">
                     </div>
                 </div>
 <%--    修改年龄--%>
     <div class="layui-form-item">
         <label class="layui-form-label">年龄</label>
         <div class="layui-input-block">
-            <input type="text" id="s_age" name="s_age" v_model="student.s_age"  placeholder="${student.s_age}"  value="" lay-verify="required" class="layui-input">
+            <input type="text" id="s_age" name="s_age" v_model="student.s_age"  placeholder="${student.s_age}"  value="" class="layui-input">
         </div>
     </div>
 <%--    修改电话--%>
     <div class="layui-form-item">
         <label class="layui-form-label">电话</label>
         <div class="layui-input-block">
-            <input type="text" id="s_phone" name="s_phone" v_model="student.s_phone" placeholder="${student.s_phone}"  value="" lay-verify="required"  class="layui-input">
+            <input type="text" id="s_phone" name="s_phone" onblur="validateInput()"
+                   v_model="student.s_phone" placeholder="${student.s_phone}"  value=""  class="layui-input">
         </div>
     </div>
 <%--    修改邮箱--%>
     <div class="layui-form-item">
         <label class="layui-form-label">邮箱</label>
         <div class="layui-input-block">
-            <input type="text" id="s_email" name="s_email" v_model="student.s_email" placeholder="${student.s_email}"  value="" lay-verify="required" class="layui-input">
+            <input type="text" id="s_email" name="s_email" onblur="validateInput()"
+                   v_model="student.s_email" placeholder="${student.s_email}"  value=""  class="layui-input">
         </div>
     </div>
 <%--    修改简介--%>
@@ -102,50 +104,27 @@
             // 处理响应数据
         }
     });
-    // boolean = false;
-    // new Vue({
-    //     el:'#app',
-    //     data:{
-    //         student: {
-    //             s_id:'',
-    //             s_name: '',
-    //             s_gender: '',
-    //             s_age: '',
-    //             s_phone: '',
-    //             s_email:'',
-    //             s_intro:'',
-    //             u_id: '',
-    //         }
-    //     },
-    //     methods:{
-    //         updateStudent(){
-    //             if(!boolean){
-    //                 return;
-    //             }
-    //             console.log(JSON.parse(sessionStorage.getItem("student")))
-    //             axios.post('UpdateStuServlet',this.student)
-    //                 .then(response => {
-    //                     if(response.data == false){
-    //                         console.log(response.data)
-    //                         this.student.u_id = response.data;
-    //                         console.log(this.student.u_id)
-    //                         alert("修改失败！！")
-    //                         return;
-    //                     }else{
-    //                         console.log(response.data)
-    //                         this.student.u_id = response.data;
-    //                         console.log(this.student.u_id)
-    //                         alert("修改成功")
-    //                     }
-    //                     // parent.postMessage("closeStudentUpdate","http:localhost:8080/job_system_war_exploded/")
-    //                 })
-    //                 .catch(error =>{
-    //                     console.error(error);
-    //                 })
-    //         },
-    //
-    //     }
-    // })
+    function validateInput() {
+        var s_phone = document.getElementById("s_phone").value;
+        var s_email = document.getElementById("s_email").value;
+
+        // 判断电话号码格式
+        var phoneRegex =  /^(?:13[5-8]|137)\d{9}$/; // 这是一个示例电话号码格式
+        if (!phoneRegex.test(s_phone)) {
+            alert("电话号码格式不正确,请输入135、138、137开头的11位数字");
+            document.getElementById("s_phone").value = ""; // 清除电话号码输入框的内容
+            return;
+        }
+
+        // 判断邮箱格式
+        var emailRegex = /^[^@]+@[^@]+\.(?:com|cn)$/; // 这是一个示例邮箱格式
+        if (!emailRegex.test(s_email)) {
+            alert("邮箱格式不正确，请输入@字符， 以com或者cn结尾");
+            document.getElementById("s_email").value = ""; // 清除邮箱输入框的内容
+            return;
+        }
+    }
+
 </script>
 </body>
 </html>
