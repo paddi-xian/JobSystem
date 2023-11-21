@@ -72,25 +72,15 @@
                 </dl>
             </li>
             <li class="layui-nav-item">
-                                    <a href="javascript:;">暂未开放</a>
-                                    <dl class="layui-nav-child">
-
-                                    </dl>
-                                </li>
-
-                                <li class="layui-nav-item">
-                                    <a href="javascript:;">暂未开放</a>
-                                    <dl class="layui-nav-child">
-
-                                    </dl>
-                                </li>
-
-                                <li class="layui-nav-item">
-                                    <a href="javascript:;">暂未开放</a>
-                                    <dl class="layui-nav-child">
-
-                                    </dl>
-                                </li>
+                <dl class="layui-nav-child">
+                    <a href="javascript:;">暂未开放</a>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">暂未开放</a>
+                <dl class="layui-nav-child">
+                </dl>
+            </li>
         </ul>
             <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -99,7 +89,7 @@
                 </a>
                 <dl class="layui-nav-child">
                     <dd>
-                        <a href="#.jsp">个人中心</a>
+                        <a href="student?u_id=${user.u_id}" target="right">学生个人中心</a>
                     </dd>
                     <dd>
                         <a href="updatePwd.jsp">修改密码</a>
@@ -110,83 +100,22 @@
                 <a href="login.jsp">退出系统</a>
             </li>
         </ul>
-
+    </div>
     </div>
 
-<%--    <div class="layui-side layui-bg-black">--%>
-<%--        <div class="layui-side-scroll">--%>
-            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-<%--            <ul class="layui-nav layui-nav-tree" lay-filter="test">--%>
-<%--                <li class="layui-nav-item layui-nav-itemed">--%>
-<%--                    <a class="" href="javascript:;">主页</a>--%>
-<%--                    <dl class="layui-nav-child">--%>
-<%--                        <dd>--%>
-<%--                            <a href="student?u_id=${user.u_id}" target="right">学生个人中心</a>--%>
-<%--                        </dd>--%>
-<%--                        <dd>--%>
-<%--                            <a href="studentUpdate.jsp" target="right">学生修改个人信息</a>--%>
-<%--                        </dd>--%>
-<%--                        <dd>--%>
-<%--                            <a href="StuShowJob" target="right">学生查看兼职岗位信息</a>--%>
-<%--                        </dd>--%>
-<%--                    </dl>--%>
-<%--                </li>--%>
-<%--                <li class="layui-nav-item layui-nav-itemed" >--%>
-<%--                    <a href="javascript:;">兼职岗位管理</a>--%>
-<%--                    <dl class="layui-nav-child">--%>
-<%--                        <dd>--%>
-<%--                            <a href="message.jsp" target="right">留言区</a>--%>
-<%--                        </dd>--%>
-<%--                        <dd>--%>
-<%--                            <a href="1.jsp" target="right">暂未开放</a>--%>
-<%--                        </dd>--%>
-<%--                        <dd>--%>
-<%--                    </dl>--%>
-<%--                </li>--%>
-<%--                <li class="layui-nav-item">--%>
-<%--                    <a href="javascript:;">暂未开放</a>--%>
-<%--                    <dl class="layui-nav-child">--%>
-
-<%--                    </dl>--%>
-<%--                </li>--%>
-
-<%--                <li class="layui-nav-item">--%>
-<%--                    <a href="javascript:;">暂未开放</a>--%>
-<%--                    <dl class="layui-nav-child">--%>
-
-<%--                    </dl>--%>
-<%--                </li>--%>
-
-<%--                <li class="layui-nav-item">--%>
-<%--                    <a href="javascript:;">暂未开放</a>--%>
-<%--                    <dl class="layui-nav-child">--%>
-
-<%--                    </dl>--%>
-<%--                </li>--%>
-
-<%--                <li class="layui-nav-item">--%>
-<%--                    <a href="javascript:;">暂未开放</a>--%>
-<%--                    <dl class="layui-nav-child">--%>
-
-<%--                    </dl>--%>
-<%--                </li>--%>
-
-<%--            </ul>--%>
-<%--        </div>--%>
-<%--    </div>--%>
 
     <div style="z-index: 0;">
         <div class="scroll">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
-            <iframe src="welcome.jsp" name="right" frameborder="0" width="100%" height="1200"></iframe>
+            <iframe src="stuShowJob.jsp" name="right" frameborder="0" width="100%" height="1200"></iframe>
 
         </div>
     </div>
 
-    <div class="layui-footer" style="left:0;">
+    <div class="layui-footer" style="left:0;background-color: #23262e">
         <!-- 底部固定区域 -->
-        底部固定区域
+        <p style="color: white">底部固定区域</p>
     </div>
 </div>
 <script type="text/javascript">

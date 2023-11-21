@@ -5,10 +5,11 @@
   Time: 14:28
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false"%>
 <html>
 <head>
     <title>注册</title>
+    <script src="js/jquery-3.6.3.min.js"></script>
     <style>
         body{
             background-image: url("img/register1.jpg");
@@ -42,6 +43,21 @@
             color:red;
             font-size: 13px;
         }
+        /*验证码样式*/
+        #divVerifyCode {
+            width:392px;
+            text-align: center;
+            /*border: 1px solid #e2e2e2;*/
+        }
+        #vCode{
+            width:300px;
+            height:40px;
+            float: left;
+        }
+        #imgVerifyCode{
+            height:40px;
+            padding-left: 10px;
+        }
     </style>
 </head>
     <div class="login">
@@ -56,7 +72,16 @@
                 <input type="text" placeholder="输入手机号" name="telephone" id="telephone" required>
                 <label><span id="telephoneError">${telephoneError}</span></label>
                 <input type="text" placeholder="输入邮箱" name="email" id="email" required>
-                <label><span id="emailError"></span></label><br>
+                <label><span id="emailError"></span></label>
+                <div id="divVerifyCode">
+                <%--验证码--%>
+                <input type="" placeholder="" name="vCode" id="vCode" required>
+
+                <%--验证码图片--%>
+                    <img id="imgVerifyCode" src="createVerifyCodeServlet"/>
+                    <label><span>${message}</span></label>
+                </div>
+                <br>
                 <label for="role">请选择用户类型:</label>
                 <select id="role" name="role" >
                     <option value="学生">学生</option>
@@ -69,5 +94,18 @@
         </form>
     </div>
     <script src="js/registerRegx.js"></script>
+<script>
+    //换一张验证码
+    function _hyz() {
+        $("#imgVerifyCode").attr("src", "createVerifyCodeServlet?DateTime=" + new Date())
+    }
+    //点击图片换一张验证码
+    $(function () {
+        $("#imgVerifyCode").click(function () {
+            _hyz();
+        })
+    })
+
+</script>
 </body>
 </html>

@@ -33,6 +33,16 @@ private UserMapper userMapper = SqlSessionUtil.openSession().getMapper(UserMappe
         String email = request.getParameter("email");
         String role = request.getParameter("role");
 
+        String vCode = (String) request.getSession().getAttribute("vCode");
+        String vCode1 = request.getParameter("vCode");
+        //equalsIgnoreCase表示不区分大小写比较
+        if(!vCode1.equalsIgnoreCase(vCode) && vCode1 != ""){
+            String message = "验证码错误";
+            request.setAttribute("message",message);
+            request.getRequestDispatcher("register.jsp").forward(request,response);
+            System.out.println("注册失败");
+        }
+
         boolean phoneExists = userMapper.checkTelephoneExits(telephone); // 调用MyBatis查询方法检查手机号是否存在
         if (phoneExists) {
             //手机号已存在，返回错误页面
