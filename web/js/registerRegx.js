@@ -67,6 +67,32 @@ window.onload = function(){
         u_passErrorSpan.innerText = "";
     }
 
+    //获取email的span
+    var emailSpan = document.getElementById("emailError");
+    //给email绑定blur事件
+    var emailElt = document.getElementById("email");
+    emailElt.onblur = function(){
+        //获取email
+        var email = emailElt.value;
+        //编写email的正则
+        var emailRegEXp = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+        var ok = emailRegEXp.test(email);
+        if(ok){
+            //合法
+        }else{
+            //不合法
+            emailSpan.innerText="请输入正确的邮箱格式";
+        }
+    }
+
+    //给emailElt绑定focus
+    emailElt.onfocus = function(){
+        if(emailSpan.innerText != ""){
+            emailElt.value = "";
+        }
+        emailSpan.innerText = "";
+    }
+
     //获取telephone的span
     var telephoneSpan = document.getElementById("telephoneError");
     //给telephone绑定blur事件
@@ -105,6 +131,9 @@ window.onload = function(){
 
         telephoneElt.focus();
         telephoneElt.blur();
+
+        emailElt.focus();
+        emailElt.blur();
     }
 }
 

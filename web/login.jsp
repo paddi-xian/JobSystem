@@ -62,6 +62,7 @@
                 </c:if>
                 <input type="submit" value="Next" class="login-btn">
                 <p class="register-link"><a href="register.jsp">没有账号？请先注册</a></p>
+                <p class="register-link" style="padding-right: 20px"><a href="forgotPass.jsp">忘记密码</a></p>
             </div>
         </form>
     </div>
