@@ -13,7 +13,7 @@ public class UserMapperTest {
     public void testInsertUser(){
         SqlSession sqlSession = SqlSessionUtil.openSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        User user = new User(1001,"张松","123","发布者","1234");
+        User user = new User(1001,"张松","123","13456278901","1111.qq.com","发布者");
         int count = mapper.insertUser(user);
         System.out.println("插入"+count);
         sqlSession.commit();
