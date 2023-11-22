@@ -107,7 +107,7 @@
     <div style="z-index: 0;">
         <div class="scroll">
         <!-- 内容主体区域 -->
-        <div style="padding: 15px;">
+        <div>
             <iframe src="stuShowJob.jsp" name="right" frameborder="0" width="100%" height="1200"></iframe>
 
         </div>
