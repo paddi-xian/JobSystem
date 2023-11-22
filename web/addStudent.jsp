@@ -16,7 +16,19 @@
     <script src="js/vue.js"></script>
     <script src="js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
+    <style>
+        label{
+            font-weight: bold;
+            font-size: 15px;
+        }
+        .am-form-group{
+            margin-top: 10px;
+        }
+       /*input{*/
+       /*     width:25px ;*/
+       /*     height:35px;*/
+       /* }*/
+    </style>
 </head>
 <body>
 <div  class="am-cf admin-main">
@@ -26,7 +38,8 @@
 
             <div class="am-g">
                 <form class="am-form am-form-horizontal" action="addStudServlet" method="post"
-                      style="padding-top: 20px;">
+                     >
+                    <div class="forlable"  style="padding-top: 5px;margin-left: 150px">
                     <input value="504" name="roleId" type="hidden">
                     <div class="am-form-group">
                         <label for="s_name" class="am-u-sm-3 am-form-label">姓名</label>
@@ -75,7 +88,8 @@
                         </div>
                     </div>
                     <label><span id="u_idError">${u_idError}</span></label>
-                    <div class="layui-form-item">
+                    </div>
+                    <div class="layui-form-item" style="margin-top: 30px ;margin-left: 40px">
                         <div class="layui-input-block">
                             <button  type="submit" class="layui-btn layui-btn-blue"lay-submit  lay-filter="formDemo" @click="addStudent">立即提交</button>
                             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
@@ -127,15 +141,15 @@
         // 判断电话号码格式
         var phoneRegex =  /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/; // 这是一个示例电话号码格式
         if (!phoneRegex.test(s_phone)) {
-            alert("电话号码格式不正确,请输入135、138、137开头的11位数字");
+            alert("电话号码格式不正确");
             document.getElementById("s_phone").value = ""; // 清除电话号码输入框的内容
             return;
         }
 
         // 判断邮箱格式
-        var emailRegex = /^[^@]+@[^@]+\.(?:com|cn)$/; // 这是一个示例邮箱格式
+        var emailRegex =  /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;// 这是一个示例邮箱格式
         if (!emailRegex.test(s_email)) {
-            alert("邮箱格式不正确，请输入@字符， 以com或者cn结尾");
+            alert("邮箱格式不正确");
             document.getElementById("s_email").value = ""; // 清除邮箱输入框的内容
             return;
         }

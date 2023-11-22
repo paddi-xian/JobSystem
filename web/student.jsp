@@ -46,10 +46,10 @@
                         <a href="student?u_id=${user.u_id}" target="right">学生个人中心</a>
                     </dd>
                     <dd>
-                        <a href="studentUpdate.jsp" target="right">学生修改个人信息</a>
+                        <a href="StuShowJob" target="right">学生查看兼职岗位信息</a>
                     </dd>
                     <dd>
-                        <a href="StuShowJob" target="right">学生查看兼职岗位信息</a>
+                        <a href="#" target="right">学生管理工作收藏</a>
                     </dd>
                 </dl>
             </li>
@@ -107,7 +107,7 @@
     <div style="z-index: 0;">
         <div class="scroll">
         <!-- 内容主体区域 -->
-        <div style="padding: 15px;">
+        <div >
             <iframe src="stuShowJob.jsp" name="right" frameborder="0" width="100%" height="1200"></iframe>
 
         </div>

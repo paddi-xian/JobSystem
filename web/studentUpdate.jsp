@@ -10,19 +10,19 @@
 <html>
 <head>
     <title>学生修改信息页面</title>
-    <link rel="stylesheet" href="css/amazeui.min.css">
-    <link rel="stylesheet" href="css/admin.css">
-    <link rel="stylesheet" href="css/app.css">
-    <script src="js/vue.js"></script>
+    <link rel="stylesheet" href="css/layui.css">
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="myplugs/js/plugs.js"></script>
     <script src="js/layui.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
 <div id="app" class="layui-content">
     <div class="layui-row">
         <div class="layui-card">
-            <div class="layui-card-header">修改个人信息</div>
+            <div class="layui-card-header">初次登录请新增信息</div>
             <form class="layui-form layui-card-body" action="updateStudent" method="post">
 <%--                修改姓名--%>
                 <div class="layui-form-item">
@@ -72,7 +72,7 @@
                         <textarea id="s_intro" name="s_intro" v_model="student.s_intro" placeholder="${student.s_intro}" value="" placeholder="请输入内容(100字以内)" class="layui-textarea"></textarea>
                     </div>
                 </div>
-                <div class="layui-form-item">
+                <div class="layui-form-item" style="margin-top: 20px " >
                     <div class="layui-input-block">
 <%--                        <input type="hidden" name="u_id" value="${sessionScope.u_id}">--%>
                         <button  type="submit" value="update" class="layui-btn layui-btn-blue"lay-submit  lay-filter="formDemo" @click="studentUpdate">立即提交</button>
@@ -109,17 +109,17 @@
         var s_email = document.getElementById("s_email").value;
 
         // 判断电话号码格式
-        var phoneRegex =  /^(?:13[5-8]|137)\d{9}$/; // 这是一个示例电话号码格式
+        var phoneRegex =  /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/; // 这是一个示例电话号码格式
         if (!phoneRegex.test(s_phone)) {
-            alert("电话号码格式不正确,请输入135、138、137开头的11位数字");
+            alert("电话号码格式不正确");
             document.getElementById("s_phone").value = ""; // 清除电话号码输入框的内容
             return;
         }
 
         // 判断邮箱格式
-        var emailRegex = /^[^@]+@[^@]+\.(?:com|cn)$/; // 这是一个示例邮箱格式
+        var emailRegex = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/; // 这是一个示例邮箱格式
         if (!emailRegex.test(s_email)) {
-            alert("邮箱格式不正确，请输入@字符， 以com或者cn结尾");
+            alert("邮箱格式不正确");
             document.getElementById("s_email").value = ""; // 清除邮箱输入框的内容
             return;
         }
