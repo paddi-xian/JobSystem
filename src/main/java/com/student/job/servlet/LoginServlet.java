@@ -33,6 +33,16 @@ public class LoginServlet extends HttpServlet {
         String u_pass = request.getParameter("u_pass");
         System.out.println(telephone+"+++++"+u_pass);
 
+        //验证码判断
+        String vCode = (String) request.getSession().getAttribute("vCode");
+        String vCode1 = request.getParameter("vCode");
+        if (!vCode1.equalsIgnoreCase(vCode) && vCode1 != "") {
+            String message = "验证码错误";
+            request.setAttribute("message", message);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+            System.out.println("登录失败");
+        }
+
         //从前端获取的密码进行SHA1加密
         String shA1Password = null;
         try {

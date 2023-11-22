@@ -30,7 +30,19 @@ private UserMapper userMapper = SqlSessionUtil.openSession().getMapper(UserMappe
         String u_name = request.getParameter("u_name");
         String u_pass = request.getParameter("u_pass");
         String telephone = request.getParameter("telephone");
+        String email = request.getParameter("email");
         String role = request.getParameter("role");
+
+        String vCode = (String) request.getSession().getAttribute("vCode");
+        String vCode1 = request.getParameter("vCode");
+        //equalsIgnoreCase表示不区分大小写比较
+        if(!vCode1.equalsIgnoreCase(vCode) && vCode1 != ""){
+            String message = "验证码错误";
+            request.setAttribute("message",message);
+            request.getRequestDispatcher("register.jsp").forward(request,response);
+            System.out.println("注册失败");
+            return;
+        }
 
         boolean phoneExists = userMapper.checkTelephoneExits(telephone); // 调用MyBatis查询方法检查手机号是否存在
         if (phoneExists) {
@@ -45,6 +57,7 @@ private UserMapper userMapper = SqlSessionUtil.openSession().getMapper(UserMappe
         user.setU_name(u_name);
         user.setU_pass(u_pass);
         user.setTelephone(telephone);
+        user.setEmail(email);
         user.setRole(role);
 
         //调用Mybatis的Mapper接口插入用户数据
