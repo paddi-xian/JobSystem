@@ -31,7 +31,7 @@
         .con {
             width: 100%;
             height: 400px;
-            background-color: #aaaaaa;
+            background-color: rgb(0 0 0 / 18%);
         }
 
         .container .carousel .carousel-inner .item > img {
@@ -44,6 +44,9 @@
             width: 900px;
             /* align-items: center; */
             margin-left: 150px;
+        }
+        #myCarousel{
+            margin-left: 130px;
         }
 
         .search {

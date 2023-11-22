@@ -13,51 +13,47 @@
     <link rel="stylesheet" href="css/amazeui.min.css">
     <link rel="stylesheet" href="css/admin.css">
     <style>
-        body{
+        body {
             background-image: url("img/register1.jpg");
         }
-        .admin-main{
+        .admin-main {
             padding-top: 0px;
+        }
+        #old_pass,#new_pass,#new_pass2{
+            width: 50%;
         }
     </style>
 </head>
 <body>
-            <div class="am-g">
-                <form class="am-form am-form-horizontal"
-                      method="post"
-                      style="padding-top:30px;" data-am-validator>
-                    <div class="am-form-group">
-                        <label class="am-u-sm-3 am-form-label">
-                            原密码 </label>
-                        <div class="am-u-sm-9">
-                            <input type="password" id="old_pass" required placeholder="请输入原密码"
-                                   name="u_pass">
-                        </div>
-                    </div>
-                    <div class="am-form-group">
-                        <label class="am-u-sm-3 am-form-label">
-                            新密码 </label>
-                        <div class="am-u-sm-9">
-                            <input type="password" id="new_pass" required placeholder="请输入新密码"
-                                   name="u_pass">
-                        </div>
-                    </div>
-                    <div class="am-form-group">
-                        <label class="am-u-sm-3 am-form-label">
-                            确认密码</label>
-                        <div class="am-u-sm-9">
-                            <input type="password" id="new_pass2" required placeholder="请确认密码"
-                                   name="u_pass"  data-equal-to="#doc-vld-pwd-1"  required>
-                        </div>
-                    </div>
-                    <div class="am-form-group">
-                        <div class="am-u-sm-9 am-u-sm-push-3">
-                            <input type="submit" class="am-btn am-btn-success" value="修改密码" onclick="submitForm()"/>
-                        </div>
-                    </div>
-                </form>
+<div class="am-g">
+    <form class="am-form am-form-horizontal"
+          method="post"
+          style="padding-top:30px;" data-am-validator>
+        <div class="am-form-group">
+            <label class="am-u-sm-3 am-form-label">原密码 </label>
+            <div class="am-u-sm-9">
+                <input type="password" id="old_pass" required placeholder="请输入原密码" name="u_pass">
             </div>
-
+        </div>
+        <div class="am-form-group">
+            <label class="am-u-sm-3 am-form-label"> 新密码 </label>
+            <div class="am-u-sm-9">
+                <input type="password" id="new_pass" required placeholder="请输入新密码" name="u_pass">
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label class="am-u-sm-3 am-form-label">确认密码</label>
+            <div class="am-u-sm-9">
+                <input type="password" id="new_pass2" required placeholder="请确认密码" name="u_pass">
+            </div>
+        </div>
+        <div class="am-form-group">
+            <div class="am-u-sm-9 am-u-sm-push-3">
+                <input type="submit" class="am-btn am-btn-success" value="修改密码" onclick="submitForm()"/>
+            </div>
+        </div>
+    </form>
+</div>
 <script>
     function submitForm() {
         var u_id = document.getElementById("u_id").value;
