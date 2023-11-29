@@ -4,7 +4,7 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.student.job.mapper.JobMapper">
     <insert id="addJob">
-        insert into Job value(null,#{j_name},#{j_description},#{j_salary},#{j_hours},#{u_id})
+        insert into Job value(null,#{j_name},#{j_description},#{j_salary},#{j_hours},#{u_id},#{j_require},#{j_status})
     </insert>
     <update id="editJob">
         <!--动态sql-->
@@ -22,6 +22,9 @@
             <if test="j_hours != null and j_hours !=''">
                 j_hours = #{j_hours}
             </if>
+            <if test="j_require != null and j_require !=''">
+                j_require = #{j_require}
+            </if>
         </set>
         where j_id = #{j_id}
     </update>
@@ -31,7 +34,7 @@
     </delete>
 
     <select id="selectJobByUid" resultType="com.student.job.pojo.Job">
-        select j_id,j_name,j_description,j_salary,j_hours,j_hours,u_id  from job where u_id = #{u_id}
+        select j_id,j_name,j_description,j_salary,j_hours,j_hours,u_id,j_require,j_status  from job where u_id = #{u_id}
     </select>
 
     <select id="selectAllJob" resultType="com.student.job.pojo.Job">

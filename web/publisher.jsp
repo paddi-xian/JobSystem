@@ -57,7 +57,7 @@
                         </dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item layui-nav-itemed" >
+                <li class="layui-nav-item layui-nav-itemed">
                     <a href="javascript:;">兼职岗位管理</a>
                     <dl class="layui-nav-child">
                         <dd>

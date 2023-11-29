@@ -35,10 +35,14 @@
                                 <input id="j_name" v-model="job.j_name" required="" placeholder="${job.j_name}"   name="j_name" type="text">
                             </div>
                         </div>
+
                         <div class="am-form-group">
-                            <label for="j_description" class="am-u-sm-3 am-form-label">兼职岗位描述</label>
+                            <label class="am-u-sm-3 am-form-label">学历要求</label>
                             <div class="am-u-sm-9">
-                                <input id="j_description" v-model="job.j_description" required="" placeholder="${job.j_description}" value="" name="j_description" type="text">
+                                <input type="radio" name="group1" value="不限" v-model="job.j_require">不限
+                                <input type="radio" name="group1" value="大专" v-model="job.j_require">大专
+                                <input type="radio" name="group1" value="本科" v-model="job.j_require">本科
+                                <input type="radio" name="group1" value="研究生" v-model="job.j_require">研究生
                             </div>
                         </div>
 
@@ -59,6 +63,14 @@
                         </div>
 
                         <div class="am-form-group">
+                            <label for="j_description" class="am-u-sm-3 am-form-label">兼职岗位描述</label>
+                            <div class="am-u-sm-9">
+                                <textarea id="j_description" v-model="job.j_description" placeholder="${job.j_description}" class="verify" name="j_description" style="width:343px;height: 100px" cols="32" rows="4"></textarea>
+                                <div id="is_j_description"></div>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
                             <div class="am-u-sm-9 am-u-sm-push-3">
                                 <input type="button" id="editRole" class="am-btn am-btn-success" value="提交" @click="editJob"/>
                             </div>
@@ -70,7 +82,7 @@
     </div>
 </body>
 <script>
-    let boolean = false;
+    let boolean = true;
     new Vue({
         el:"#app",
         data:{
@@ -81,6 +93,7 @@
                 j_salary: '',
                 j_hours: '',
                 u_id:'',
+                j_require:'',
             },
         },
         methods:{
