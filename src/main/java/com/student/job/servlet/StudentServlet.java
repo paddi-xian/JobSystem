@@ -1,6 +1,5 @@
 package com.student.job.servlet;
 
-import com.alibaba.fastjson.JSON;
 import com.student.job.mapper.StudentMapper;
 import com.student.job.mapper.UserMapper;
 import com.student.job.pojo.Student;
@@ -53,28 +52,50 @@ public class StudentServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        request.setCharacterEncoding("UTF-8");
         User user = (User) request.getSession().getAttribute("user");
 
         Integer u_id = user.getU_id();
         System.out.println(user.getU_id());
         String s_name = request.getParameter("s_name");
         String s_gender = request.getParameter("s_gender");
-        //String s_age = request.getParameter("s_age");
         Integer s_age = Integer.parseInt(request.getParameter( "s_age"));
         String s_phone = request.getParameter("s_phone");
         String s_email = request.getParameter("s_email");
         String s_intro = request.getParameter("s_intro");
+        String s_college = request.getParameter("s_college");
+        String s_prize = request.getParameter("s_prize");
+        String s_experience = request.getParameter("s_experience");
+        String s_job = request.getParameter("s_job");
 
         Student student = new Student();
         student.setS_name(s_name);
         student.setS_gender(s_gender);
-        //student.setS_age(Integer.valueOf(s_age));
         student.setS_age(s_age);
-        student.setS_phone(s_phone);
-        student.setS_email(s_email);
+        student.setS_phone(user.getTelephone());
+        student.setS_email(user.getEmail());
         student.setS_intro(s_intro);
         student.setU_id(user.getU_id());
+        student.setS_college(s_college);
+        student.setS_prize(s_prize);
+        student.setS_experience(s_experience);
+        student.setS_job(s_job);
+        // 检查电话号码和邮箱是否需要更新
+        if (!s_phone.equals(user.getTelephone()) || !s_email.equals(user.getEmail())) {
+            // 更新User表的电话和邮箱信息
+            user.setTelephone(s_phone);
+            user.setEmail(s_email);
+            SqlSessionFactory sqlSessionFactory = SqlSessionUtil.getSqlSessionFactory();
+            try (SqlSession session = sqlSessionFactory.openSession()) {
+                StudentMapper studentMapper = session.getMapper(StudentMapper.class);
+                int rowsAffected = studentMapper.updateUser(user);
+                System.out.println("User table rows affected: " + rowsAffected);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        // 更新Student表的信息
+        student.setS_phone(user.getTelephone()); // 使用更新后的电话号码或原始电话号码（如果没有更改）
+        student.setS_email(user.getEmail()); // 使用更新后的邮箱或原始邮箱（如果没有更改）
 
         SqlSessionFactory sqlSessionFactory = SqlSessionUtil.getSqlSessionFactory();
         try (SqlSession session = sqlSessionFactory.openSession()) {
@@ -83,16 +104,18 @@ public class StudentServlet extends HttpServlet {
             System.out.println(rowsAffected);
             System.out.println(student);
             if (rowsAffected > 0) {
-                session.commit();
+                session.commit();// 提交事务，保存更改
                 session.close();
-                out.println("<p>学生信息修改成功</p>");
-            } else {
-                out.println("<p>学生信息修改失败</p>");
+                request.setCharacterEncoding("UTF-8");
+                out.println("<p>Student information updated successfully.</p>");
+            }
+            else {
+                request.setCharacterEncoding("UTF-8");
+                out.println("<p>failed</p>");
             }
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(student);
         }
-
     }
 }

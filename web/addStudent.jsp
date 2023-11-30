@@ -44,7 +44,7 @@
                     <div class="am-form-group">
                         <label for="s_name" class="am-u-sm-3 am-form-label">姓名</label>
                         <div class="am-u-sm-9">
-                            <input id="s_name" v-model="student.s_name" required="" placeholder="输入你的名字" value=""
+                            <input id="s_name" v-model="student.s_name" required="" placeholder="输入你的真实名字" value=""
                                     name="s_name" type="text">
                         </div>
                     </div>
@@ -68,15 +68,15 @@
                     <div class="am-form-group">
                         <label for="s_phone" class="am-u-sm-3 am-form-label">电话号码</label>
                         <div class="am-u-sm-9">
-                            <input id="s_phone" v-model="s_phone"  required="" placeholder="请输入你的联系电话"
-                                   onblur="validateInput()"  value="" name="s_phone" type="text">
+                            <input id="s_phone" v-model="s_phone"  required=""
+                                   onblur="validateInput()"  value="${user.telephone}" name="s_phone" type="text" readonly>
                         </div>
                            </div>
                     <div class="am-form-group">
-                        <label for="s_phone" class="am-u-sm-3 am-form-label">邮箱</label>
+                        <label for="s_email" class="am-u-sm-3 am-form-label">邮箱</label>
                         <div class="am-u-sm-9">
-                            <input id="s_email" v-model="s_email"  required="" placeholder="请输入你的邮箱"
-                                   value="" name="s_email" type="text">
+                            <input id="s_email" v-model="s_email"  required=""
+                                   value="${user.email}" name="s_email" type="text"readonly>
                         </div>
                     </div>
 
@@ -87,7 +87,40 @@
                                    value="" name="s_intro" type="text">
                         </div>
                     </div>
-                    <label><span id="u_idError">${u_idError}</span></label>
+
+                        <div class="am-form-group">
+                            <label for="s_college" class="am-u-sm-3 am-form-label">就读经历</label>
+                            <div class="am-u-sm-9">
+                                <input id="s_college" v-model="student.s_college" required="" placeholder="请输入你的就读经历"
+                                       value="" name="s_college" type="text">
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label for="s_prize" class="am-u-sm-3 am-form-label">获奖经历</label>
+                            <div class="am-u-sm-9">
+                                <input id="s_prize" v-model="student.s_prize" required="" placeholder="请输入你的获奖经历"
+                                       value="" name="s_prize" type="text">
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label for="s_experience" class="am-u-sm-3 am-form-label">工作经历</label>
+                            <div class="am-u-sm-9">
+                                <input id="s_experience" v-model="student.s_experience" required="" placeholder="请输入你的工作经历"
+                                       value="" name="s_experience" type="text">
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label for="s_job" class="am-u-sm-3 am-form-label">求职意向</label>
+                            <div class="am-u-sm-9">
+                                <input id="s_job" v-model="student.s_job" required="" placeholder="请输入你的求职意向"
+                                       value="" name="s_job" type="text">
+                            </div>
+                        </div>
+
+                        <label><span id="u_idError">${u_idError}</span></label>
                     </div>
                     <div class="layui-form-item" style="margin-top: 30px ;margin-left: 40px">
                         <div class="layui-input-block">
@@ -96,13 +129,7 @@
                         </div>
                     </div>
                     <label><span id="uidError">${uidError}</span></label><br>
-<%--                    </form>--%>
 
-                <%--                    <div class="am-form-group">--%>
-<%--                        <div class="am-u-sm-9 am-u-sm-push-3">--%>
-<%--                            <input id="addRole" class="am-btn am-btn-success" value="提交" @click="addStudent"/>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
                 </form>
             </div>
             </div>
@@ -116,7 +143,8 @@
                           s_age,
                           s_phone,
                           s_email,
-                          s_intro) {
+                          s_intro,
+                          s_college,s_prize,s_experience,s_job) {
         $.ajax({
             url: "/addStudServlet",
             method: "Post",
@@ -125,7 +153,8 @@
                 s_age: s_age,
                 s_phone: s_phone,
                 s_email:s_email,
-                s_intro:s_intro},
+                s_intro:s_intro, s_college:s_college,
+                s_prize:s_prize,s_experience:s_experience,s_job:s_job},
             success:function (){
                 console.log("添加成功");
             },
@@ -134,26 +163,26 @@
             }
         })
     }
-    function validateInput() {
-        var s_phone = document.getElementById("s_phone").value;
-        var s_email = document.getElementById("s_email").value;
-
-        // 判断电话号码格式
-        var phoneRegex =  /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/; // 这是一个示例电话号码格式
-        if (!phoneRegex.test(s_phone)) {
-            alert("电话号码格式不正确");
-            document.getElementById("s_phone").value = ""; // 清除电话号码输入框的内容
-            return;
-        }
-
-        // 判断邮箱格式
-        var emailRegex =  /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;// 这是一个示例邮箱格式
-        if (!emailRegex.test(s_email)) {
-            alert("邮箱格式不正确");
-            document.getElementById("s_email").value = ""; // 清除邮箱输入框的内容
-            return;
-        }
-    }
+    // function validateInput() {
+    //     var s_phone = document.getElementById("s_phone").value;
+    //     var s_email = document.getElementById("s_email").value;
+    //
+    //     // 判断电话号码格式
+    //     var phoneRegex =  /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/; // 这是一个示例电话号码格式
+    //     if (!phoneRegex.test(s_phone)) {
+    //         alert("电话号码格式不正确");
+    //         document.getElementById("s_phone").value = ""; // 清除电话号码输入框的内容
+    //         return;
+    //     }
+    //
+    //     // 判断邮箱格式
+    //     var emailRegex =  /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;// 这是一个示例邮箱格式
+    //     if (!emailRegex.test(s_email)) {
+    //         alert("邮箱格式不正确");
+    //         document.getElementById("s_email").value = ""; // 清除邮箱输入框的内容
+    //         return;
+    //     }
+    // }
 
 </script>
 </html>

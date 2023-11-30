@@ -18,6 +18,10 @@ public class Student implements Serializable {
     private String s_email;
     private String s_intro;
     private Integer u_id;
+    private String s_college;
+    private String s_prize;
+    private String s_experience;
+    private String s_job;
 
 
 

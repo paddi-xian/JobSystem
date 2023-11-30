@@ -28,6 +28,8 @@ public class AddStuServlet extends HttpServlet {
        //从session里面获取user的ID
        User user = (User) request.getSession().getAttribute("user");
        System.out.println(user.getU_id());
+       System.out.println(user.getEmail());
+       System.out.println(user.getTelephone());
        request.setCharacterEncoding("UTF-8");
        String s_name = request.getParameter("s_name");
        String s_gender = request.getParameter("s_gender");
@@ -37,14 +39,25 @@ public class AddStuServlet extends HttpServlet {
        String s_intro = request.getParameter("s_intro");
        String u_id = request.getParameter("u_id");
 
-       Student student = new Student();
+       String s_college = request.getParameter("s_college");
+       String s_prize = request.getParameter("s_prize");
+       String s_experience = request.getParameter("s_experience");
+       String s_job = request.getParameter("s_job");
+
+
+        Student student = new Student();
        student.setS_name(s_name);
        student.setS_gender(s_gender);
        student.setS_age(Integer.valueOf(s_age));
-       student.setS_phone(s_phone);
-       student.setS_email(s_email);
+       student.setS_phone(user.getTelephone());
+       student.setS_email(user.getEmail());
        student.setS_intro(s_intro);
        student.setU_id(user.getU_id());
+
+       student.setS_college(s_college);
+       student.setS_prize(s_prize);
+       student.setS_experience(s_experience);
+       student.setS_job(s_job);
 
        //调用Mybatis的Mapper接口插入用户数据
        SqlSessionFactory sqlSessionFactory = SqlSessionUtil.getSqlSessionFactory();
@@ -67,11 +80,5 @@ public class AddStuServlet extends HttpServlet {
         e.printStackTrace();
         request.getRequestDispatcher("studentPerson.jsp").forward(request,response);
        }
-//       int res = studentService.addStudent(student);
-//        if (res>0) {
-//            response.getWriter().println(student.getU_id());
-//        }else {
-//            response.getWriter().println(false);
-//        }
    }
 }

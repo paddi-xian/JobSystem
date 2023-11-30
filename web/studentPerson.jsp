@@ -19,7 +19,15 @@
         .test {
             margin-top: 50px;
             width: 200px;
-            margin-left: 100px;
+            margin-left: 250px;
+            display: inline-block;
+        }
+        .mation{
+            margin-top: 50px;
+            width: 300px;
+           transform: translateX(700px);
+            position: relative;
+            top: -450px;
         }
         .user_img {
             width: 100px;
@@ -120,7 +128,34 @@
         </div>
       </div>
           </div>
-      </form>
+          <div class="mation">
+              <div class="layui-form-item">
+                  <label class="layui-form-label">学习经历</label>
+                  <div class="layui-block">
+                      <td>${student.s_college}</td>
+                  </div>
+              </div>
+              <div class="layui-form-item">
+                  <label class="layui-form-label">获奖经历</label>
+                  <div class="layui-block">
+                      <td>${student.s_prize}</td>
+                  </div>
+              </div>
+              <div class="layui-form-item">
+                  <label class="layui-form-label">工作经历</label>
+                  <div class="layui-block">
+                      <td>${student.s_experience}</td>
+                  </div>
+              </div>
+              <div class="layui-form-item">
+                  <label class="layui-form-label">求职意向</label>
+                  <div class="layui-block">
+                      <td>${student.s_job}</td>
+                  </div>
+              </div>
+              <div class="layui-card-bottom">第一次登录请添加信息！！</div>
+          </div>
+
     </div>
   </div>
   </div>
@@ -132,19 +167,19 @@
       $.jq_Panel({
         title: "修改个人信息",
         iframeWidth: 500,
-        iframeHeight: 500,
+        iframeHeight: 700,
         url: "studentUpdate.jsp"
       });
-        panel.css("top", "100px"); // 设置面板距离页面最上端的距离为
+        panel.css("top", "50px"); // 设置面板距离页面最上端的距离为
     });
     $(".btnadd").click(function () {
       $.jq_Panel({
         title: "添加个人信息",
-        iframeHeight: 400,
+        iframeHeight: 600,
         iframeWidth: 500,
         url: "addStudent.jsp"
       });
-        panel.css("top", "100px"); // 设置面板距离页面最上端的距离为
+        panel.css("top", "50px"); // 设置面板距离页面最上端的距离为
     })
   })
 </script>
