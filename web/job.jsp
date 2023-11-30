@@ -75,8 +75,10 @@
                         <th class="table-check"></th>
                         <th class="table-title">兼职岗位名称</th>
                         <th class="table-title">兼职岗位描述</th>
+                        <th class="table-title">学历要求</th>
                         <th class="table-title">工资</th>
                         <th class="table-title">工作时间</th>
+                        <th class="table-title">审核状态</th>
                         <th class="table-set">操作</th>
                     </tr>
                     </thead>
@@ -86,8 +88,10 @@
                             <td><input id="${job.j_id}" type="checkbox"></td>
                             <td>${job.j_name}</td>
                             <td>${job.j_description}</td>
+                            <td>${job.j_require}</td>
                             <td>${job.j_salary}</td>
                             <td>${job.j_hours}</td>
+                            <td>${job.j_status}</td>
                             <td>
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">

@@ -38,12 +38,14 @@
                         </div>
                     </div>
 
+
                     <div class="am-form-group">
-                        <label for="j_description" class="am-u-sm-3 am-form-label">兼职岗位描述</label>
+                        <label class="am-u-sm-3 am-form-label">学历要求</label>
                         <div class="am-u-sm-9">
-                            <input id="j_description" v-model="job.j_description"
-                                   placeholder="输入兼职岗位描述" class="verify" name="j_description" type="text">
-                            <div id="is_j_description"></div>
+                            <input type="radio" name="group1" value="不限" v-model="job.j_require">不限
+                            <input type="radio" name="group1" value="大专" v-model="job.j_require">大专
+                            <input type="radio" name="group1" value="本科" v-model="job.j_require">本科
+                            <input type="radio" name="group1" value="研究生" v-model="job.j_require">研究生
                         </div>
                     </div>
 
@@ -66,6 +68,14 @@
                     </div>
 
                     <div class="am-form-group">
+                        <label for="j_description" class="am-u-sm-3 am-form-label">兼职岗位描述</label>
+                        <div class="am-u-sm-9">
+                            <textarea id="j_description" v-model="job.j_description" placeholder="输入兼职岗位描述" class="verify" name="j_description" style="width:343px;height: 100px" cols="32" rows="4"></textarea>
+                            <div id="is_j_description"></div>
+                        </div>
+                    </div>
+
+                    <div class="am-form-group">
                         <div class="am-u-sm-9 am-u-sm-push-3">
                             <input type="button" id="addRole" class="am-btn am-btn-success" value="提交" @click="addJob"/>
                         </div>
@@ -77,7 +87,6 @@
 </div>
 </body>
 <script>
-    let bool = false;
     new Vue({
         el: "#app",
         data: {
@@ -87,6 +96,8 @@
                 j_salary: '',
                 j_hours: '',
                 u_id: '',
+                j_require:'不限',
+                j_status:'待审核',
             },
 
         },

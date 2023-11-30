@@ -28,15 +28,13 @@ public class AddJobServlet extends HttpServlet {
 //        System.out.println(job);
 //        System.out.println(job.getJ_hours());
         //在传入的值没有一项为空才增加job
-        if (job.getJ_name()!=null && job.getJ_description()!=null && job.getJ_salary()!=null && job.getJ_hours()!=null){
-            job.setU_id(user.getU_id());
-//            System.out.println(job);
+        job.setU_id(user.getU_id());
+        System.out.println(job);
 
-            if (jobService.addJob(job)) {
-                response.getWriter().println(job.getU_id());
-            }else {
-                response.getWriter().println(false);
-            }
+        if (jobService.addJob(job)) {
+            response.getWriter().println(job.getU_id());
+        } else {
+            response.getWriter().println(false);
         }
         response.getWriter().println(false);
 

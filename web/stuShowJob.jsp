@@ -50,7 +50,7 @@
         }
 
         .search {
-            width: 500px;
+            width: 1000px;
             height: 40px;
             /*border:2px solid black;*/
             margin: auto;
@@ -58,22 +58,38 @@
 
         .input {
             float: left;
-            width: 400px;
-            height: 36px;
+            width: 500px;
+            height: 40px;
             outline: none;
             border: none;
             background-color: #7777774d;
             border-radius: 10px 0px 0px 10px;
+            margin-left:150px;
         }
 
         .button {
-            float: right;
+            float: left;
             width: 100px;
-            height: 36px;
+            height: 40px;
             background-color: #3333337a;
             border-radius: 0px 10px 10px 0px;
             border: none;
             outline: none;
+        }
+        .main{
+            display: flex;
+            width:100%;
+            height:200px;
+            background-color: #555555;
+            margin-top: 50px;
+        }
+        .child{
+            border: 1px solid #dddddd;
+            flex: 1;
+            padding: 10px;
+            width: 50px;
+            background-color: yellow;
+            /*height: 38px;*/
         }
     </style>
 </head>
@@ -120,76 +136,22 @@
 <hr>
 
 <div class="search">
-    <input type="text" class="input" placeholder="输入要搜索的内容">
+    <input type="text" class="input" placeholder="🔍 输入要搜索的内容">
     <input type="button" value="搜索" class="button">
 </div>
+<div class="main">
+    <div class="child">
 
-<%--  </div>--%>
+    </div>
+    <div class="child">2</div>
+    <div class="child">3</div>
+</div>
+<div class="main">
+    <div class="child">
 
-
-<%--  <div class="am-g">--%>
-<%--    <div class="am-u-sm-12 am-u-md-6">--%>
-<%--      <div class="am-btn-toolbar">--%>
-<%--        <div class="am-btn-group am-btn-group-xs">--%>
-<%--          &lt;%&ndash;                    <button id="${job.j_id}" class="add" name="${job.u_id}">新增</button>&ndash;%&gt;--%>
-<%--        </div>--%>
-<%--      </div>--%>
-<%--    </div>--%>
-<%--    <div class="am-u-sm-12 am-u-md-3">--%>
-
-<%--    </div>--%>
-<%--    <div class="am-u-sm-12 am-u-md-3">--%>
-<%--      <div class="am-input-group am-input-group-sm">--%>
-<%--        <input type="text" class="am-form-field" placeholder="请输入兼职岗位名称">--%>
-<%--        <span class="am-input-group-btn">--%>
-<%--                <button class="am-btn am-btn-default" type="button">搜索</button>--%>
-<%--              </span>--%>
-<%--      </div>--%>
-<%--    </div>--%>
-<%--  </div>--%>
-<%--  <div class="am-g">--%>
-<%--    <div class="am-u-sm-12">--%>
-<%--      <form class="am-form">--%>
-<%--        <table class="am-table am-table-striped am-table-hover table-main">--%>
-<%--          <thead>--%>
-<%--          <tr>--%>
-<%--            <th class="table-check"></th>--%>
-<%--            <th class="table-title">兼职岗位名称</th>--%>
-<%--            <th class="table-title">兼职岗位描述</th>--%>
-<%--            <th class="table-title">工资</th>--%>
-<%--            <th class="table-title">工作时间</th>--%>
-<%--            <th class="table-title">公司编号</th>--%>
-<%--            <th class="table-set">操作</th>--%>
-<%--          </tr>--%>
-<%--          </thead>--%>
-<%--          <tbody>--%>
-<%--          <c:forEach items="${AllJob}" var="job">--%>
-<%--            <tr>--%>
-<%--              <td><input id="${job.j_id}" type="checkbox"></td>--%>
-<%--              <td>${job.j_name}</td>--%>
-<%--              <td>${job.j_description}</td>--%>
-<%--              <td>${job.j_salary}</td>--%>
-<%--              <td>${job.j_hours}</td>--%>
-<%--              <td>${job.u_id}</td>--%>
-<%--              <td>--%>
-<%--                <div class="am-btn-toolbar">--%>
-<%--                  <div class="am-btn-group am-btn-group-xs">--%>
-<%--                    <button type="button"--%>
-<%--                            class="btnedit am-btn am-btn-default am-btn-xs am-text-secondary"--%>
-<%--                            id="${job.j_id}" class="delete" name="${job.u_id}">收藏</button>--%>
-<%--                    <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"--%>
-<%--                            id="${job.j_id}" class="edit" name="${job.u_id}">关注</button>--%>
-<%--                  </div>--%>
-<%--                </div>--%>
-<%--              </td>--%>
-<%--            </tr>--%>
-<%--          </c:forEach>--%>
-<%--          </tbody>--%>
-<%--        </table>--%>
-<%--        <hr>--%>
-<%--      </form>--%>
-<%--    </div>--%>
-<%--  </div>--%>
-
+    </div>
+    <div class="child">2</div>
+    <div class="child">3</div>
+</div>
 </body>
 </html>
