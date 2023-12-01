@@ -53,7 +53,7 @@
                             <a href="publisherUpdate.jsp" target="right">发布者信息</a>
                         </dd>
                         <dd>
-                            <a href="Job?pageNum=1" target="right">兼职岗位信息</a>
+                            <a href="Job?pageNum=1&pageSize=5" target="right">兼职岗位信息</a>
                         </dd>
                     </dl>
                 </li>

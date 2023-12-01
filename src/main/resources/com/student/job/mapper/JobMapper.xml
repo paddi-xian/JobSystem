@@ -40,6 +40,7 @@
     <select id="selectAllJob" resultType="com.student.job.pojo.Job">
         select * from job
     </select>
+
     <select id="SelectJobByJid" resultType="com.student.job.pojo.Job">
         select * from Job where j_id = #{j_id}
     </select>
@@ -54,6 +55,9 @@
                 and j_name like concat('%',#{j_name},'%')
             </if>
         </where>
+    </select>
 
+    <select id="SelectJob_user" resultType="com.student.job.pojo.Job">
+        select j_name,j_description,j_salary,j_hours,j_hours,j_require,j_status,u_name  FROM job JOIN `user` WHERE job.u_id = user.u_id
     </select>
 </mapper>

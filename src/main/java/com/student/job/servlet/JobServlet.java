@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -42,8 +43,8 @@ public class JobServlet extends HttpServlet {
         Integer  pageNum = Integer.parseInt(request.getParameter("pageNum"));
 
         //每页多少条数据
-        int  pageSize =  5 ;
-
+        Integer  pageSize =  Integer.parseInt(request.getParameter("pageSize"));
+        request.getSession().setAttribute("pageSize", pageSize);
         //分页
         PageHelper.startPage(pageNum,pageSize);
         //查询所有job
@@ -70,10 +71,19 @@ public class JobServlet extends HttpServlet {
 
     private void doAllJob(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Job> AllJob = jobService.selectAllJob();
-        request.getSession().removeAttribute("AllJob");
-        request.getSession().setAttribute("AllJob",AllJob);
-        response.sendRedirect("stuShowJob.jsp");
+        //获取前端第几页
+        Integer  pageNum = Integer.parseInt(request.getParameter("pageNum"));
+
+        //每页多少条数据
+        Integer  pageSize =  Integer.parseInt(request.getParameter("pageSize"));
+        request.getSession().setAttribute("pageSize", pageSize);
+        //分页
+        PageHelper.startPage(pageNum,pageSize);
+        //查询所有job
+        List<Job> StuJob = jobService.SelectJob_user();
+        PageInfo<Job> info = new PageInfo<>(StuJob);
+        request.getSession().setAttribute("info",info);
+        request.getRequestDispatcher("stuShowJob.jsp").forward(request,response);
     }
 
 }

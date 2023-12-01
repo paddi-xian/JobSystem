@@ -9,16 +9,16 @@ import org.junit.Test;
 import java.util.List;
 
 public class JobMapperTest {
-/*    @Test
-    public void testInsertJob(){
+    @Test
+    public void testInsertJob() {
         SqlSession sqlSession = SqlSessionUtil.openSession();
         JobMapper mapper = sqlSession.getMapper(JobMapper.class);
-        Job job = new Job(null,"架构师","主要干xxxx",12000.00,"6小时",null);
-        int count = mapper.insertJob(job);
-        System.out.println("插入"+count);
+        Job job = new Job();
+        boolean count = mapper.addJob(job);
+        System.out.println("插入" + count);
         sqlSession.commit();
         sqlSession.close();
-    }*/
+    }
 
 /*    @Test
     public void testSelectAll(){

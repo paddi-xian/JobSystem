@@ -94,5 +94,15 @@ public class JobServiceImpl implements JobService {
         return jobMapper.SelectJobByLikeName(job);
     }
 
+    @Override
+    public List<Job> SelectJob_user() {
+        if(session != null){
+            SqlSessionUtil.close(session);
+            session = SqlSessionUtil.openSession();
+            jobMapper = session.getMapper(JobMapper.class);
+        }
+        return jobMapper.SelectJob_user();
+    }
+
 
 }

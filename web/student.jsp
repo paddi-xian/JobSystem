@@ -14,21 +14,10 @@
     <script type="text/javascript" src="myplugs/js/plugs.js"></script>
     <script src="js/layui.js"></script>
     <style>
-        /*.layui-body1{*/
-        /*    left:200px;*/
-        /*    right:0;*/
-        /*    top:0;*/
-        /*    bottom:0;*/
-        /*    z-index:998;*/
-        /*    width:auto;*/
-        /*    overflow:hidden;*/
-        /*    overflow-y:scroll;*/
-        /*    box-sizing:border-box;*/
-        /*}*/
-        .scroll{
-            width:100%;
-            height:100%;
-            overflow-x:hidden
+        .scroll {
+            width: 100%;
+            height: 1500px;
+            overflow-x: hidden
         }
     </style>
 </head>
@@ -46,7 +35,7 @@
                         <a href="student?u_id=${user.u_id}" target="right">学生个人中心</a>
                     </dd>
                     <dd>
-                        <a href="StuShowJob" target="right">学生查看兼职岗位信息</a>
+                        <a href="StuShowJob?pageNum=1&pageSize=5" target="right">学生查看兼职岗位信息</a>
                     </dd>
                     <dd>
                         <a href="#" target="right">学生管理工作收藏</a>
@@ -82,7 +71,7 @@
                 </dl>
             </li>
         </ul>
-            <ul class="layui-nav layui-layout-right">
+        <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a href="javascript:;">
                     <img src="img/user.jpg" class="layui-nav-img">${user.u_name}
@@ -101,15 +90,14 @@
             </li>
         </ul>
     </div>
-    </div>
+</div>
 
 
-    <div style="z-index: 0;">
-        <div class="scroll">
+<div style="z-index: 0;">
+    <div class="scroll">
         <!-- 内容主体区域 -->
-        <div >
-            <iframe src="stuShowJob.jsp" name="right" frameborder="0" width="100%" height="1200"></iframe>
-
+        <div>
+            <iframe src="stuShowJob.jsp" name="right" frameborder="0" width="100%" height="2500px"></iframe>
         </div>
     </div>
 
@@ -132,7 +120,7 @@
 
 <script>
     //JavaScript代码区域
-    layui.use('element', function() {
+    layui.use('element', function () {
         var element = layui.element;
 
     });

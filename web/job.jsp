@@ -16,22 +16,23 @@
     <script type="text/javascript" src="myplugs/js/plugs.js"></script>
     <script src="js/axios.js"></script>
     <style>
-        .page{
-            /*text-align: center;*/
-        }
-        .page-button{
+        .page-button {
             text-decoration: none;
             background: white;
-            color:#000000;
+            color: #000000;
             margin-left: 15px;
         }
-        .total{
+
+        .total {
+            width: 100px;
             display: inline;
         }
-        .page2{
-            margin-left: 250px;
+
+        .page2 {
+            margin-left: 200px;
             display: inline;
         }
+
     </style>
 </head>
 <body class="layui-padding-3">
@@ -47,7 +48,7 @@
         <div class="am-u-sm-12 am-u-md-6">
             <div class="am-btn-toolbar">
                 <div class="am-btn-group am-btn-group-xs">
-                    <button type="button" id="add" class="btnadd am-btn am-btn-default"><span
+                    <button type="button" id="add" class="btnAdd am-btn am-btn-default"><span
                             class="am-icon-plus"></span>
                         新增
                     </button>
@@ -96,12 +97,13 @@
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">
                                         <button type="button" id="${job.j_id}"
-                                                class="btnedit am-btn am-btn-default am-btn-xs am-text-secondary am-hide-sm-only"
+                                                class="btnEdit am-btn am-btn-default am-btn-xs am-text-secondary am-hide-sm-only"
                                                 name="${job.u_id}"><span class="am-icon-pencil-square-o"></span> 编辑
                                         </button>
                                         <button id="${job.j_id}"
                                                 class="delete am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"
-                                                name="${job.u_id}" onclick="del();"><span class="am-icon-trash-o"></span> 删除
+                                                name="${job.u_id}" onclick="del();"><span
+                                                class="am-icon-trash-o"></span> 删除
                                         </button>
                                     </div>
                                 </div>
@@ -112,63 +114,64 @@
                     </tbody>
                 </table>
                 <hr>
+            <%--分页--%>
+                <div class="page">
+                    <span class="total">共 ${info.getTotal()} 条数据</span>
+                    <div class="page2">
+                        <c:if test="${info.hasPreviousPage}">
+                            <a href="Job?pageNum=${info.prePage}&pageSize=${pageSize}" class="page-button">上一页</a>
+                        </c:if>
+                        <c:if test="${info.pages <= 10}">
+                            <c:set var="begin" value="1"></c:set>
+                            <c:set var="end" value="${info.pages}"></c:set>
+                        </c:if>
 
-            <div class="page">
-                <span class="total">共 ${info.getTotal()} 条数据</span>
-                <div class="page2">
-                <c:if test="${info.hasPreviousPage}">
-                <a href="Job?pageNum=${info.prePage }" class="page-button">上一页</a>
-                </c:if>
-                <c:if test="${info.pages <= 10}">
-                    <c:set var="begin" value="1"></c:set>
-                    <c:set var="end" value="${info.pages}"></c:set>
-                </c:if>
+                        <%--第二种情况 10个格子以上--%>
+                        <c:if test="${info.pages >10}">
+                            <%--begin = ? end = ? --%>
+                            <%--
+                            2 7 11
+                            3 8 12
+                            7 12 16
+                            begin = pageNum - 5
+                            end = pageNum + 4
+                            --%>
+                            <%--通式--%>
+                            <c:set var="begin" value="${info.pageNum -5}"/>
+                            <c:set var="end" value="${info.pageNum +4}"/>
+                            <%--左侧begin 扶正 为了保证通过上述公式运算后左右10个格子，begin和end都得扶正--%>
+                            <c:if test="${begin <1 }">
+                                <c:set var="begin" value="1"/>
+                                <c:set var="end" value="10"/>
+                            </c:if>
+                            <%--右侧end 扶正--%>
+                            <c:if test="${end > info.pages}">
+                                <c:set var="end" value="${info.pages}"/>
+                                <c:set var="begin" value="${end -9}"/>
+                            </c:if>
+                        </c:if>
 
-                <%--第二种情况 10个格子以上--%>
-                <c:if test="${info.pages >10}">
-                    <%--begin = ? end = ? --%>
-                    <%--
-                    2 7 11
-                    3 8 12
-                    7 12 16
-                    begin = pageNum - 5
-                    end = pageNum + 4
-                    --%>
-                    <%--通式--%>
-                    <c:set var="begin" value="${info.pageNum -5}"/>
-                    <c:set var="end" value="${info.pageNum +4}"/>
-                    <%--左侧begin 扶正 为了保证通过上述公式运算后左右10个格子，begin和end都得扶正--%>
-                <c:if test="${begin <1 }">
-                    <c:set var="begin" value="1"/>
-                    <c:set var="end" value="10"/>
-                </c:if>
-                    <%--右侧end 扶正--%>
-                <c:if test="${end > info.pages}">
-                    <c:set var="end" value="${info.pages}"/>
-                    <c:set var="begin" value="${end -9}"/>
-                </c:if>
-                </c:if>
-
-                <c:forEach begin="${begin}" end="${end}" var="i">
-                <a href="Job?pageNum=${i}" class="page-button">${i}</a>
-                </c:forEach>
-                <c:if test="${info.hasNextPage}">
-                <a href="Job?pageNum=${info.nextPage}" class="page-button">下一页</a>
-                </c:if>
+                        <c:forEach begin="${begin}" end="${end}" var="i">
+                            <a href="Job?pageNum=${i}&pageSize=${pageSize}" class="page-button">${i}</a>
+                        </c:forEach>
+                        <c:if test="${info.hasNextPage}">
+                            <a href="Job?pageNum=${info.nextPage}&pageSize=${pageSize}" class="page-button">下一页</a>
+                        </c:if>
+                    </div>
+                    <select onchange="window.location=this.value" style="display: inline;width: 80px;margin-left: 20px">
+                        <option value="Job?pageNum=1&pageSize=5"<c:if test="${pageSize == 5}">selected</c:if>>5</option>
+                        <option value="Job?pageNum=1&pageSize=10"<c:if test="${pageSize == 10}">selected</c:if>>10</option>
+                        <option value="Job?pageNum=1&pageSize=15"<c:if test="${pageSize == 15}">selected</c:if>>15</option>
+                    </select>
                 </div>
-                <span class="total" style="margin-left: 50px">当前页面有 ${info.getSize()} 条数据</span>
-
+                <hr>
+            </form>
         </div>
-        <hr>
-        </form>
     </div>
 </div>
-</div>
 <script>
-
-
     $(function () {
-        $(".btnedit").click(function () {
+        $(".btnEdit").click(function () {
             let j_id = $(this).attr("id");
             $.ajax({
                 async: false,
@@ -195,7 +198,7 @@
             window.addEventListener("message", e => {
                 if (e.data == "closeEditJob") {
                     $.jq_Panel_close();
-                    location.href = "Job?pageNum=1";
+                    location.href = "Job?pageNum=1&pageSize=${pageSize}";
                 }
             })
         });
@@ -207,7 +210,7 @@
 
         })
 
-        $(".btnadd").click(function () {
+        $(".btnAdd").click(function () {
             // let jobs = $(this).attr("name").toString();
             // //从第一个u_id=开始分割，到第一个)结束，获取到中间的u_id
             // let u_id = jobs.split("u_id=")[1].split(")")[0];
@@ -221,7 +224,7 @@
             window.addEventListener("message", e => {
                 if (e.data == "closeAddJob") {
                     $.jq_Panel_close();
-                    location.href = "Job?pageNum=1";
+                    location.href = "Job?pageNum=1&pageSize=${pageSize}";
 
                 }
             })
@@ -231,7 +234,7 @@
             let j_id = $(this).attr("id")
             let u_id = $(this).attr("name")
             var ok = window.confirm("是否确认删除？");
-            if(ok){
+            if (ok) {
                 $.ajax({
                     async: false,
                     cache: false,
@@ -249,7 +252,7 @@
                                 async: false,
                                 cache: false,
                                 type: "get",
-                                url: "Job?pageNum=1"
+                                url: "Job?pageNum=1&pageSize=${pageSize}"
                             })
                         }
                     }
