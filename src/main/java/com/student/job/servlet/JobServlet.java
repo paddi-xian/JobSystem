@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.student.job.pojo.BeanFactory;
 import com.student.job.pojo.Job;
+import com.student.job.pojo.Job_Publisher;
 import com.student.job.pojo.User;
 import com.student.job.service.JobService;
 
@@ -80,8 +81,8 @@ public class JobServlet extends HttpServlet {
         //分页
         PageHelper.startPage(pageNum,pageSize);
         //查询所有job
-        List<Job> StuJob = jobService.SelectJob_user();
-        PageInfo<Job> info = new PageInfo<>(StuJob);
+        List<Job_Publisher> StuJob = jobService.SelectJob_publish();
+        PageInfo<Job_Publisher> info = new PageInfo<>(StuJob);
         request.getSession().setAttribute("info",info);
         request.getRequestDispatcher("stuShowJob.jsp").forward(request,response);
     }

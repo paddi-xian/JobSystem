@@ -1,6 +1,6 @@
 package com.student.job.service;
 
-import com.student.job.pojo.Resume;
+
 import com.student.job.pojo.Student;
 import com.student.job.pojo.User;
 

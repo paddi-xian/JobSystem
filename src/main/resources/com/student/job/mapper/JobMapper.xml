@@ -6,6 +6,11 @@
     <insert id="addJob">
         insert into Job value(null,#{j_name},#{j_description},#{j_salary},#{j_hours},#{u_id},#{j_require},#{j_status})
     </insert>
+
+    <insert id="AddRecord">
+        INSERT into record (j_id,u_id) value(#{j_id},#{u_id})
+    </insert>
+
     <update id="editJob">
         <!--动态sql-->
         update job
@@ -41,8 +46,8 @@
         select * from job
     </select>
 
-    <select id="SelectJobByJid" resultType="com.student.job.pojo.Job">
-        select * from Job where j_id = #{j_id}
+    <select id="SelectJobByJid" resultType="com.student.job.pojo.Job_Publisher">
+        select j_id,j_name,j_description,j_salary,j_hours,j_require,job.u_id,p_name,p_telephone,p_address,p_email From job JOIN publisher WHERE job.u_id = publisher.u_id and job.j_id = #{jId}
     </select>
 
     <select id="SelectJobByLikeName" resultType="com.student.job.pojo.Job">
@@ -57,7 +62,14 @@
         </where>
     </select>
 
-    <select id="SelectJob_user" resultType="com.student.job.pojo.Job">
-        select j_name,j_description,j_salary,j_hours,j_hours,j_require,j_status,u_name  FROM job JOIN `user` WHERE job.u_id = user.u_id
+    <select id="SelectJob_publish" resultType="com.student.job.pojo.Job_Publisher">
+        select j_id,j_name,j_description,j_salary,j_hours,j_require,j_status,p_name  FROM job JOIN `publisher` WHERE job.u_id = publisher.u_id ORDER BY j_id ASC
+    </select>
+
+
+    <select id="isRecord" parameterType="java.util.List" resultType="com.student.job.pojo.Job_Publisher">
+        SELECT j_id, j_name,j_description,j_salary,j_hours,j_require,p_name,p_telephone,p_address,p_email,p_introduction FROM job JOIN publisher ON job.u_id = publisher.u_id WHERE j_id IN
+        <foreach collection="jids" item="j_id" open="(" close=")" separator=",">#{j_id}</foreach>
+        AND j_id = #{j_id}
     </select>
 </mapper>

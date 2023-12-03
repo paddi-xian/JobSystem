@@ -93,18 +93,14 @@
             margin-left: 200px;
             display: inline;
         }
+        .jq_dvpanel{
+            transform: translate(10%,110%);
+        }
     </style>
 </head>
 <body class="box">
 <div class="container con">
     <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
-        <!-- 轮播（Carousel）指标 -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-        </ol>
         <!-- 轮播（Carousel）项目 -->
         <div class="carousel-inner">
             <div class="item active">
@@ -160,7 +156,7 @@
                         <td>${job.j_require}</td>
                         <td>${job.j_salary}</td>
                         <td>${job.j_hours}</td>
-                        <td>${job.u_name}</td>
+                        <td>${job.p_name}</td>
                         <td>
                             <div class="am-btn-toolbar">
                                 <div class="am-btn-group am-btn-group-xs">
@@ -235,12 +231,40 @@
 <script>
     $(function (){
         $(".btnCheck").click(function (){
-            let j_id = $(this).attr("id")
+            let j_id = $(this).attr("id");
+            $.ajax({
+                async:false,
+                cache: false,
+                type: "post",
+                url: "isRecordServlet",
+                data: {"j_id": j_id},
+                dataType: 'json',
+            });
+            $.ajax({
+                async: false,
+                cache: false,
+                type: "post",
+                url: "SelectJobByJIdServlet",
+                data: {"j_id": j_id},
+                dataType: 'json',
+                success: function (res) {
+                    if (res != false) {
+                        console.log(res)
+                    } else {
+                        console.log(res)
+                    }
+                }
+            });
             $.jq_Panel({
                 title:"查看更多岗位信息",
                 iframeWidth:500,
                 iframeHeight:300,
                 url:"checkJob.jsp"
+            })
+            window.addEventListener("message",e => {
+                if(e.data == "closeAddRecord"){
+                    $.jq_Panel_close();
+                }
             })
         })
     })

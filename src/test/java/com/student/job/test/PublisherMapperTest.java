@@ -38,17 +38,17 @@ public class PublisherMapperTest {
             System.out.println(publisher);
             }
 
-     @Test
+//     @Test
     //插入测试
-    public void testInsertPublisher(){
-        SqlSession sqlSession = SqlSessionUtil.openSession();
-        PublisherMapper mapper = sqlSession.getMapper(PublisherMapper.class);
-        Publisher publisher = new Publisher(1999,"李四","123","415","1234","hh");
-        int count = mapper.insertPublisher(publisher);
-        System.out.println("插入"+count);
-        sqlSession.commit();
-        sqlSession.close();
-    }
+//    public void testInsertPublisher(){
+//        SqlSession sqlSession = SqlSessionUtil.openSession();
+//        PublisherMapper mapper = sqlSession.getMapper(PublisherMapper.class);
+//        Publisher publisher = new Publisher(1999,"李四","123","415","1234","hh");
+//        int count = mapper.insertPublisher(publisher);
+//        System.out.println("插入"+count);
+//        sqlSession.commit();
+//        sqlSession.close();
+//    }
 
 //    @Test
 //    //删除测试

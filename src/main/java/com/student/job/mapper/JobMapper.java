@@ -1,8 +1,11 @@
 package com.student.job.mapper;
 
 import com.student.job.pojo.Job;
+import com.student.job.pojo.Job_Publisher;
+import com.student.job.pojo.Record;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -21,9 +24,17 @@ public interface JobMapper {
     List<Job> selectAllJob();
 
 
-    Job SelectJobByJid(Integer jId);
+    Job_Publisher SelectJobByJid(Integer jId);
 
     List<Job> SelectJobByLikeName(Job job);
 
-    List<Job> SelectJob_user();
+    List<Job_Publisher> SelectJob_publish();
+
+    int AddRecord(@Param("j_id") Integer jId,@Param("u_id") Integer uId);
+
+
+    Job_Publisher isRecord(@Param("jids")List<Integer> jids,@Param("j_id") Integer jId, @Param("u_id") Integer uId);
+
+    @Select("SELECT j_id FROM record WHERE u_id = #{u_id}")
+    List<Integer> selectjids(Integer jId);
 }

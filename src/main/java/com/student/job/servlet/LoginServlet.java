@@ -5,11 +5,13 @@ import com.github.pagehelper.PageInfo;
 import com.student.job.mapper.UserMapper;
 import com.student.job.pojo.BeanFactory;
 import com.student.job.pojo.Job;
+import com.student.job.pojo.Job_Publisher;
 import com.student.job.pojo.User;
 import com.student.job.service.JobService;
 import com.student.job.utils.SqlSessionUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.ui.Model;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -88,8 +90,9 @@ public class LoginServlet extends HttpServlet {
                     PageHelper.startPage(1,5);
                     request.getSession().setAttribute("pageSize",5);
                     //查询所有job
-                    List<Job> AllJob = jobService.SelectJob_user();
-                    PageInfo<Job> info = new PageInfo<>(AllJob);
+                    List<Job_Publisher> AllJob = jobService.SelectJob_publish();
+                    System.out.println(AllJob);
+                    PageInfo<Job_Publisher> info = new PageInfo<>(AllJob);
                     request.getSession().setAttribute("info",info);
                     request.getRequestDispatcher("student.jsp").forward(request,response);
                 }

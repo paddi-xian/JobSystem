@@ -1,13 +1,12 @@
 package com.student.job.service.impl;
 
 import com.student.job.mapper.JobMapper;
-import com.student.job.mapper.StudentMapper;
 import com.student.job.pojo.Job;
-import com.student.job.pojo.Student;
+import com.student.job.pojo.Job_Publisher;
+import com.student.job.pojo.Record;
 import com.student.job.service.JobService;
 import com.student.job.utils.SqlSessionUtil;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 
 import java.util.List;
 
@@ -75,7 +74,7 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public Job SelectJobByJid(Integer jId) {
+    public Job_Publisher SelectJobByJid(Integer jId) {
         if (session != null) {
             SqlSessionUtil.close(session);
             session = SqlSessionUtil.openSession();
@@ -95,13 +94,36 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public List<Job> SelectJob_user() {
+    public List<Job_Publisher> SelectJob_publish() {
         if(session != null){
             SqlSessionUtil.close(session);
             session = SqlSessionUtil.openSession();
             jobMapper = session.getMapper(JobMapper.class);
         }
-        return jobMapper.SelectJob_user();
+        return jobMapper.SelectJob_publish();
+    }
+
+    @Override
+    public int addRecord(Integer jId, Integer uId) {
+        if(session != null){
+            SqlSessionUtil.close(session);
+            session = SqlSessionUtil.openSession();
+            jobMapper = session.getMapper(JobMapper.class);
+        }
+        int i = jobMapper.AddRecord(jId,uId);
+        session.commit();
+        return i;
+    }
+
+    @Override
+    public Job_Publisher isRecord(Integer jId, Integer uId) {
+        if(session != null){
+            SqlSessionUtil.close(session);
+            session = SqlSessionUtil.openSession();
+            jobMapper = session.getMapper(JobMapper.class);
+        }
+        List<Integer> jids = jobMapper.selectjids(jId);
+        return jobMapper.isRecord(jids,jId,uId);
     }
 
 

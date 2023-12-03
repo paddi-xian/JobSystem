@@ -1,7 +1,7 @@
 package com.student.job.mapper;
 
 import com.student.job.pojo.Job;
-import com.student.job.pojo.Resume;
+
 import com.student.job.pojo.Student;
 import com.student.job.pojo.User;
 import org.apache.ibatis.annotations.Param;
