@@ -140,7 +140,7 @@
 </div>
 <div class="am-g">
     <div class="am-u-sm-12">
-        <form class="am-form">
+        <form class="am-form"  action="addApplication" method="post">
             <table class="am-table am-table-striped am-table-hover table-main">
                 <thead>
                 <tr>
@@ -168,6 +168,9 @@
                                             class="btnCheck am-btn am-btn-default am-btn-xs am-text-secondary am-hide-sm-only"
                                             name="${job.u_id}">查看更多</button>
                                 </div>
+                                <button type="button" id="${job.j_id}"
+                                        class="btnApply am-btn am-btn-default am-btn-xs am-text-secondary am-hide-sm-only"
+                                        name="${job.j_id}" onclick="addApplication('${job.j_id}')">发出申请</button>
                             </div>
                         </td>
                     </tr>
@@ -241,6 +244,30 @@
             })
         })
     })
+    function addApplication(elementId) {
+        var jId = elementId; // 获取按钮的id，也就是job.j_id
+        if (jId != null && !isNaN(parseInt(jId))) { // 检查jId是否存在并且是数字
+            $.ajax({
+                url: '/addApplication', // 调用后端的/addApplication
+                type: 'POST', // 使用POST方法提交请求
+                data: { 'j_id': jId }, // 发送的数据，这里是jId
+                success: function(result) { // 请求成功后的回调函数，result是后端返回的数据
+                    if (result == '申请成功') { // 如果返回的是"申请成功"，那么...
+                        alert('申请成功');
+                    } else { // 如果返回的不是"申请成功"，那么...
+                        // 在这里你可以执行你想做的操作，例如显示一个错误消息
+                        alert('申请失败');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // 在这里你可以处理出现的错误，例如显示一个错误消息
+                    alert('Error: ' + error);
+                }
+            });
+        } else {
+            alert('申请失败');
+        }
+    }
 </script>
 </body>
 </html>

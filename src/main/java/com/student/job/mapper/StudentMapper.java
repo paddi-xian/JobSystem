@@ -1,6 +1,7 @@
 package com.student.job.mapper;
 
 import com.student.job.pojo.Job;
+import com.student.job.pojo.Resume;
 import com.student.job.pojo.Student;
 import com.student.job.pojo.User;
 import org.apache.ibatis.annotations.Param;
@@ -18,7 +19,6 @@ public interface StudentMapper {
     int updateStudent(Student student);
     int updateUser(User user);
 //    boolean checkU_idExits(@Param("u_id") Integer u_id);
-
 
     int checkStudentExists(@Param("u_id") String u_id);
 //    Student getStudentByUid(String u_id);

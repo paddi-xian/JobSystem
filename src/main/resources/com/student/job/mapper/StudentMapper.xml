@@ -80,4 +80,5 @@
         insert into student value(null,#{s_name},#{s_gender},#{s_age},#{s_phone},#{s_email},#{s_intro},#{u_id},#{s_college},#{s_prize},#{s_experience},#{s_job})
     </insert>
 
+
 </mapper>

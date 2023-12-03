@@ -163,26 +163,6 @@
             }
         })
     }
-    // function validateInput() {
-    //     var s_phone = document.getElementById("s_phone").value;
-    //     var s_email = document.getElementById("s_email").value;
-    //
-    //     // 判断电话号码格式
-    //     var phoneRegex =  /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/; // 这是一个示例电话号码格式
-    //     if (!phoneRegex.test(s_phone)) {
-    //         alert("电话号码格式不正确");
-    //         document.getElementById("s_phone").value = ""; // 清除电话号码输入框的内容
-    //         return;
-    //     }
-    //
-    //     // 判断邮箱格式
-    //     var emailRegex =  /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;// 这是一个示例邮箱格式
-    //     if (!emailRegex.test(s_email)) {
-    //         alert("邮箱格式不正确");
-    //         document.getElementById("s_email").value = ""; // 清除邮箱输入框的内容
-    //         return;
-    //     }
-    // }
 
 </script>
 </html>

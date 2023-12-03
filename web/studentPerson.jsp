@@ -75,6 +75,13 @@
                       修改个人信息
                   </button>
               </div>
+<%--    <div class="am-btn-group am-btn-group-xs" >--%>
+<%--        <button type="button" id="upload" class="btnupload am-btn am-btn-default">--%>
+<%--            <span class="am-icon-plus"></span>--%>
+<%--           上传个人简历--%>
+<%--        </button>--%>
+<%--    </div>--%>
+
           </div>
         </div>
 <%--        <div class="am-u-sm-12 am-u-md-3">--%>
@@ -181,6 +188,15 @@
       });
         panel.css("top", "50px"); // 设置面板距离页面最上端的距离为
     })
+      // $(".btnload").click(function () {
+      //     $.jq_Panel({
+      //         title: "添加个人信息",
+      //         iframeHeight: 600,
+      //         iframeWidth: 500,
+      //         url: "uploadResume.jsp"
+      //     });
+      //     panel.css("top", "50px"); // 设置面板距离页面最上端的距离为
+      // })
   })
 </script>
 </html>

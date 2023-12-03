@@ -2,6 +2,7 @@ package com.student.job.service.impl;
 
 import com.student.job.mapper.JobMapper;
 import com.student.job.mapper.StudentMapper;
+import com.student.job.pojo.Resume;
 import com.student.job.pojo.Student;
 import com.student.job.pojo.User;
 import com.student.job.service.StudentService;
@@ -45,6 +46,7 @@ public class StudentServiceImpl implements StudentService {
         session.close();
         return totalStudent;
     }
+
 
     @Override
     public Student selectStudentByUid(Integer uId) {
