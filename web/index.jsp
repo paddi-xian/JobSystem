@@ -34,7 +34,7 @@
                 <a href="admin.jsp">个人中心</a>
               </dd>
               <dd>
-                <a href="">安全设置</a>
+                <a href="updatePwd.jsp">修改密码</a>
               </dd>
             </dl>
           </li>
@@ -52,10 +52,10 @@
               <a class="" href="javascript:;">主页</a>
               <dl class="layui-nav-child">
                 <dd>
-                  <a href="adminStu" target="right">学生管理</a>
+                  <a href="showStudent" target="right">学生管理</a>
                 </dd>
                 <dd>
-                  <a href="showPublisher.jsp" target="right">发布者管理</a>
+                  <a href="showPublisher" target="right">发布者管理</a>
                 </dd>
               </dl>
             </li>
@@ -63,7 +63,7 @@
               <a href="javascript:;">岗位管理</a>
               <dl class="layui-nav-child">
                 <dd>
-                  <a href="AllJob" target="right">兼职岗位审核</a>
+                  <a href="ShowJob?pageNum=1&pageSize=5" target="right">兼职岗位审核</a>
                 </dd>
                 <dd>
                   <a href="message.jsp" target="right">留言区管理</a>
@@ -122,7 +122,7 @@
           title: title,
           iframeWidth: 500,
           iframeHeight: 300,
-          url: "updatePwd.html"
+          url: "updatePwd.jsp"
         });
       }
     </script>

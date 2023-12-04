@@ -38,7 +38,7 @@ public class JobServlet extends HttpServlet {
         if ("/Job".equals(servletPath)) {
             doGet(request,response);
         }else if ("/ShowJob".equals(servletPath)){
-            doALL(request, response);
+            doShowJob(request, response);
         }else if ("/StuShowJob".equals(servletPath)) {
             doAllJob(request, response);
         }else if("/updateStatus".equals(servletPath)){
@@ -66,7 +66,7 @@ public class JobServlet extends HttpServlet {
         response.sendRedirect("job.jsp");
     }
 
-    private void doALL(HttpServletRequest request, HttpServletResponse response)
+    private void doShowJob(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //获取前端第几页
         Integer  pageNum = Integer.parseInt(request.getParameter("pageNum"));
@@ -102,6 +102,7 @@ public class JobServlet extends HttpServlet {
     private void doStatus(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+
         Integer j_id = Integer.parseInt(request.getParameter("j_id"));
         request.getSession().setAttribute("j_id", j_id);
         String j_status = request.getParameter("j_status");

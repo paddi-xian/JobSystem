@@ -48,7 +48,7 @@
         <div class="am-u-sm-12 am-u-md-6">
             <div class="am-btn-toolbar">
                 <div class="am-btn-group am-btn-group-xs">
-<%--                    <button id="${job.j_id}" class="add" name="${job.u_id}">新增</button>--%>
+                    <%--                    <button id="${job.j_id}" class="add" name="${job.u_id}">新增</button>--%>
                 </div>
             </div>
         </div>
