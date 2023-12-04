@@ -11,11 +11,11 @@
     </insert>
 
     <update id="updatePwd">
-        UPDATE users SET u_pass = #{u_pass} WHERE u_id = #{u_id}"
+        UPDATE user SET u_pass = SHA1(#{u_pass}) WHERE u_id = #{u_id}
     </update>
 
     <update id="resetPass">
-        UPDATE users SET u_pass = #{newPass} WHERE telephone = #{telephone}"
+        UPDATE user SET u_pass = SHA1(#{newPass}) WHERE email = #{email}
     </update>
 
     <select id="getUserByName" resultType="com.student.job.pojo.User">
@@ -38,11 +38,16 @@
         SELECT EXISTS (SELECT 1 FROM user WHERE telephone = #{telephone})
     </select>
 
+<!--    <select id="checkPwd" resultType="com.student.job.pojo.User">-->
+<!--        select * from user where u_id=#{u_id} and u_pass=#{u_pass}-->
+<!--    </select>-->
     <select id="checkPwd" resultType="com.student.job.pojo.User">
-        select * from user where u_id=#{u_id} and u_pass=#{u_pass}
+        select * from user where u_id=#{u_id} and u_pass=SHA1(#{u_pass})
     </select>
 
-
+    <select id="selectById" resultType="com.student.job.pojo.User">
+        select * from user where u_id=#{u_id}
+    </select>
 
 
 </mapper>

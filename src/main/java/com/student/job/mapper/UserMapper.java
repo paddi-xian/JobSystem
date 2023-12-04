@@ -16,7 +16,7 @@ public interface UserMapper {
      */
    int insertUser(User user);
 
-    //User selectByNameAndPass(@Param("u_name") String u_name, @Param("u_pass") String u_pass);
+    User selectById(@Param("u_id") Integer u_id);
     User selectByTelAndPass(@Param("telephone") String telephone, @Param("u_pass") String u_pass);
     User getUserByName(String u_name);
 
@@ -25,11 +25,11 @@ public interface UserMapper {
 
     boolean checkTelephoneExits(@Param("telephone") String telephone);
 
-    int updatePwd(@Param("u_pass") String u_pass);
+    int updatePwd(@Param("u_id") Integer u_id,@Param("u_pass") String u_pass);
 
     User checkPwd(@Param("u_id") Integer u_id,@Param("u_pass") String u_pass);
 
-    void resetPass(@Param("email")String email,@Param("newPass") String newPass);
+    int resetPass(@Param("email")String email,@Param("newPass") String u_pass);
 
      @Select("select * from user where email = #{email}")
      User isHasEmail(String email);

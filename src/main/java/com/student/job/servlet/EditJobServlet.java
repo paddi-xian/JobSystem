@@ -35,4 +35,3 @@ public class EditJobServlet extends HttpServlet {
         response.getWriter().println(false);
     }
 }
-

@@ -3,6 +3,7 @@ package com.student.job.service;
 import com.student.job.pojo.User;
 import org.apache.ibatis.annotations.Param;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 public interface UserService {
@@ -21,7 +22,7 @@ public interface UserService {
     public User login(String telephone, String u_pass);
 
     //public boolean checkTelephoneExits(@Param("telephone") String telephone);
-    User checkPwd(@Param("u_id") Integer u_id,@Param("u_pass") String u_pass);
+//    User checkPwd(@Param("u_id") Integer u_id,@Param("u_pass") String u_pass);
 
     /**
      * 修改密码
@@ -30,7 +31,9 @@ public interface UserService {
      * @param new_pass
      * @return
      */
-    public boolean changPwd(@Param("u_id") Integer u_id,@Param("old_pass") String old_pass,@Param("new_pass") String new_pass);
+    public boolean changPwd(@Param("u_id") Integer u_id,@Param("old_pass") String old_pass,@Param("new_pass") String new_pass) throws NoSuchAlgorithmException;
 
     Boolean isHasEmail(String email);
+    void resetPass(String email, String newPass);
+
 }

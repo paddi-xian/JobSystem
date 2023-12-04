@@ -12,7 +12,7 @@ import java.util.List;
 @Mapper
 public interface JobMapper {
 
-
+    int updateStatusByJob(@Param("j_id")Integer jId,@Param("j_status")String j_status);
     List<Job> selectJobByUid(@Param("u_id") Integer uId);
 
     boolean addJob(Job job);

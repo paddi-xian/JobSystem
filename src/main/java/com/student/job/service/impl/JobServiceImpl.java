@@ -8,14 +8,26 @@ import com.student.job.service.JobService;
 import com.student.job.utils.SqlSessionUtil;
 import org.apache.ibatis.session.SqlSession;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class JobServiceImpl implements JobService {
     //打开SqlSession，创建会话
     private SqlSession session = SqlSessionUtil.openSession();
     //获取JobMapper的代理对象
     private JobMapper jobMapper = session.getMapper(JobMapper.class);
+    @Override
+    public int updateStatusByJob(Integer j_id, String j_status) {
+        // 创建一个Map来保存参数值
+        Map<String, Object> parameterMap = new HashMap<>();
+        parameterMap.put("j_id", j_id);
+        parameterMap.put("j_status", j_status);
 
+        // 执行更新操作
+        int result = session.update("JobMapper.updateStatusByJob", parameterMap);
+        return 1;
+    }
     @Override
     public List<Job> selectJobByUid(Integer uId) {
         if (session != null) {
@@ -66,11 +78,12 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public List<Job> selectAllJob() {
-        SqlSessionUtil.close(session);
-        session = SqlSessionUtil.openSession();
-        jobMapper = session.getMapper(JobMapper.class);
-        List<Job> AllJob=jobMapper.selectAllJob();
-        return AllJob;
+        if(session != null){
+            SqlSessionUtil.close(session);
+            session = SqlSessionUtil.openSession();
+            jobMapper = session.getMapper(JobMapper.class);
+        }
+        return jobMapper.selectAllJob();
     }
 
     @Override

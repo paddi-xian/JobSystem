@@ -34,6 +34,11 @@
         where j_id = #{j_id}
     </update>
 
+    <update id="updateStatusByJob">
+        update job set j_status = #{j_status} where j_id = #{j_id}
+    </update>
+
+
     <delete id="deleteJobByJID">
         delete from job where j_id = #{j_id}
     </delete>
@@ -43,7 +48,7 @@
     </select>
 
     <select id="selectAllJob" resultType="com.student.job.pojo.Job">
-        select * from job
+        select j_id,j_name,j_description,j_salary,j_hours,j_require,j_status,p_name  FROM job JOIN `publisher` WHERE job.u_id = publisher.u_id ORDER BY j_id ASC
     </select>
 
     <select id="SelectJobByJid" resultType="com.student.job.pojo.Job_Publisher">

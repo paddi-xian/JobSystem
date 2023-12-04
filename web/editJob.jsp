@@ -11,7 +11,6 @@
     <title>修改兼职岗位</title>
     <link rel="stylesheet" href="css/amazeui.min.css">
     <link rel="stylesheet" href="css/admin.css">
-    <link rel="stylesheet" href="css/app.css">
     <script src="js/vue.js"></script>
     <script src="js/axios.js"></script>
     <script src="js/jquery-3.6.3.min.js"></script>
