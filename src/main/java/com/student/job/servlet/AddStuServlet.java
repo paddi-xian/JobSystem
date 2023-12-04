@@ -70,7 +70,7 @@ public class AddStuServlet extends HttpServlet {
                request.getRequestDispatcher("addStudent.jsp").forward(request, response);
 
            }else{
-               studentMapper.addStudent(student);
+              studentMapper.addStudent(student);
                request.getSession().setAttribute("student",student);
                request.getRequestDispatcher("studentPerson.jsp").forward(request,response);
                session.commit();

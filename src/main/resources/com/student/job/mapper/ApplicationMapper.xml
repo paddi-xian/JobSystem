@@ -9,8 +9,14 @@
     </insert>
 
     <select  id="checkDuplicate" resultType="int">
-        SELECT COUNT(*) FROM applications WHERE s_id = #{u_id} AND j_id = #{j_id}
+        SELECT COUNT(*) FROM application WHERE u_id = #{u_id} AND j_id = #{j_id}
     </select >
+    <select id="getApplicationList" resultType="com.student.job.pojo.Application">
+        SELECT s_id FROM application WHERE j_id = #{j_id}
+    </select>
 
+    <select id="getJobIdsByUserId" resultType="java.lang.Integer">
+        SELECT j_id FROM job WHERE u_id = #{u_id}
+    </select>
 
 </mapper>

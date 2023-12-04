@@ -61,9 +61,9 @@
     <c:if test="${empty Record}">
         <button id="${job.j_id}" class="button" name="${job.u_id}">收藏</button>
     </c:if>
-    <button class="button">申请岗位</button>
+    <button id="${job.j_id}" name="${job.u_id}" class="btnApply">申请岗位</button>
 </div>
-
+<label class="doubleError"><span id="doubleError">${doubleError}</span></label><br>
 <script>
     $(function () {
         $(".button").click(function () {
@@ -82,6 +82,28 @@
                         alert("收藏失败")
                     } else {
                         alert("收藏成功")
+                        parent.postMessage("closeAddRecord", "http:localhost:8080/job_system_war_exploded/")
+                    }
+                }
+            })
+        })
+    })
+    $(function () {
+        $(".btnApply").click(function () {
+            let j_id = $(this).attr("id")
+            let u_id = $(this).attr("name")
+            $.ajax({
+                async: false,
+                cache: false,
+                type: "post",
+                url: "addApplication",
+                data: {"j_id": j_id, "u_id": u_id},
+                dataType: 'json',
+                success: function (res) {
+                    if (!res) {
+                        alert("申请失败")
+                    } else {
+                        alert("申请成功")
                         parent.postMessage("closeAddRecord", "http:localhost:8080/job_system_war_exploded/")
                     }
                 }
