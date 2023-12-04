@@ -19,5 +19,5 @@ public class Job implements Serializable {
     private String j_status;
     private Integer u_id;
     //多表查询
-
+    private String p_name;
 }

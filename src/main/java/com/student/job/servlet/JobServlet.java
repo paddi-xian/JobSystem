@@ -69,12 +69,12 @@ public class JobServlet extends HttpServlet {
     private void doALL(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //获取前端第几页
-//        Integer  pageNum = Integer.parseInt(request.getParameter("pageNum"));
-//        //每页多少条数据
-//        Integer  pageSize =  Integer.parseInt(request.getParameter("pageSize"));
-//        request.getSession().setAttribute("pageSize", pageSize);
-//        //分页
-//        PageHelper.startPage(pageNum,pageSize);
+        Integer  pageNum = Integer.parseInt(request.getParameter("pageNum"));
+        //每页多少条数据
+        Integer  pageSize =  Integer.parseInt(request.getParameter("pageSize"));
+        request.getSession().setAttribute("pageSize", pageSize);
+        //分页
+        PageHelper.startPage(pageNum,pageSize);
         //查询所有job
         List<Job> AllJob = jobService.selectAllJob();
         PageInfo<Job> info = new PageInfo<>(AllJob);
