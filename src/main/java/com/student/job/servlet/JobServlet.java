@@ -56,6 +56,8 @@ public class JobServlet extends HttpServlet {
         //每页多少条数据
         Integer  pageSize =  Integer.parseInt(request.getParameter("pageSize"));
         request.getSession().setAttribute("pageSize", pageSize);
+        //把本方法的url存入session域，让前端动态获取
+        request.getSession().setAttribute("url","Job");
         //分页
         PageHelper.startPage(pageNum,pageSize);
         //查询所有job
@@ -90,6 +92,7 @@ public class JobServlet extends HttpServlet {
         //每页多少条数据
         Integer  pageSize =  Integer.parseInt(request.getParameter("pageSize"));
         request.getSession().setAttribute("pageSize", pageSize);
+        request.getSession().setAttribute("url","StuShowJob");
         //分页
         PageHelper.startPage(pageNum,pageSize);
         //查询所有job
@@ -109,9 +112,14 @@ public class JobServlet extends HttpServlet {
         SqlSessionFactory sqlSessionFactory = SqlSessionUtil.getSqlSessionFactory();
         try (SqlSession session = sqlSessionFactory.openSession()) {
             JobMapper jobMapper = session.getMapper(JobMapper.class);
-            jobMapper.updateStatusByJob(j_id,j_status);
+            int res = jobMapper.updateStatusByJob(j_id,j_status);
+            if (res == 1){
+                response.getWriter().println(true);
+            }else {
+                response.getWriter().println(false);
+            }
             session.commit();
-            request.getRequestDispatcher("showJob.jsp").forward(request,response);
+//            request.getRequestDispatcher("showJob.jsp").forward(request,response);
         }finally {
             session.close();
         }

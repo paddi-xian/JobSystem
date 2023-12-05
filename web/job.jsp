@@ -119,7 +119,8 @@
                     <span class="total">共 ${info.getTotal()} 条数据</span>
                     <div class="page2">
                         <c:if test="${info.hasPreviousPage}">
-                            <a href="Job?pageNum=${info.prePage}&pageSize=${pageSize}" class="page-button">上一页</a>
+                            <%--把搜索内容str附带给url--%>
+                            <a href="${url}?pageNum=${info.prePage}&pageSize=${pageSize}&str=${str}" class="page-button">上一页</a>
                         </c:if>
                         <c:if test="${info.pages <= 10}">
                             <c:set var="begin" value="1"></c:set>
@@ -152,16 +153,16 @@
                         </c:if>
 
                         <c:forEach begin="${begin}" end="${end}" var="i">
-                            <a href="Job?pageNum=${i}&pageSize=${pageSize}" class="page-button">${i}</a>
+                            <a href="${url}?pageNum=${i}&pageSize=${pageSize}&str=${str}" class="page-button">${i}</a>
                         </c:forEach>
                         <c:if test="${info.hasNextPage}">
-                            <a href="Job?pageNum=${info.nextPage}&pageSize=${pageSize}" class="page-button">下一页</a>
+                            <a href="${url}?pageNum=${info.nextPage}&pageSize=${pageSize}&str=${str}" class="page-button">下一页</a>
                         </c:if>
                     </div>
                     <select onchange="window.location=this.value" style="display: inline;width: 80px;margin-left: 20px">
-                        <option value="Job?pageNum=1&pageSize=5"<c:if test="${pageSize == 5}">selected</c:if>>5</option>
-                        <option value="Job?pageNum=1&pageSize=10"<c:if test="${pageSize == 10}">selected</c:if>>10</option>
-                        <option value="Job?pageNum=1&pageSize=15"<c:if test="${pageSize == 15}">selected</c:if>>15</option>
+                        <option value="${url}?pageNum=1&pageSize=5&str=${str}"<c:if test="${pageSize == 5}">selected</c:if>>5</option>
+                        <option value="${url}?pageNum=1&pageSize=10&str=${str}"<c:if test="${pageSize == 10}">selected</c:if>>10</option>
+                        <option value="${url}?pageNum=1&pageSize=15&str=${str}"<c:if test="${pageSize == 15}">selected</c:if>>15</option>
                     </select>
                 </div>
                 <hr>
@@ -198,7 +199,7 @@
             window.addEventListener("message", e => {
                 if (e.data == "closeEditJob") {
                     $.jq_Panel_close();
-                    location.href = "Job?pageNum=1&pageSize=${pageSize}";
+                    location.href = "${url}?pageNum=1&pageSize=${pageSize}&str=${str}";
                 }
             })
         });
@@ -224,7 +225,7 @@
             window.addEventListener("message", e => {
                 if (e.data == "closeAddJob") {
                     $.jq_Panel_close();
-                    location.href = "Job?pageNum=1&pageSize=${pageSize}";
+                    location.href = "${url}?pageNum=1&pageSize=${pageSize}&str=${str}";
 
                 }
             })
@@ -246,13 +247,13 @@
                         if (!res) {
                             alert("删除失败")
                         } else {
-                            alert("删除成功" + j_id + "===" + u_id)
+                            alert("删除成功")
                             // window.location.href = "job.jsp"
                             $.ajax({
                                 async: false,
                                 cache: false,
                                 type: "get",
-                                url: "Job?pageNum=1&pageSize=${pageSize}"
+                                url: "${url}?pageNum=1&pageSize=${pageSize}&str=${str}"
                             })
                         }
                     }

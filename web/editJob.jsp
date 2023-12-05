@@ -91,7 +91,6 @@
                 j_description: '',
                 j_salary: '',
                 j_hours: '',
-                u_id:'',
                 j_require:'',
             },
         },
@@ -108,14 +107,10 @@
                         .then(response => {
                             if(response.data == false){
                                 console.log(response.data)
-                                this.job.u_id = response.data;
-                                console.log(this.job.u_id)
                                 alert("修改失败！！")
                                 return;
                             }else{
                                 console.log(response.data)
-                                this.job.u_id = response.data;
-                                console.log(this.job.u_id)
                                 alert("修改成功")
                             }
                             parent.postMessage("closeEditJob","http:localhost:8080/job_system_war_exploded/")

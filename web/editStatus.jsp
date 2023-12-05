@@ -71,8 +71,8 @@
                         alert("修改失败")
                     } else {
                         alert("修改成功")
-                        parent.postMessage("closeUpdateStatus", "http:localhost:8080/job_system_war_exploded/")
                     }
+                    parent.postMessage("closeUpdateStatus", "http:localhost:8080/job_system_war_exploded/")
                 }
             })
         })

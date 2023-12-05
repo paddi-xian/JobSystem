@@ -16,7 +16,7 @@ public interface JobService {
 
     int deleteJobByJID(Integer jId);
 
-    boolean editJob(Job job);
+    boolean editJob(Job_Publisher job);
 
     List<Job> selectAllJob();
 

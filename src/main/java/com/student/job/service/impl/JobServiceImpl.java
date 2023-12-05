@@ -64,7 +64,7 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public boolean editJob(Job job) {
+    public boolean editJob(Job_Publisher job) {
         if (session != null) {
             SqlSessionUtil.close(session);
             session = SqlSessionUtil.openSession();

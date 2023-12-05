@@ -131,7 +131,7 @@
 <hr>
 
 <div class="search">
-    <input type="text" id="searchInput" class="input" placeholder="🔍 输入要搜索的内容">
+    <input type="text" id="searchInput" class="input" placeholder="输入要搜索的内容">
     <input type="button" id="search" value="搜索" class="button">
 </div>
 <div class="am-g">
@@ -175,7 +175,8 @@
                 <span class="total">共 ${info.getTotal()} 条数据</span>
                 <div class="page2">
                     <c:if test="${info.hasPreviousPage}">
-                        <a href="StuShowJob?pageNum=${info.prePage}&pageSize=${pageSize}" class="page-button">上一页</a>
+                        <%--把搜索内容str附带给url--%>
+                        <a href="${url}?pageNum=${info.prePage}&pageSize=${pageSize}&str=${str}" class="page-button">上一页</a>
                     </c:if>
                     <c:if test="${info.pages <= 10}">
                         <c:set var="begin" value="1"></c:set>
@@ -208,16 +209,16 @@
                     </c:if>
 
                     <c:forEach begin="${begin}" end="${end}" var="i">
-                        <a href="StuShowJob?pageNum=${i}&pageSize=${pageSize}" class="page-button">${i}</a>
+                        <a href="${url}?pageNum=${i}&pageSize=${pageSize}&str=${str}" class="page-button">${i}</a>
                     </c:forEach>
                     <c:if test="${info.hasNextPage}">
-                        <a href="StuShowJob?pageNum=${info.nextPage}&pageSize=${pageSize}" class="page-button">下一页</a>
+                        <a href="${url}?pageNum=${info.nextPage}&pageSize=${pageSize}&str=${str}" class="page-button">下一页</a>
                     </c:if>
                 </div>
                 <select onchange="window.location=this.value" style="display: inline;width: 80px;margin-left: 20px">
-                    <option value="StuShowJob?pageNum=1&pageSize=5"<c:if test="${pageSize == 5}">selected</c:if>>5</option>
-                    <option value="StuShowJob?pageNum=1&pageSize=10"<c:if test="${pageSize == 10}">selected</c:if>>10</option>
-                    <option value="StuShowJob?pageNum=1&pageSize=15"<c:if test="${pageSize == 15}">selected</c:if>>15</option>
+                    <option value="${url}?pageNum=1&pageSize=5&str=${str}"<c:if test="${pageSize == 5}">selected</c:if>>5</option>
+                    <option value="${url}?pageNum=1&pageSize=10&str=${str}"<c:if test="${pageSize == 10}">selected</c:if>>10</option>
+                    <option value="${url}?pageNum=1&pageSize=15&str=${str}"<c:if test="${pageSize == 15}">selected</c:if>>15</option>
                 </select>
             </div>
             <hr>
@@ -270,12 +271,12 @@
                     $.jq_Panel_close();
                 }
             })
-            window.addEventListener("message",e => {
-                if(e.data == "closeBtn"){
-                    $.jq_Panel_close();
-                    location.href="publisherPerson.jsp";
-                }
-            } )
+            // window.addEventListener("message",e => {
+            //     if(e.data == "closeBtn"){
+            //         $.jq_Panel_close();
+            //         location.href="publisherPerson.jsp";
+            //     }
+            // } )
         })
     })
 </script>

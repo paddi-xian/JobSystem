@@ -69,9 +69,9 @@
 <label class="doubleError"><span id="doubleError">${doubleError}</span></label><br>
 <script>
     $(function () {
-        $(".btn").click(function (){
-            parent.postMessage("closeBtn","http:localhist:8080/job_system_war_exploded/")
-        })
+        // $(".btn").click(function (){
+        //     parent.postMessage("closeBtn","http:localhist:8080/job_system_war_exploded/")
+        // })
 
         //收藏按钮
         $("#addButton").click(function () {

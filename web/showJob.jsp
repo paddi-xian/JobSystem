@@ -195,6 +195,12 @@
                 iframeHeight: 300,
                 url: "editStatus.jsp"
             })
+            window.addEventListener("message", e => {
+                if (e.data == "closeUpdateStatus"){
+                    $.jq_Panel_close();
+                    location.href = "Job?pageNum=1&pageSize=${pageSize}"
+                }
+            } )
         })
     })
 </script>

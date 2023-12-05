@@ -19,6 +19,8 @@ public class StuSearchServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String str = request.getParameter("str");
+        //把一开始搜索的内容存入session，让它点击下一页的时候可以附带值str
+        request.getSession().setAttribute("str",str);
 
         Integer  pageNum = Integer.parseInt(request.getParameter("pageNum"));
 
@@ -26,6 +28,8 @@ public class StuSearchServlet extends HttpServlet {
         Integer  pageSize =  Integer.parseInt(request.getParameter("pageSize")) ;
         request.getSession().setAttribute("pageNum",pageNum);
         request.getSession().setAttribute("pageSize", pageSize);
+        //把本方法的url存入session域，让前端动态获取
+        request.getSession().setAttribute("url","StuSearchServlet");
         //分页
         PageHelper.startPage(pageNum,pageSize);
 

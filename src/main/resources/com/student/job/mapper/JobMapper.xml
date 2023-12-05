@@ -59,7 +59,9 @@
         select j_id,j_name,j_description,j_salary,j_hours,j_require,job.u_id,p_name,p_telephone,p_address,p_email
         from Job JOIN publisher ON job.u_id = publisher.u_id
         <where>
-
+            <if test="u_id != null and u_id !=''">
+                job.u_id = #{u_id}
+            </if>
             <if test="str != null and str != ''">
                 and j_name like concat('%',#{str},'%')
             </if>
