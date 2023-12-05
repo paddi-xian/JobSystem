@@ -91,7 +91,6 @@ public class LoginServlet extends HttpServlet {
                     request.getSession().setAttribute("pageSize",5);
                     //查询所有job
                     List<Job_Publisher> AllJob = jobService.SelectJob_publish();
-                    System.out.println(AllJob);
                     PageInfo<Job_Publisher> info = new PageInfo<>(AllJob);
                     request.getSession().setAttribute("info",info);
                     request.getRequestDispatcher("student.jsp").forward(request,response);

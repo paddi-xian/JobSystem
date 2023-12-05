@@ -97,13 +97,13 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public List<Job> SelectJobByLikeName(Job job) {
+    public List<Job_Publisher> SelectJobByLikeName(String str,Integer uId) {
         if (session != null) {
             SqlSessionUtil.close(session);
             session = SqlSessionUtil.openSession();
             jobMapper = session.getMapper(JobMapper.class);
         }
-        return jobMapper.SelectJobByLikeName(job);
+        return jobMapper.SelectJobByLikeName(str,uId);
     }
 
     @Override
@@ -129,14 +129,37 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public Job_Publisher isRecord(Integer jId, Integer uId) {
+    public Job_Publisher isRecord(Integer uId,Integer jId) {
         if(session != null){
             SqlSessionUtil.close(session);
             session = SqlSessionUtil.openSession();
             jobMapper = session.getMapper(JobMapper.class);
         }
-        List<Integer> jids = jobMapper.selectjids(jId);
-        return jobMapper.isRecord(jids,jId,uId);
+        System.out.println("jid="+jId+"---uid="+uId);
+        return jobMapper.isRecord(uId,jId);
+    }
+
+    @Override
+    public List<Job_Publisher> selectRecord(Integer uId) {
+        if(session != null){
+            SqlSessionUtil.close(session);
+            session = SqlSessionUtil.openSession();
+            jobMapper = session.getMapper(JobMapper.class);
+        }
+        List<Job_Publisher>records = jobMapper.selectRecord(uId);
+        return records;
+    }
+
+    @Override
+    public int removeRecord(Integer uId, Integer jId) {
+        if(session != null){
+            SqlSessionUtil.close(session);
+            session = SqlSessionUtil.openSession();
+            jobMapper = session.getMapper(JobMapper.class);
+        }
+        int i = jobMapper.removeRecord(uId, jId);
+        session.commit();
+        return i;
     }
 
 

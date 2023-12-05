@@ -131,8 +131,8 @@
 <hr>
 
 <div class="search">
-    <input type="text" class="input" placeholder="🔍 输入要搜索的内容">
-    <input type="button" value="搜索" class="button">
+    <input type="text" id="searchInput" class="input" placeholder="🔍 输入要搜索的内容">
+    <input type="button" id="search" value="搜索" class="button">
 </div>
 <div class="am-g">
     <div class="am-u-sm-12">
@@ -140,7 +140,6 @@
             <table class="am-table am-table-striped am-table-hover table-main">
                 <thead>
                 <tr>
-<%--                    <th class="table-check"></th>--%>
                     <th class="table-title">兼职岗位名称</th>
                     <th class="table-title">学历要求</th>
                     <th class="table-title">工资</th>
@@ -227,6 +226,14 @@
 </div>
 <script>
     $(function (){
+        //搜索
+        $("#search").click(function (){
+            let str = $("#searchInput").val();
+            location.href = "StuSearchServlet?str="+str+"&pageNum=1&pageSize=5"
+        })
+
+
+        //判断是否被收藏
         $(".btnCheck").click(function (){
             let j_id = $(this).attr("id");
             $.ajax({
@@ -263,6 +270,12 @@
                     $.jq_Panel_close();
                 }
             })
+            window.addEventListener("message",e => {
+                if(e.data == "closeBtn"){
+                    $.jq_Panel_close();
+                    location.href="publisherPerson.jsp";
+                }
+            } )
         })
     })
 </script>

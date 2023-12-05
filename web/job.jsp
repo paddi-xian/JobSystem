@@ -55,9 +55,9 @@
                 </div>
             </div>
         </div>
-        <div class="am-u-sm-12 am-u-md-3">
+<%--        <div class="am-u-sm-12 am-u-md-3">--%>
 
-        </div>
+<%--        </div>--%>
         <div class="am-u-sm-12 am-u-md-3">
             <div class="am-input-group am-input-group-sm">
                 <input type="text" id="search" class="am-form-field" placeholder="请输入兼职岗位名称">
@@ -205,8 +205,8 @@
 
 
         $(".search").click(function () {
-            let j_name = $('#search').val()
-            location.href = "SelectJobByLikeNameServlet?" + "j_name=" + j_name + "&pageNum=1"
+            let str = $('#search').val()
+            location.href = "SelectJobByLikeNameServlet?" + "str=" + str + "&pageNum=1&pageSize=5"
 
         })
 

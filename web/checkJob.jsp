@@ -39,7 +39,7 @@
 <body>
 <div class="info-item">
     <span class="label">公司名称:</span>
-    <span class="value"><a href="publisherPerson.jsp">${job.p_name}</a></span>
+    <span class="value"  @click="btn">${job.p_name}</span>
 </div>
 <div class="info-item">
     <span class="label">岗位名称:</span>
@@ -59,23 +59,29 @@
 </div>
 <div class="info-item">
     <c:if test="${empty Record}">
-        <button id="${job.j_id}" class="button" name="${job.u_id}">收藏</button>
+        <button id="addButton" class="button" name="${job.j_id}">收藏</button>
+    </c:if>
+    <c:if test="${not empty Record}">
+        <button id="removeButton" class="button" name="${job.j_id}">取消收藏</button>
     </c:if>
     <button id="${job.j_id}" name="${job.u_id}" class="btnApply">申请岗位</button>
 </div>
 <label class="doubleError"><span id="doubleError">${doubleError}</span></label><br>
 <script>
     $(function () {
-        $(".button").click(function () {
-            let j_id = $(this).attr("id")
-            let u_id = $(this).attr("name")
+        $(".btn").click(function (){
+            parent.postMessage("closeBtn","http:localhist:8080/job_system_war_exploded/")
+        })
 
+        //收藏按钮
+        $("#addButton").click(function () {
+            let j_id = $(this).attr("name")
             $.ajax({
                 async: false,
                 cache: false,
                 type: "post",
                 url: "AddRecordServlet",
-                data: {"j_id": j_id, "u_id": u_id},
+                data: {"j_id": j_id},
                 dataType: 'json',
                 success: function (res) {
                     if (!res) {
@@ -109,6 +115,28 @@
                 }
             })
         })
+
+        //取消收藏按钮
+        $("#removeButton").click(function () {
+            let j_id = $(this).attr("name")
+            $.ajax({
+                async: false,
+                cache: false,
+                type: "post",
+                url: "removeRecordServlet",
+                data: {"j_id": j_id},
+                dataType: 'json',
+                success: function (res) {
+                    if (!res) {
+                        alert("取消收藏失败");
+                    } else {
+                        alert("取消收藏成功");
+                        parent.postMessage("closeAddRecord", "http:localhost:8080/job_system_war_exploded/")
+                    }
+                }
+            })
+        })
+
     })
 </script>
 </body>

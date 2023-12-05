@@ -55,26 +55,26 @@
         select j_id,j_name,j_description,j_salary,j_hours,j_require,job.u_id,p_name,p_telephone,p_address,p_email From job JOIN publisher WHERE job.u_id = publisher.u_id and job.j_id = #{jId}
     </select>
 
-    <select id="SelectJobByLikeName" resultType="com.student.job.pojo.Job">
-        select * from Job
+    <select id="SelectJobByLikeName" resultType="com.student.job.pojo.Job_Publisher">
+        select j_id,j_name,j_description,j_salary,j_hours,j_require,job.u_id,p_name,p_telephone,p_address,p_email
+        from Job JOIN publisher ON job.u_id = publisher.u_id
         <where>
-            <if test="u_id != null and u_id != ''">
-                u_id = #{u_id}
+
+            <if test="str != null and str != ''">
+                and j_name like concat('%',#{str},'%')
             </if>
-            <if test="j_name != null and j_name != ''">
-                and j_name like concat('%',#{j_name},'%')
+            <if test="str != null and str != ''">
+                or j_description like concat('%',#{str},'%')
+                or j_require like concat('%',#{str},'%')
+                or p_name like concat('%',#{str},'%')
+                or p_address like concat('%',#{str},'%')
             </if>
         </where>
     </select>
 
     <select id="SelectJob_publish" resultType="com.student.job.pojo.Job_Publisher">
-        select j_id,j_name,j_description,j_salary,j_hours,j_require,j_status,p_name  FROM job JOIN `publisher` WHERE job.u_id = publisher.u_id ORDER BY j_id ASC
+        select j_id,j_name,j_description,j_salary,j_hours,j_require,j_status,p_name  FROM job JOIN `publisher` WHERE job.u_id = publisher.u_id AND j_status='通过' ORDER BY j_id ASC
     </select>
 
 
-    <select id="isRecord" parameterType="java.util.List" resultType="com.student.job.pojo.Job_Publisher">
-        SELECT j_id, j_name,j_description,j_salary,j_hours,j_require,p_name,p_telephone,p_address,p_email,p_introduction FROM job JOIN publisher ON job.u_id = publisher.u_id WHERE j_id IN
-        <foreach collection="jids" item="j_id" open="(" close=")" separator=",">#{j_id}</foreach>
-        AND j_id = #{j_id}
-    </select>
 </mapper>

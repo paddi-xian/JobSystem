@@ -38,7 +38,7 @@
                         <a href="StuShowJob?pageNum=1&pageSize=5" target="right">学生查看兼职岗位信息</a>
                     </dd>
                     <dd>
-                        <a href="uploadResume.jsp" target="right">学生上传简历</a>
+                        <a href="SelectRecordServlet?pageNum=1&pageSize=5" target="right">学生管理工作收藏</a>
                     </dd>
                 </dl>
             </li>
