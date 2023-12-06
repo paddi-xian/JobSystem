@@ -52,7 +52,7 @@
               <a class="" href="javascript:;">主页</a>
               <dl class="layui-nav-child">
                 <dd>
-                  <a href="showStudent" target="right">学生管理</a>
+                  <a href="showStudent?pageNum=1&pageSize=5" target="right">学生管理</a>
                 </dd>
                 <dd>
                   <a href="showPublisher" target="right">发布者管理</a>
