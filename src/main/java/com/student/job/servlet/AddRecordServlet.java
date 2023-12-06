@@ -17,7 +17,7 @@ public class AddRecordServlet extends HttpServlet {
         Integer j_id = Integer.parseInt(request.getParameter("j_id"));
         User user = (User) request.getSession().getAttribute("user");
         int res = jobService.addRecord(j_id, user.getU_id());
-        System.out.println(res);
+//        System.out.println(res);
         if(res == 1){
             response.getWriter().println(true);
         }else {

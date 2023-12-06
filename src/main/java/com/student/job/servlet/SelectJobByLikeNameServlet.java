@@ -30,7 +30,6 @@ public class SelectJobByLikeNameServlet extends HttpServlet {
 
         Integer u_id = user.getU_id();
         Integer  pageNum = Integer.parseInt(request.getParameter("pageNum"));
-//
 //        System.out.println(u_id);
 
         //每页多少条数据
@@ -45,7 +44,7 @@ public class SelectJobByLikeNameServlet extends HttpServlet {
         List<Job_Publisher> jobs = jobService.SelectJobByLikeName(str,u_id);
 
         PageInfo<Job_Publisher> info = new PageInfo<>(jobs);
-        System.out.println(info);
+//        System.out.println(info);
         request.getSession().removeAttribute("info");
         request.getSession().setAttribute("info",info);
         response.sendRedirect("job.jsp");
