@@ -25,9 +25,9 @@ public interface UserMapper {
 
     boolean checkTelephoneExits(@Param("telephone") String telephone);
 
-    int updatePwd(@Param("u_id") Integer u_id,@Param("u_pass") String u_pass);
+    int updatePwd(@Param("u_id") Integer u_id,@Param("new_pass") String u_pass);
 
-    User checkPwd(@Param("u_id") Integer u_id,@Param("u_pass") String u_pass);
+    User checkPwd(@Param("u_id") Integer u_id,@Param("old_pass") String u_pass);
 
     int resetPass(@Param("email")String email,@Param("newPass") String u_pass);
 

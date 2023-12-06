@@ -5,6 +5,7 @@ import com.student.job.pojo.User;
 import com.student.job.service.UserService;
 import com.student.job.service.impl.UserServiceImpl;
 import com.student.job.utils.SqlSessionUtil;
+import lombok.SneakyThrows;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -18,6 +19,8 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import static com.student.job.service.impl.UserServiceImpl.bytesToHex;
+
 @WebServlet("/updatePwd")
 public class UpdatePwdServlet extends HttpServlet {
     private SqlSession session = SqlSessionUtil.openSession();
@@ -28,41 +31,59 @@ public class UpdatePwdServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        User user = (User) request.getSession().getAttribute("user");
-        Integer uid = user.getU_id();
-//        Integer uid = (Integer) request.getSession().getAttribute("u_id");
 
-        String oldPwd = request.getParameter("old_pass");
-        String newPwd = request.getParameter("new_pass");
-        String confirmPwd = request.getParameter("confirmPwd");
+        User users = (User) request.getSession().getAttribute("user");
+        Integer u_id = users.getU_id();
 
-//        // 检查新密码和确认密码是否匹配
-//        if (!newPwd.equals(confirmPwd)) {
-//            // 返回错误消息，密码不匹配
-//            response.getWriter().write("新密码和确认密码不匹配");
-//            return;
-//        }
+        String old_pass = request.getParameter("old_pass");
+        String new_pass = request.getParameter("new_pass");
 
-        user.setU_pass(oldPwd);
-        // 验证旧密码是否正确
-        User checkUser = userMapper.checkPwd(uid, oldPwd);
-        if (checkUser == null) {
-            // 返回错误消息，旧密码不正确
-            response.getWriter().write("旧密码不正确");
-            return;
+
+        User user = new User();
+        user.setU_id(u_id);
+        user.setU_pass(new_pass);
+
+        //从前端获取的密码进行SHA1加密
+        String shA1Password = null;
+        try {
+            shA1Password = getSHA1Hash(old_pass);
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
         }
-        user.setU_id(uid);
-        user.setU_pass(newPwd);
-
-        // 更新密码
-        int i = userMapper.updatePwd(uid, newPwd);
-        session.commit();
-        if (i > 0) {
-            // 更新成功，重定向或返回成功消息
-            response.sendRedirect("/login.jsp"); // 您可以替换为实际的成功页面路径
+        UserMapper userMapper = session.getMapper(UserMapper.class);
+        User checkUser = userMapper.checkPwd(u_id,shA1Password);
+        if (checkUser == null || !checkUser.getU_pass().equals(shA1Password)) {
+            // 如果没有找到用户或用户名或密码错误，则重定向到错误页面
+            String message = "原密码错误";
+            request.setAttribute("message", message);
+            request.getRequestDispatcher("updatePwd.jsp").forward(request, response);
         } else {
-            // 更新失败，返回错误消息
-            response.getWriter().write("fail");
+            // 更新密码
+            int result = userMapper.updatePwd(u_id, new_pass);
+            session.commit();
+            if (result == 1) {
+                // 可以重定向到成功页面或以其他方式提示用户密码更新成功
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+            } else {
+                System.out.println("Failed to update password");
+                response.getWriter().write("修改失败");
+                // 可以返回错误页面或以其他方式提示用户密码更新失败
+            }
         }
+        session.close();
+    }
+    private String getSHA1Hash(String input) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-1");
+        md.update(input.getBytes(StandardCharsets.UTF_8));
+        byte[] digest = md.digest();
+        return bytesToHex(digest); // 将字节数组转换为十六进制字符串
+    }
+
+    public static String bytesToHex(byte[] bytes) {
+        StringBuilder result = new StringBuilder();
+        for (byte b : bytes) {
+            result.append(String.format("%02x", b));
+        }
+        return result.toString();
     }
 }
