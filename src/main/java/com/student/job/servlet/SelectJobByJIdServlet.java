@@ -22,7 +22,8 @@ public class SelectJobByJIdServlet extends HttpServlet {
         if (job != null){
             request.getSession().removeAttribute("job");
             request.getSession().setAttribute("job",job);
-            response.getWriter().println(job);
+//            System.out.println(job);
+            response.getWriter().println(true);
         }else {
             response.getWriter().println(false);
         }

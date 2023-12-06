@@ -48,15 +48,13 @@ public class ApplicationServlet extends HttpServlet {
     request.setCharacterEncoding("UTF-8");
          User user = (User) request.getSession().getAttribute("user");
          Integer u_id = user.getU_id();
-         Integer j_id = Integer.valueOf(request.getParameter("j_id"));
+         Integer j_id = Integer.parseInt(request.getParameter("j_id"));
          String a_status = "未审核"; // 默认状态为未审核
         Application application = new Application();
         application.setU_id(u_id);
         application.setJ_id(j_id);
         application.setA_status(a_status);
         System.out.println(application);
-        System.out.println(u_id);
-        System.out.println(j_id);
         // 检查是否已经存在该用户的申请记录，如果存在则返回错误信息，否则继续处理
         SqlSessionFactory sqlSessionFactory = SqlSessionUtil.getSqlSessionFactory();
         // 保存申请记录到数据库中
@@ -70,15 +68,16 @@ public class ApplicationServlet extends HttpServlet {
                 request.getRequestDispatcher("/checkJob.jsp").forward(request, response);
             }else{
                 int res = applicationMapper.addApplication(application);
-                System.out.println(res);
-                request.getSession().setAttribute("application",application);
-                request.getRequestDispatcher("/stuShowJob.jsp").forward(request,response);
-                session.commit();
                 if(res == 1){
-                   response.getWriter().println(true);
-               }else {
-                   response.getWriter().println(false);
-               }
+                    response.getWriter().println(true);
+                }else {
+                    response.getWriter().println(false);
+                }
+                System.out.println(res);
+//                request.getSession().setAttribute("application",application);
+//                request.getRequestDispatcher("/stuShowJob.jsp").forward(request,response);
+
+                session.commit();
             }
         } catch (Exception e) {
             request.setAttribute("error", "申请失败：" + e.getMessage());
