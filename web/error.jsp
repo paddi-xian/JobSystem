@@ -11,6 +11,6 @@
     <title>错误提示</title>
 </head>
 <body>
-    <h1>网络问题。。。登陆失败</h1>
+    <h1>哎呀，出错了~</h1>
 </body>
 </html>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Bo'o'm
@@ -30,12 +31,16 @@
 <body>
 <div class="reset">
     <div class="am-g">
-        <form class="am-form am-form-horizontal" method="post" action="/updatePwd" style="padding-top:30px;" data-am-validator>
+        <form class="am-form am-form-horizontal" method="post" style="padding-top:30px;" data-am-validator>
             <h2 style="text-align: center">修改密码</h2>
             <div class="am-form-group">
                 <label for="old_pass" class="am-u-sm-3 am-form-label">原密码</label>
                 <div class="am-u-sm-9">
                     <input type="password" id="old_pass" required placeholder="请输入原密码">
+<%--                    <label><span id="telephoneError">${message}</span></label>--%>
+                    <c:if test="${not empty message}">
+                        <span id="message">${message}</span>
+                    </c:if>
                 </div>
             </div>
             <div class="am-form-group">
@@ -52,8 +57,8 @@
             </div>
             <div class="am-form-group">
                 <div class="am-u-sm-9 am-u-sm-push-3">
-                    <button type="button" class="am-btn am-btn-success"  id="update">修改密码</button>
-<%--                    <input type="submit" class="am-btn am-btn-success" value="修改密码" id="confirmPwd"/>--%>
+<%--                    <button type="button" class="am-btn am-btn-success"  id="update">修改密码</button>--%>
+                    <input type="submit" class="am-btn am-btn-success" value="修改密码" id="update"/>
                 </div>
             </div>
         </form>
@@ -78,55 +83,31 @@
                 return;
             }
 
-            if ($.trim($("#old_pass").val()) == $.trim($("#newPwd").val())) {
+            if ($.trim($("#old_pass").val()) == $.trim($("#new_pass").val())) {
                 alert("新密码与原密码不能一致");
                 return
             }
-
-            // if ($.trim($("#new_pass").val()) == $.trim($("#confirmPwd").val())) {
-            //     alert("确认密码需要和新密码一致");
-            //     return;
-            // }
 
             $.ajax({
                 type: "post",
                 url: "/updatePwd",
                 dataType: "json",
                 data: {
-                    newPwd: $("#new_pass").val(),
-                    oldPwd: $("#old_pass").val(),
+                    new_pass: $("#new_pass").val(),
+                    old_pass: $("#old_pass").val(),
                 },
-                success: function (data) {
-                    if (data.code.trim() == "1") {
-                        window.location.href = "/";
-                    } else if (data.code.trim() == "0") {
-                        alert(data.message)
+                success: function (result) {
+                    if (result == 1 ) {
+                        alert("修改成功")
+                    } else {
+                        alert("修改失败")
                     }
+                    parent.postMessage("closeUpdatePwd","http:localhost:8081/job_system_war_exploded/")
                 }
             })
         })
     });
-    // function submitForm() {
-    //     var u_id = document.getElementById("u_id").value;
-    //     var old_pass = document.getElementById("old_pass").value;
-    //     var new_pass = document.getElementById("new_pass").value;
-    //     var new_pass2 = document.getElementById("new_pass2").value;
-    //
-    //     if (new_pass != new_pass2) {
-    //         alert("两次输入的密码不一致");
-    //         return false;
-    //     }
-    //
-    //     var xmlhttp = new XMLHttpRequest();
-    //     xmlhttp.onreadystatechange = function () {
-    //         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-    //             alert(xmlhttp.responseText);
-    //         }
-    //     }
-    //     xmlhttp.open("POST", "/updatePwd", true);
-    //     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    //     xmlhttp.send("u_id=" + u_id + "&old_pass=" + old_pass + "&new_pass=" + new_pass);
-    // }
+
 </script>
 </body>
 </html>

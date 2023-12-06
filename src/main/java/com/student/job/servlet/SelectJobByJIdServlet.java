@@ -16,7 +16,8 @@ public class SelectJobByJIdServlet extends HttpServlet {
     private final JobService jobService = (JobService) BeanFactory.getBean("jobService");
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         Integer j_id = Integer.parseInt(request.getParameter("j_id"));
         Job_Publisher job = jobService.SelectJobByJid(j_id);
         if (job != null){

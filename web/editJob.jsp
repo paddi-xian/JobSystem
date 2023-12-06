@@ -113,7 +113,7 @@
                                 console.log(response.data)
                                 alert("修改成功")
                             }
-                            parent.postMessage("closeEditJob","http:localhost:8080/job_system_war_exploded/")
+                            parent.postMessage("closeEditJob","http:localhost:8081/job_system_war_exploded/")
                         })
                         .catch(error =>{
                             console.error(error);

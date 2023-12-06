@@ -39,7 +39,6 @@ public class PasswordServlet extends HttpServlet {
                 int result = userMapper.resetPass(email, newPass);
                 session.commit();
                 if(result>0){
-
                     response.sendRedirect("login.jsp"); // Or some other redirect.
                 }else {
                     response.getWriter().write("密码重置失败");

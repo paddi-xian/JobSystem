@@ -30,12 +30,5 @@ public class StudentMapperTest {
         SqlSession sqlSession = SqlSessionUtil.openSession();
         StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
     }
-//    @Test
-//    public void testCheckStudentUid(){
-//        SqlSession sqlSession = SqlSessionUtil.openSession();
-//        StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
-////        Student student = mapper.getStudentByUid("1017");
-//        System.out.println(mapper.checkU_idExits("1017"));
-//        sqlSession.close();
-//    }
+
 }

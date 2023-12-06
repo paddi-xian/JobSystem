@@ -49,8 +49,8 @@
 <script type="text/javascript" src="js/jquery-3.6.3.min.js"></script>
 <div class="login">
     <div class="login-form">
-        <form action="#" method="post" id="resetPass">
-            <h2>忘记密码</h2>
+        <form method="post" id="resetPass">
+            <h2 style="text-align: center">重置密码</h2>
             <div class="layui-form-item">
                 <div class="input-wrap">
                     <input type="text" id="email" name="email" value="" lay-verify="required" placeholder="邮箱"
