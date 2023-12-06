@@ -16,6 +16,24 @@
     <link rel="stylesheet" href="css/admin.css"/>
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="myplugs/js/plugs.js"></script>
+    <style>
+        .page-button {
+            text-decoration: none;
+            background: white;
+            color: #000000;
+            margin-left: 15px;
+        }
+
+        .total {
+            width: 100px;
+            display: inline;
+        }
+
+        .page2 {
+            margin-left: 200px;
+            display: inline;
+        }
+    </style>
 </head>
 <body>
 <div class="admin-content-body">
@@ -50,7 +68,7 @@
                     <table class="am-table am-table-striped am-table-hover table-main">
                         <thead>
                         <tr>
-                            <th class="table-check"><input type="checkbox"></th>
+                            <th class="table-check"></th>
                             <th class="table-id">ID</th>
                             <th class="table-title">姓名</th>
                             <th class="table-title">性别</th>
@@ -60,7 +78,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${stuList}" var="stu">
+                        <c:forEach items="${info.list}" var="stu">
                             <tr>
                                 <td><input type="checkbox"></td>
                                 <td>${stu.s_id}</td>
@@ -87,35 +105,48 @@
                     </c:forEach>
                     </tbody>
                     </table>
-                    <div class="am-cf">
-                        共 2 条记录
-                        <div class="am-fr">
-                            <ul class="am-pagination">
-                                <li class="am-disabled">
-                                    <a href="#">«</a>
-                                </li>
-                                <li class="am-active">
-                                    <a href="#">1</a>
-                                </li>
-                                <li>
-                                    <a href="#">2</a>
-                                </li>
-                                <li>
-                                    <a href="#">3</a>
-                                </li>
-                                <li>
-                                    <a href="#">4</a>
-                                </li>
-                                <li>
-                                    <a href="#">5</a>
-                                </li>
-                                <li>
-                                    <a href="#">»</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                     <hr>
+                    <div class="page">
+                        <span class="total">共 ${info.getTotal()} 条数据</span>
+                        <div class="page2">
+                            <c:if test="${info.hasPreviousPage}">
+                                <a href="showStudent?pageNum=${info.prePage}&pageSize=${pageSize}" class="page-button">上一页</a>
+                            </c:if>
+                            <c:if test="${info.pages <= 10}">
+                                <c:set var="begin" value="1"></c:set>
+                                <c:set var="end" value="${info.pages}"></c:set>
+                            </c:if>
+
+                            <%--第二种情况 10个格子以上--%>
+                            <c:if test="${info.pages >10}">
+                                <%--通式--%>
+                                <c:set var="begin" value="${info.pageNum -5}"/>
+                                <c:set var="end" value="${info.pageNum +4}"/>
+                                <%--左侧begin 扶正 为了保证通过上述公式运算后左右10个格子，begin和end都得扶正--%>
+                                <c:if test="${begin <1 }">
+                                    <c:set var="begin" value="1"/>
+                                    <c:set var="end" value="10"/>
+                                </c:if>
+                                <%--右侧end 扶正--%>
+                                <c:if test="${end > info.pages}">
+                                    <c:set var="end" value="${info.pages}"/>
+                                    <c:set var="begin" value="${end -9}"/>
+                                </c:if>
+                            </c:if>
+
+                            <c:forEach begin="${begin}" end="${end}" var="i">
+                                <a href="showStudent?pageNum=${i}&pageSize=${pageSize}" class="page-button">${i}</a>
+                            </c:forEach>
+                            <c:if test="${info.hasNextPage}">
+                                <a href="showStudent?pageNum=${info.nextPage}&pageSize=${pageSize}" class="page-button">下一页</a>
+                            </c:if>
+                        </div>
+                        <select onchange="window.location=this.value" style="display: inline;width: 80px;margin-left: 20px">
+                            <option value="showStudent?pageNum=1&pageSize=5"<c:if test="${pageSize == 5}">selected</c:if>>5</option>
+                            <option value="showStudent?pageNum=1&pageSize=10"<c:if test="${pageSize == 10}">selected</c:if>>10</option>
+                            <option value="showStudent?pageNum=1&pageSize=15"<c:if test="${pageSize == 15}">selected</c:if>>15</option>
+                        </select>
+                    </div>
                 </form>
             </div>
         </div>
