@@ -22,5 +22,5 @@ public interface StudentMapper {
 
     int checkStudentExists(@Param("u_id") String u_id);
 //    Student getStudentByUid(String u_id);
-
+//List<Student>selectStuByPubUid(@Param("j_id") Integer j_id);
 }

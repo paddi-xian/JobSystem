@@ -78,5 +78,13 @@
         select j_id,j_name,j_description,j_salary,j_hours,j_require,j_status,p_name  FROM job JOIN `publisher` WHERE job.u_id = publisher.u_id AND j_status='通过' ORDER BY j_id ASC
     </select>
 
+    <select id="selectJIdsByUId" resultType="int">
+        SELECT j_id FROM job WHERE u_id = #{u_id}
+    </select>
+    <select id="selectJobByStuUid" resultType="com.student.job.pojo.Job">
+        SELECT job.* FROM job
+        INNER JOIN application ON job.j_id =application.j_id
+        WHERE application.u_id=#{u_id}
+    </select>
 
 </mapper>

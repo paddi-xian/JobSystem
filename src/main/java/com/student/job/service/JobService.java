@@ -34,4 +34,7 @@ public interface JobService {
     List<Job_Publisher> selectRecord(Integer uId);
 
     int removeRecord(Integer uId, Integer jId);
+
+//    selectJobByStuUid
+    List<Job> selectJobByStuUid(Integer uId);
 }

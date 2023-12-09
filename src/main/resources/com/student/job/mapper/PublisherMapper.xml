@@ -17,6 +17,18 @@
     <select id="getAllPublishers" resultType="com.student.job.pojo.Publisher">
         SELECT * FROM publisher
     </select>
+    <select id="selectStuByPubUid" resultType="com.student.job.pojo.Student">
+        SELECT
+            job.j_id,job.j_name,
+            student.s_name,student.s_age,student.s_gender,student.s_phone,student.s_email,
+            student.s_college,student.s_prize,student.s_experience
+        FROM
+            job
+                LEFT JOIN application on job.j_id = application.j_id
+                LEFT JOIN student on application.u_id = student.u_id
+        WHERE
+            job.u_id = #{u_id}
+    </select>
 
     <!-- 更新发布者 -->
     <update id="updatePublisher" parameterType="com.student.job.pojo.Publisher">

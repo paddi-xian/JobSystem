@@ -1,6 +1,7 @@
 package com.student.job.service;
 
 
+import com.student.job.pojo.Job_Publisher;
 import com.student.job.pojo.Student;
 import com.student.job.pojo.User;
 
@@ -18,6 +19,8 @@ public interface StudentService {
     int updateUser(User user);
 
     Long selectTotalStudent(HttpSessionBindingEvent event);
+
+
 
 }
 

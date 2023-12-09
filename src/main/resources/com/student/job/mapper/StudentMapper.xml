@@ -73,7 +73,18 @@
     <select id="checkU_idExits" resultType="java.lang.Boolean">
         SELECT EXISTS (SELECT 1 FROM student WHERE u_id = #{u_id})
     </select>
-<!--    <select id="getStudentByUid" resultType="com.student.job.pojo.Student">-->
+<!--    <select id="selectStuByPubUid" resultType="com.student.job.pojo.Student">-->
+<!--        SELECT-->
+<!--        job.j_id,-->
+<!--        student.s_name-->
+<!--        FROM-->
+<!--        job-->
+<!--        LEFT JOIN application on job.j_id = application.j_id-->
+<!--        LEFT JOIN student on application.u_id = student.u_id-->
+<!--        WHERE-->
+<!--        job.u_id = #{u_id}-->
+<!--    </select>-->
+    <!--    <select id="getStudentByUid" resultType="com.student.job.pojo.Student">-->
 <!--        select*from student where u_id =#{u_id}-->
 <!--    </select>-->
     <insert id="addStudent">

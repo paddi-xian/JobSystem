@@ -1,6 +1,8 @@
 package com.student.job.mapper;
 
 import com.student.job.pojo.Publisher;
+import com.student.job.pojo.Student;
+
 import java.util.List;
 
 public interface PublisherMapper {
@@ -19,6 +21,6 @@ public interface PublisherMapper {
 
     // 删除发布者
     void deletePublisherById(Integer p_id);
-
+    List<Student> selectStuByPubUid(Integer u_id);
 
 }

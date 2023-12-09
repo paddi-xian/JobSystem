@@ -50,6 +50,7 @@ public class ApplicationServlet extends HttpServlet {
          Integer u_id = user.getU_id();
          Integer j_id = Integer.parseInt(request.getParameter("j_id"));
          String a_status = "未审核"; // 默认状态为未审核
+//    String p_name = request.getSession().
         Application application = new Application();
         application.setU_id(u_id);
         application.setJ_id(j_id);
@@ -87,12 +88,24 @@ public class ApplicationServlet extends HttpServlet {
 
     }
 
-@Override
-    protected void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException {
-    Integer j_id = Integer.parseInt(request.getParameter("j_id"));
+//@Override
+//    protected void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException {
+////    Integer j_id = Integer.parseInt(request.getParameter("j_id"));
+//    Integer u_id = Integer.parseInt(request.getParameter( "u_id"));
+//    System.out.println(u_id);
+//    SqlSessionFactory sqlSessionFactory = SqlSessionUtil.getSqlSessionFactory();
+//    SqlSession session = sqlSessionFactory.openSession();
+////    ApplicationMapper applicationMapper=session.getMapper(ApplicationMapper.class);
+//    JobMapper jobMapper = session.getMapper(JobMapper.class);
+//    StudentMapper studentMapper = session.getMapper(StudentMapper.class);
+//    Integer j_id = jobMapper.selectJIdsByUId(u_id);
+//    System.out.println(j_id);
+//    List<Student>students = studentMapper.selectStudentByJid(j_id);
+//    System.out.println(students);
+
 
 
 }
 
 
-}
+

@@ -12,10 +12,11 @@ import java.util.List;
 
 @Mapper
 public interface JobMapper {
+    int selectJIdsByUId(@Param("u_id") Integer uId);
 
     int updateStatusByJob(@Param("j_id")Integer jId,@Param("j_status")String j_status);
     List<Job> selectJobByUid(@Param("u_id") Integer uId);
-
+    List<Job> selectJobByStuUid(@Param("u_id")Integer uId);
     boolean addJob(Job job);
 
     int deleteJobByJID(Integer jId);
@@ -50,6 +51,5 @@ public interface JobMapper {
     @Delete("delete from record where u_id = #{u_id} and j_id = #{j_id}")
     int removeRecord(@Param("u_id") Integer uId, @Param("j_id") Integer jId);
 
-//    @Select("SELECT j_id FROM record WHERE u_id = #{u_id}")
-//    List<Integer> selectjids(Integer jId);
+
 }

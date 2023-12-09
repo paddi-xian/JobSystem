@@ -96,6 +96,10 @@
                             <td>
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">
+<%--                                        <button type="button" id="${job.j_id}"--%>
+<%--                                                class="btnShowApply am-btn am-btn-default am-btn-xs am-text-secondary am-hide-sm-only"--%>
+<%--                                                name="${job.u_id}"><span class="am-icon-pencil-square-o"></span> 查看申请--%>
+<%--                                        </button>--%>
                                         <button type="button" id="${job.j_id}"
                                                 class="btnEdit am-btn am-btn-default am-btn-xs am-text-secondary am-hide-sm-only"
                                                 name="${job.u_id}"><span class="am-icon-pencil-square-o"></span> 编辑
@@ -262,6 +266,8 @@
 
         })
     })
+
+
 </script>
 </body>
 </html>

@@ -49,7 +49,7 @@
                         <a href="message.jsp" target="right">留言区</a>
                     </dd>
                     <dd>
-                        <a href="1.jsp" target="right">暂未开放</a>
+                        <a href="studentShowApply?u_id=${user.u_id}" target="right">查看工作申请</a>
                     </dd>
                     <dd>
                 </dl>

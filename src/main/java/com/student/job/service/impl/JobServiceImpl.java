@@ -162,5 +162,16 @@ public class JobServiceImpl implements JobService {
         return i;
     }
 
+    @Override
+    public List<Job> selectJobByStuUid(Integer uId) {
+        if(session != null){
+            SqlSessionUtil.close(session);
+            session = SqlSessionUtil.openSession();
+            jobMapper = session.getMapper(JobMapper.class);
+        }
+        List<Job>Jobs = jobMapper.selectJobByStuUid(uId);
+        return Jobs;
+    }
+
 
 }

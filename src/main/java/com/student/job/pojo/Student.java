@@ -22,7 +22,7 @@ public class Student implements Serializable {
     private String s_prize;
     private String s_experience;
     private String s_job;
-
+    private String j_name;
 
 
 
