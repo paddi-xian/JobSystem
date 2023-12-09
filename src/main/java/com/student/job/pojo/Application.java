@@ -14,5 +14,5 @@ public class Application {
     private Integer j_id;
     private Date a_time;
     private String a_status;
-
+    private String p_name;
 }
