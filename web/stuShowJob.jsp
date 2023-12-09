@@ -46,7 +46,7 @@
             margin-left: 150px;
         }
         #myCarousel{
-            margin-left: 130px;
+            margin-left: 250px;
         }
 
         .search {
@@ -64,7 +64,7 @@
             border: none;
             background-color: #7777774d;
             border-radius: 10px 0px 0px 10px;
-            margin-left:150px;
+            margin-left:280px;
         }
 
         .button {

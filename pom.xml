@@ -28,11 +28,19 @@
             <artifactId>mybatis-spring</artifactId>
             <version>3.0.2</version>
         </dependency>
+
+        <!--spring MVC依赖-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.3.10</version>
+        </dependency>
+
         <!--mysql依赖-->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.35</version>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>8.0.32</version>
         </dependency>
         <!--logback依赖-->
         <dependency>
@@ -53,7 +61,13 @@
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
-
+        <!--添加邮件依赖-->
+        <!--javax mail-->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
         <!--lombok 实体类创建的快捷方法-->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -61,6 +75,12 @@
             <version>1.18.2</version>
         </dependency>
 
+        <!--Page Helper依赖-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>5.0.3</version>
+        </dependency>
         <!--jsp-uri-->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -109,7 +129,11 @@
             <artifactId>javax.mail</artifactId>
             <version>1.6.2</version>
         </dependency>
-
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>2.2</version>
+        </dependency>
 
     </dependencies>
 

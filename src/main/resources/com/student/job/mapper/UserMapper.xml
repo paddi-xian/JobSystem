@@ -11,7 +11,7 @@
     </insert>
 
     <update id="updatePwd">
-        UPDATE user SET u_pass = SHA1(#{u_pass}) WHERE u_id = #{u_id}
+        UPDATE user SET u_pass = SHA1(#{new_pass}) WHERE u_id = #{u_id}
     </update>
 
     <update id="resetPass">
@@ -38,12 +38,12 @@
         SELECT EXISTS (SELECT 1 FROM user WHERE telephone = #{telephone})
     </select>
 
-<!--    <select id="checkPwd" resultType="com.student.job.pojo.User">-->
-<!--        select * from user where u_id=#{u_id} and u_pass=#{u_pass}-->
-<!--    </select>-->
     <select id="checkPwd" resultType="com.student.job.pojo.User">
-        select * from user where u_id=#{u_id} and u_pass=SHA1(#{u_pass})
+        select * from user where u_id=#{u_id} and u_pass=#{old_pass}
     </select>
+<!--    <select id="checkPwd" resultType="com.student.job.pojo.User">-->
+<!--        select * from user where u_id=#{u_id} and u_pass=SHA1(#{old_pass})-->
+<!--    </select>-->
 
     <select id="selectById" resultType="com.student.job.pojo.User">
         select * from user where u_id=#{u_id}

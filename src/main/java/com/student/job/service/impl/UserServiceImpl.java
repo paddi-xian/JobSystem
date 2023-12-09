@@ -29,16 +29,11 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectByTelAndPass(telephone, u_pass);
     }
 
-
     @Override
-    public boolean changPwd(Integer u_id, String old_pass, String new_pass) throws NoSuchAlgorithmException {
-        User user = userMapper.checkPwd(u_id,old_pass);
-        if (user != null && old_pass.equals(user.getU_pass())) {
-            String sha1NewPass = getSHA1Hash(new_pass);
-            return updatePassword(u_id, sha1NewPass);
-        }
-        return false;
+    public int updatePwd(Integer u_id, String u_pass) {
+        return userMapper.updatePwd(u_id,u_pass);
     }
+
 
     private String getSHA1Hash(String input) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("SHA-1");
@@ -47,15 +42,6 @@ public class UserServiceImpl implements UserService {
         return bytesToHex(digest); // 将字节数组转换为十六进制字符串
     }
 
-    private boolean updatePassword(Integer u_id, String sha1NewPass) {
-        try {
-            userMapper.updatePwd(u_id,sha1NewPass);
-            return true;
-        } catch (Exception e) {
-
-        }
-        return false;
-    }
     public static String bytesToHex(byte[] bytes) {
         StringBuilder result = new StringBuilder();
         for (byte b : bytes) {

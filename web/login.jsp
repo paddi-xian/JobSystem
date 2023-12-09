@@ -83,7 +83,6 @@
             <input type="" placeholder="请输入验证码" name="vCode" id="vCode" required>
             <%--验证码图片--%>
                 <img id="imgVerifyCode" src="createVerifyCodeServlet"/>
-
             </div>
             <%-- 如果有提示信息，则显示 --%>
             <c:if test="${not empty message}">
@@ -119,6 +118,7 @@
             var telephoneRegEXp = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
             if (!telephoneRegEXp.test(telephone)) {
                 alert("手机号格式不正确");
+                document.getElementById("telephone").value = ""; // 清除电话号码输入框的内容
                 return false;
             }
         }

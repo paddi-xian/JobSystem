@@ -34,7 +34,7 @@
     <update id="updatePublisher" parameterType="com.student.job.pojo.Publisher">
         UPDATE publisher
         SET p_name = #{p_name}, p_email = #{p_email},p_telephone =#{p_telephone}, p_address=#{p_address},p_introduction=#{p_introduction}
-        WHERE p_id = #{p_id}
+        WHERE u_id = #{u_id}
     </update>
 
     <!-- 删除发布者 -->

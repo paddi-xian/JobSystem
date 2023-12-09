@@ -12,8 +12,10 @@ import java.io.IOException;
 public class isHasEmailServlet extends HttpServlet {
     private UserService userService = new UserServiceImpl();
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         String email = request.getParameter("email");
+        request.getSession().setAttribute("email",email);
         Boolean res = userService.isHasEmail(email);
         if (res) {
             response.getWriter().println(true);
