@@ -23,14 +23,16 @@
             /* align-items: center; */
             margin-left: 150px;
         }
+        .am-table{
 
+        }
     </style>
 </head>
 <body>
 <div class="am-g">
     <div class="am-u-sm-12">
         <form class="am-form" action="publisherApply" method="post">
-            <table class="am-table am-table-striped am-table-hover table-main">
+            <table id="thisTable" class="am-table am-table-striped am-table-hover table-main">
                 <thead>
                 <tr>
                     <th class="table-title">申请工作</th>
@@ -42,21 +44,30 @@
                     <th class="table-title">就读经历</th>
                     <th class="table-title">获奖经历</th>
                     <th class="table-title">工作经历</th>
+                    <th class="table-title">求职意向</th>
                     <th class="table-set"></th>
                 </tr>
                 </thead>
+                <tbody>
+
+                <c:forEach items="${students}" var="s">
+                <tr>
+                    <td>${s.j_name}</td>
+                    <td>${s.s_name}</td>
+                    <td>${s.s_gender}</td>
+                    <td>${s.s_age}</td>
+                    <td>${s.s_email}</td>
+                    <td>${s.s_phone}</td>
+                    <td>${s.s_college}</td>
+                    <td>${s.s_prize}</td>
+                    <td>${s.s_experience}</td>
+                    <td>${s. s_job}</td>
+                </tr>
+                </c:forEach>
+
+                </tbody>
             </table>
-            <c:forEach items="${students}" var="s">
-                <td>${s.j_name}</td>
-                <td>${s.s_name}</td>
-                <td>${s.s_name}</td>
-                <td>${s.s_gender}</td>
-                <td>${s.s_age}</td>
-                <td>${s.s_phone}</td>
-                <td>${s.s_college}</td>
-                <td>${s.s_prize}</td>
-                <td>${s.s_experience}</td>
-            </c:forEach>
+
         </form>
     </div>
 </div>
