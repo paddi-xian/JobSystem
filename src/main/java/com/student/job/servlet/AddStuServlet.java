@@ -27,9 +27,9 @@ public class AddStuServlet extends HttpServlet {
            throws ServletException, IOException {
        //从session里面获取user的ID
        User user = (User) request.getSession().getAttribute("user");
-       System.out.println(user.getU_id());
-       System.out.println(user.getEmail());
-       System.out.println(user.getTelephone());
+//       System.out.println(user.getU_id());
+//       System.out.println(user.getEmail());
+//       System.out.println(user.getTelephone());
        request.setCharacterEncoding("UTF-8");
        String s_name = request.getParameter("s_name");
        String s_gender = request.getParameter("s_gender");
@@ -74,6 +74,7 @@ public class AddStuServlet extends HttpServlet {
                request.getSession().setAttribute("student",student);
                request.getRequestDispatcher("studentPerson.jsp").forward(request,response);
                session.commit();
+               session.close();
            }
 
        } catch (Exception e) {

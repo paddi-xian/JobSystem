@@ -1,11 +1,8 @@
 package com.student.job.servlet;
 
 import com.student.job.mapper.StudentMapper;
-import com.student.job.mapper.UserMapper;
 import com.student.job.pojo.Student;
 import com.student.job.pojo.User;
-import com.student.job.service.StudentService;
-import com.student.job.service.impl.StudentServiceImpl;
 import com.student.job.utils.SqlSessionUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -21,7 +18,6 @@ import java.io.PrintWriter;
 
 @WebServlet({"/student","/updateStudent"})
 public class StudentServlet extends HttpServlet {
-    private final StudentService studentService= new StudentServiceImpl();
     @Override
     protected void service(HttpServletRequest request,HttpServletResponse response)
             throws ServletException, IOException {
@@ -35,6 +31,7 @@ public class StudentServlet extends HttpServlet {
     private void doPerson(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Integer u_id = Integer.parseInt(request.getParameter( "u_id"));
+//        Integer u_id = 1010;
         System.out.println(u_id);
         SqlSessionFactory sqlSessionFactory = SqlSessionUtil.getSqlSessionFactory();
         try(SqlSession session =sqlSessionFactory.openSession()){

@@ -24,23 +24,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-@WebServlet({"/addApplication","/showApply"})
+@WebServlet("/addApplication")
 public class ApplicationServlet extends HttpServlet {
-    private final JobService jobService = (JobService) BeanFactory.getBean("jobService");
-    private SqlSession session = SqlSessionUtil.openSession();
-    private JobMapper jobMapper = session.getMapper(JobMapper.class);
-    private ApplicationMapper applicationMapper = SqlSessionUtil.openSession().getMapper(ApplicationMapper.class);
-    private final ApplicationService applicationService = new ApplicationServiceImpl();
-    @Override
-    protected void service(HttpServletRequest request,HttpServletResponse response)
-            throws ServletException, IOException {
-        String servletPath =request.getServletPath();
-        if ("/addApplication".equals(servletPath)) {
-            doPost(request,response);
-        }else if ("/showApply".equals(servletPath)){
-            doGet(request,response);
-        }
-    }
 
 @Override
     protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
@@ -49,6 +34,8 @@ public class ApplicationServlet extends HttpServlet {
          User user = (User) request.getSession().getAttribute("user");
          Integer u_id = user.getU_id();
          Integer j_id = Integer.parseInt(request.getParameter("j_id"));
+//    Integer u_id = 1017;
+//    Integer j_id = 1;
          String a_status = "未审核"; // 默认状态为未审核
 //    String p_name = request.getSession().
         Application application = new Application();
@@ -87,23 +74,6 @@ public class ApplicationServlet extends HttpServlet {
         }
 
     }
-
-//@Override
-//    protected void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException {
-////    Integer j_id = Integer.parseInt(request.getParameter("j_id"));
-//    Integer u_id = Integer.parseInt(request.getParameter( "u_id"));
-//    System.out.println(u_id);
-//    SqlSessionFactory sqlSessionFactory = SqlSessionUtil.getSqlSessionFactory();
-//    SqlSession session = sqlSessionFactory.openSession();
-////    ApplicationMapper applicationMapper=session.getMapper(ApplicationMapper.class);
-//    JobMapper jobMapper = session.getMapper(JobMapper.class);
-//    StudentMapper studentMapper = session.getMapper(StudentMapper.class);
-//    Integer j_id = jobMapper.selectJIdsByUId(u_id);
-//    System.out.println(j_id);
-//    List<Student>students = studentMapper.selectStudentByJid(j_id);
-//    System.out.println(students);
-
-
 
 }
 

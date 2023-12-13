@@ -182,11 +182,11 @@
     $(".btnadd").click(function () {
       $.jq_Panel({
         title: "添加个人信息",
-        iframeHeight: 600,
+        iframeHeight: 700,
         iframeWidth: 500,
         url: "addStudent.jsp"
       });
-        panel.css("top", "50px"); // 设置面板距离页面最上端的距离为
+        panel.css("top", "30px"); // 设置面板距离页面最上端的距离为
     })
       // $(".btnload").click(function () {
       //     $.jq_Panel({
