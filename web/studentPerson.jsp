@@ -93,21 +93,21 @@
 <%--              姓名--%>
       <div class="layui-form-item">
         <label class="layui-form-label">学生姓名</label>
-        <div class="layui-block">
+        <div class="layui-block" style="padding: 10px">
           <td>${student.s_name}</td>
         </div>
       </div>
 <%--              性别--%>
       <div class="layui-form-item">
         <label class="layui-form-label">性别</label>
-        <div class="layui-block">
+        <div class="layui-block" style="padding: 10px">
           <td>${student.s_gender}</td>
         </div>
       </div>
 <%--              年龄--%>
       <div class="layui-form-item">
         <label class="layui-form-label">年龄</label>
-        <div class="layui-block">
+        <div class="layui-block" style="padding: 10px">
 <%--          <input type="text" name="s_age"  value="${student.s_age}" >--%>
           <td>${student.s_age}</td>
         </div>
@@ -115,14 +115,14 @@
       <%--    电话--%>
       <div class="layui-form-item">
         <label class="layui-form-label">电话</label>
-        <div class="layui-block">
+        <div class="layui-block" style="padding: 10px">
            <td>${student.s_phone}</td>
         </div>
       </div>
       <%--    邮箱--%>
       <div class="layui-form-item">
         <label class="layui-form-label">邮箱</label>
-        <div class="layui-block">
+        <div class="layui-block" style="padding: 10px">
 <%--          <input type="text" name="s_email" value="${student.s_email}" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">--%>
           <td>${student.s_email}</td>
         </div>
@@ -130,7 +130,7 @@
 <%--              简介--%>
       <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">简介</label>
-        <div class="layui-block">
+        <div class="layui-block" style="padding: 10px">
        <text>${student.s_intro}</text>
         </div>
       </div>
@@ -138,25 +138,25 @@
           <div class="mation">
               <div class="layui-form-item">
                   <label class="layui-form-label">学习经历</label>
-                  <div class="layui-block">
+                  <div class="layui-block" style="padding: 10px">
                       <td>${student.s_college}</td>
                   </div>
               </div>
               <div class="layui-form-item">
                   <label class="layui-form-label">获奖经历</label>
-                  <div class="layui-block">
+                  <div class="layui-block" style="padding: 10px">
                       <td>${student.s_prize}</td>
                   </div>
               </div>
               <div class="layui-form-item">
                   <label class="layui-form-label">工作经历</label>
-                  <div class="layui-block">
+                  <div class="layui-block" style="padding: 10px">
                       <td>${student.s_experience}</td>
                   </div>
               </div>
               <div class="layui-form-item">
                   <label class="layui-form-label">求职意向</label>
-                  <div class="layui-block">
+                  <div class="layui-block" style="padding: 10px" >
                       <td>${student.s_job}</td>
                   </div>
               </div>
