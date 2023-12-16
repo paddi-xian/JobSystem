@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Student implements Serializable {
+public class Student implements Serializable,Cloneable{
     private Integer s_id;
     private String s_name;
     private String s_gender;
@@ -23,8 +23,10 @@ public class Student implements Serializable {
     private String s_experience;
     private String s_job;
     private String j_name;
-
-
+    @Override
+    public Student clone() throws CloneNotSupportedException {
+        return (Student) super.clone();
+    }
 
 
 }

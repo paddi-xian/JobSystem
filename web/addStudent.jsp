@@ -130,6 +130,7 @@
                         </div>
                     </div>
                     <label><span id="uidError">${uidError}</span></label><br>
+<%--            <label><span id="success">${success}</span></label><br>--%>
 
                 </form>
             </div>

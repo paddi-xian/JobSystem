@@ -20,45 +20,36 @@ import java.io.IOException;
 
 @WebServlet("/addStudServlet")
 public class AddStuServlet extends HttpServlet {
-    private StudentMapper studentMapper =SqlSessionUtil.openSession().getMapper(StudentMapper.class);
-    private final StudentService studentService = new StudentServiceImpl();
+
     @Override
    protected void doPost(HttpServletRequest request, HttpServletResponse response)
            throws ServletException, IOException {
        //从session里面获取user的ID
        User user = (User) request.getSession().getAttribute("user");
-//       System.out.println(user.getU_id());
-//       System.out.println(user.getEmail());
-//       System.out.println(user.getTelephone());
        request.setCharacterEncoding("UTF-8");
-       String s_name = request.getParameter("s_name");
-       String s_gender = request.getParameter("s_gender");
-       String s_age = request.getParameter("s_age");
-       String s_phone = request.getParameter("s_phone");
-       String s_email = request.getParameter("s_email");
-       String s_intro = request.getParameter("s_intro");
-       String u_id = request.getParameter("u_id");
+        // 创建一个临时的Student对象，从request中获取所有参数
+        Student tempStudent = new Student();
 
-       String s_college = request.getParameter("s_college");
-       String s_prize = request.getParameter("s_prize");
-       String s_experience = request.getParameter("s_experience");
-       String s_job = request.getParameter("s_job");
+        tempStudent.setS_name(request.getParameter("s_name"));
+        tempStudent.setS_gender(request.getParameter("s_gender"));
+        tempStudent.setS_age(Integer.parseInt(request.getParameter("s_age")));
+        tempStudent.setS_intro(request.getParameter("s_intro"));
+        tempStudent.setS_college(request.getParameter("s_college"));
+        tempStudent.setS_prize(request.getParameter("s_prize"));
+        tempStudent.setS_experience(request.getParameter("s_experience"));
+        tempStudent.setS_job(request.getParameter("s_job"));
 
-
-        Student student = new Student();
-       student.setS_name(s_name);
-       student.setS_gender(s_gender);
-       student.setS_age(Integer.valueOf(s_age));
-       student.setS_phone(user.getTelephone());
-       student.setS_email(user.getEmail());
-       student.setS_intro(s_intro);
-       student.setU_id(user.getU_id());
-
-       student.setS_college(s_college);
-       student.setS_prize(s_prize);
-       student.setS_experience(s_experience);
-       student.setS_job(s_job);
-
+        // 使用克隆方法复制临时对象的属性到新的Student对象
+        Student student = null;
+        try {
+            student = (Student) tempStudent.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
+        //根据需要修改新对象的某些属性
+        student.setU_id(user.getU_id()); // 假设这是需要单独设置的属性
+        student.setS_phone(user.getTelephone());
+        student.setS_email(user.getEmail());
        //调用Mybatis的Mapper接口插入用户数据
        SqlSessionFactory sqlSessionFactory = SqlSessionUtil.getSqlSessionFactory();
        try (SqlSession session = sqlSessionFactory.openSession()) {
@@ -72,7 +63,7 @@ public class AddStuServlet extends HttpServlet {
            }else{
               studentMapper.addStudent(student);
                request.getSession().setAttribute("student",student);
-               request.getRequestDispatcher("studentPerson.jsp").forward(request,response);
+               request.getRequestDispatcher("remain.jsp").forward(request,response);
                session.commit();
                session.close();
            }

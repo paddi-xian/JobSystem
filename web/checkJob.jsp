@@ -66,7 +66,6 @@
     </c:if>
     <button id="${job.j_id}" name="${job.u_id}" class="btnApply">申请岗位</button>
 </div>
-<label class="doubleError"><span id="doubleError">${doubleError}</span></label><br>
 <script>
     $(function () {
         // $(".btn").click(function (){
@@ -105,7 +104,8 @@
                 url: "addApplication",
                 data: {"j_id": j_id, "u_id": u_id},
                 dataType: 'json',
-                success: function (res) {
+                success:
+                    function (res) {
                     if (!res) {
                         alert("申请失败")
                     } else {
